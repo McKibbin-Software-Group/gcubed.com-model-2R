@@ -55,7 +55,7 @@
     },
     "codespaces": {
       "repositories": {
-        "McKibbin-Software-Group/python-gcubed-prerequisites": {
+        "McKibbin-Software-Group/gcubed-public-prerequisites": {
           "permissions": {
             "Metadata": "read",
             "contents": "read"
