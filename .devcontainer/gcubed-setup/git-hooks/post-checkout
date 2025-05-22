@@ -1,0 +1,29 @@
+#!/bin/sh
+# Git post-checkout hook
+# Ensures .devcontainer and Makefile always match the main branch
+# Args passed by Git: $1=prev HEAD, $2=new HEAD, $3=branch checkout flag
+
+# Only run on branch checkout (when $3=1), not on file checkout
+if [ "$3" != "1" ]; then
+    exit 0
+fi
+
+default_branch=$(git symbolic-ref refs/remotes/origin/HEAD 2>/dev/null | sed 's@^refs/remotes/origin/@@')
+default_branch=${default_branch:-"main"}
+current_branch=$(git rev-parse --abbrev-ref HEAD)
+
+echo "Branch checkout detected. Current branch: '${current_branch}', default branch: '${default_branch}'"
+
+# Skip if we're on the default branch
+if [ "$current_branch" = "$default_branch" ]; then
+    echo "On $default_branch branch, no action needed."
+    exit 0
+fi
+
+echo "Syncing .devcontainer and Makefile from $default_branch branch..."
+
+# Direct overwrite from main - no stashing needed
+git checkout "$default_branch" -- .devcontainer Makefile
+git reset .devcontainer Makefile
+
+echo "Sync complete. .devcontainer and Makefile now match $default_branch branch."

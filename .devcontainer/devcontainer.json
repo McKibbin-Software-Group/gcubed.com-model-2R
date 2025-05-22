@@ -1,0 +1,69 @@
+{
+  "name": "${localWorkspaceFolderBasename}",
+  "hostRequirements": {
+    "memory": "16gb"
+  },
+
+  "build": {
+    "context": "..",
+    "dockerfile": "Dockerfile",
+    "args": {
+      "SYM_REPOSITORY": "https://github.com/McKibbin-Software-Group/sym.git",
+      "SYM_REPOSITORY_TAG": "gcubed-cloud-latest",
+      "SYM_SOURCE_WORKING_DIRECTORY": "/tmp/sym",
+      "SYM_EXECUTABLE_DIRECTORY": "/usr/local/bin/",
+      "PYTHON_VARIANT": "1-3.12",
+      "VENV_SWITCHER_TAG": "latest"
+    }
+  },
+  "workspaceMount": "source=${localWorkspaceFolder},target=/workspaces/${localWorkspaceFolderBasename},type=bind,consistency=cached",
+  "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+
+  // setting up env variables, especially those that you build from others, is a little
+  // tricky due to timing issues. So we first build up all the simple variables in
+  // container context first, and then use remoteEnv to build up variables
+  // that depend on the container parts
+  "runArgs": ["--env-file=.devcontainer/customer-configuration.env"],
+  "containerEnv": {
+    // Variables that can't be defined in customer-configuration.env
+    "WORKSPACE_MOUNT": "${containerWorkspaceFolder}"
+  },
+  "remoteEnv": {
+    "GCUBED_ROOT": "${containerEnv:WORKSPACE_MOUNT}${containerEnv:USER_DATA_SUBDIRECTORY}"
+  },
+
+  // Try to open local browser if g-cubed serves chart pages on port 8888
+  "portsAttributes": {
+    "8888": {
+      "label": "G-Cubed Online Charts",
+      "onAutoForward": "openBrowser"
+    }
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "esbenp.prettier-vscode",
+        "mechatroner.rainbow-csv",
+        "mhutchie.git-graph",
+        "ms-python.black-formatter",
+        "ms-python.python",
+        "ms-vsliveshare.vsliveshare",
+        // Ignore linter errors for the local vsix file - schema file simply does not include this pattern
+        // VS Code extension is installed to this location by the Dockerfile
+        "/home/vscode/extensions/gcubed-venv-switcher/gcubed-vscode-venv-switcher.vsix"
+      ]
+    },
+    "codespaces": {
+      "repositories": {
+        "McKibbin-Software-Group/python-gcubed-prerequisites": {
+          "permissions": {
+            "Metadata": "read",
+            "contents": "read"
+          }
+        }
+      }
+    }
+  },
+  // Final G-Cubed specific setup
+  "onCreateCommand": "${containerWorkspaceFolder}/.devcontainer/gcubed-setup/gcubed-setup.sh -u \"${containerWorkspaceFolder}/.devcontainer/gcubed-setup/user_data_defaults\""
+}

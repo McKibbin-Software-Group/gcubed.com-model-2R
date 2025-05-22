@@ -1,0 +1,66 @@
+{
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.detectIndentation": true,
+  "editor.formatOnPaste": false,
+  "editor.formatOnSave": false,
+  "editor.formatOnType": false,
+  "editor.insertSpaces": true,
+  "editor.minimap.enabled": true,
+  "editor.renderWhitespace": "trailing",
+  "editor.renderControlCharacters": true,
+  "editor.guides.indentation": true,
+  "editor.renderLineHighlight": "all",
+  "editor.renderFinalNewline": "on",
+  "editor.rulers": [80, 120],
+  "editor.wordWrap": "off",
+
+  "files.eol": "\n",
+
+  // Don't show the following files in vscode explorer. Files are still
+  // accessible via terminal, eg: 'code .devcontainer/devcontainer.json'
+  "files.exclude": {
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/CVS": true,
+    "**/.DS_Store": true,
+    "**/Thumbs.db": true,
+    "**/.devcontainer": true,
+    "**/.github": true,
+    "**/.vscode": true,
+    "**/.gcubed": true,
+    "**/venv_gcubed*": true,
+    "pyproject.toml": true
+  },
+
+  "git.openRepositoryInParentFolders": "always",
+  "git.autofetch": true,
+
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.black-formatter",
+    "editor.rulers": [80, 120],
+    "editor.tabSize": 4
+  },
+  "python.defaultInterpreterPath": "/usr/local/bin/python",
+  "python.linting.enabled": true,
+  "python.linting.pylintEnabled": true,
+  "python.formatting.provider": "black",
+  "python.formatting.blackPath": "/usr/local/py-utils/bin/black",
+  "python.linting.banditPath": "/usr/local/py-utils/bin/bandit",
+  "python.linting.flake8Path": "/usr/local/py-utils/bin/flake8",
+  "python.linting.mypyPath": "/usr/local/py-utils/bin/mypy",
+  "python.linting.pycodestylePath": "/usr/local/py-utils/bin/pycodestyle",
+  "python.linting.pydocstylePath": "/usr/local/py-utils/bin/pydocstyle",
+  "python.linting.pylintPath": "/usr/local/py-utils/bin/pylint",
+  "python.terminal.executeInFileDir": false,
+
+  "terminal.integrated.inheritEnv": true,
+  "terminal.integrated.cwd": "${workspaceFolder}",
+  "telemetry.telemetryLevel": "off",
+
+  "workbench.startupEditor": "none",
+  "workbench.colorTheme": "Default Dark Modern",
+  "workbench.editorAssociations": {
+    "*.md": "vscode.markdown.preview.editor"
+  }
+}
