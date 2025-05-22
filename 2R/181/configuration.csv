@@ -1,0 +1,12 @@
+Version,2R,The model version (number of regions followed by a letter indicating model type e.g. 2R)
+Build,181,The model build - must start with a positive integer but can include other letters and digits (no spaces or punctuation though).
+BaseYear,2018,The base year for indices in the model's database.
+CalibrationYear,2018,The year to retrieve the data used for parameter calibration.
+LinearisationYear,2018,Year determining the data used to linearise the model to generate baseline projections.
+CalibrationOfCarbonCoefficientsYear,2015,The year used to calibration carbon emissions coefficients.
+FirstProjectionYear,2018,The first year to create model projections for. There must be data in the database for this year.
+LastProjectionYear,2150,The last year to generate projections for.
+LastPublishableProjectionYear,2150,The last year to generate projections for that will be published.
+StableManifoldTolerance,1.00E-7,Convergence criterion when solving for the stable manifold.
+StableManifoldMaximumIterations,2000,Maximum number of iterations allowed while solving for the stable manifold.
+BaselineDesignFile,baseline_design.csv,The baseline design file. The baseline has no exogenous adjustments if this setting is omitted.

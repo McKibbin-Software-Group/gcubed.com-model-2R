@@ -1,0 +1,2 @@
+name,data,event_year,description
+Baseline reproduction,adjustments.csv,2023,no shock simulation should result in baseline.

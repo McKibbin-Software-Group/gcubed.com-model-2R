@@ -1,0 +1,63 @@
+//
+//  Turn on the sector-specific unit tax option.  Increases the 
+//  number of equations substantially due to the need for sector-specific
+//  input prices (PRT, TXGS and RVGS variables are added to the model).
+//
+//  The new taxes only apply to energy goods wwhile the material goods equations
+//  are identical to the standard version.  In principle, they
+//  could be left in the core file but they're here for clarity and
+//  also to facilitate expanding the tax, TXGS, if that's ever needed.
+//
+//  This version uses an exogenous RVGS which must be set via a shock
+//  file. This is similar to exogenous treatment of the TAXE variable.
+//
+
+//
+//  New variables
+//
+
+variable TAXE(regions)  'revenue from externality taxes'  end,gdp ;
+
+variable TXGS(sec_std,goods_e,regions)  'unit tax on goods to sectors'                  exo,dollar ;
+variable PRT(sec_std,goods_e,regions)   'sector-specific input price'                   end,idx,logged ;
+variable RVGS(regions)                  'revenue from unit taxes'                       exo,gdp ;
+
+//
+//  PRT: sector specific input price including taxes
+//
+
+goods_e: PRT = ln( exp(PRS)*(1+TAX) + TXGS ) ;
+
+//
+//  Revised low-level intermediate demands and price indexes
+//  Note: do not implement for C, I and G to keep number of new
+//  equations slightly lower.  Also, only implement this for
+//  energy inputs, at least for now.  In these equations, PRT 
+//  replaces PRY#sectors
+//
+
+goods_e: EN = delta_e  * ENT  * exp( PRE - PRT )^sigma_e(sec_std) ;
+
+goods_m: OI = delta_m  * OIN  * exp( POI - PRY#sec_std )^sigma_m(sec_std) ;
+
+goods_e: PRE = cd_e(sec_std)*sum(goods_e, delta_e*PRT)
+             + (1-cd_e(sec_std))*ln( sum(goods_e, delta_e*exp(PRT)^(1-sigma_e(sec_std))) )/(1-sigma_e(sec_std)*(1-cd_e(sec_std))) ;
+
+goods_m: POI = cd_m(sec_std)*sum(goods_m, delta_m*PRY#sec_std)
+             + (1-cd_m(sec_std))*ln( sum(goods_m, delta_m*exp(PRY#sec_std)^(1-sigma_m(sec_std))) )/(1-sigma_m(sec_std)*(1-cd_m(sec_std))) ;
+
+//
+//  Energy tax revenue and Standard corporate and sales tax revenue
+//
+
+TAXE = RVGS ;
+
+TAXC = (
+            TCOR*(sum(sec_std,PRF) + PRFY)
+          + (
+                 sum(goods  , TAX          * exp(PRD)          * OUG )
+               + sum(goods_o, TAX(goods_o) * exp(PMR)          * IMQ )
+               - sum(sec_std, TITC         * exp(PRII)         * INV )
+               - sum(goods_o, TAX(goods_o) * exp(PRS(goods_o)) * EXQ )
+          ) / exp(PRID)
+     ) ;

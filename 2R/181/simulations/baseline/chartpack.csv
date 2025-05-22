@@ -1,0 +1,14 @@
+type,attributes,variable,label
+pack,start_year=2018|end_year=2040,,G-Cubed charts
+chart,,,
+series,,INFL(USA),
+series,,INFL(ROW),
+chart,,,
+series,,GDPR(USA),
+series,,GDPR(ROW),
+chart,,,
+series,,INTN(USA),
+series,,INTN(ROW),
+chart,,,
+series,,INTR(USA),
+series,,INTR(ROW),

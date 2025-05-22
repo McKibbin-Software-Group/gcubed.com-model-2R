@@ -1,0 +1,4 @@
+name,data,event_year,description
+Tariff revenue,tariff_revenue.csv,2019,Tariff revenue calculated outside of the model
+USA 15 percentage point increase in tariffs,usa_tariffs.csv,2025,15 percentage point increase in tariffs imposed by the USA on all other regions
+Reciprocation tariffs,reciprocation_tariffs.csv,2025,Reciprocal 15 percentage point increase in tariffs imposed by all other regions on the USA
