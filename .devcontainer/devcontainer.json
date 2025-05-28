@@ -52,17 +52,18 @@
         // VS Code extension is installed to this location by the Dockerfile
         "/home/vscode/extensions/gcubed-venv-switcher/gcubed-vscode-venv-switcher.vsix"
       ]
-    },
-    "codespaces": {
-      "repositories": {
-        "McKibbin-Software-Group/gcubed-public-prerequisites": {
-          "permissions": {
-            "Metadata": "read",
-            "contents": "read"
-          }
-        }
-      }
     }
+    //,
+    //"codespaces": {
+    //  "repositories": {
+    //    "McKibbin-Software-Group/gcubed-public-prerequisites": {
+    //      "permissions": {
+    //        "Metadata": "read",
+    //        "contents": "read"
+    //      }
+    //    }
+    //  }
+    //}
   },
   // Final G-Cubed specific setup
   "onCreateCommand": "${containerWorkspaceFolder}/.devcontainer/gcubed-setup/gcubed-setup.sh -u \"${containerWorkspaceFolder}/.devcontainer/gcubed-setup/user_data_defaults\""
