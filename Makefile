@@ -1,8 +1,7 @@
 # Custom variable definitions
-VERSION=<MODEL VERSION GOES HERE>
-BUILD=<MODEL BUILD GOES HERE>
+VERSION=2R
+BUILD=190
 ROOT_SYM_FILE=ggg-model.sym
-# ROOT_SYM_FILE=ggg-$(VERSION)-$(BUILD).sym
 SCRIPT=run_experiment_1.py
 
 DATE_STAMP := $(shell date +"%Y-%m-%d %H:%M:%S")

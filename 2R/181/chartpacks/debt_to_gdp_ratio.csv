@@ -1,5 +1,0 @@
-type,attributes,variable,label
-pack,end_year=2050,G-Cubed charts,
-chart,,,
-series,,DEBTTOGDPRATIO(USA),
-series,,DEBTTOGDPRATIO(ROW),
