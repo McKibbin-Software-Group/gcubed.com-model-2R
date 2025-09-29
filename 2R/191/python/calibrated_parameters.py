@@ -2,7 +2,7 @@ from gcubed.model_parameters.parameters import Parameters
 from gcubed.data.database import Database
 
 
-class Parameters2R190(Parameters):
+class CalibratedParameters(Parameters):
     """
     This class does customised parameter calibration.
     """

@@ -1,16 +1,10 @@
 ,USA,ROW
 adapt,0.35,0.35
-FTA(USA),0,0
-FTA(ROW),0,0
-MUL(USA),1,1
-MUL(ROW),1,1
 int_elast,-0.6,-0.6
-labgrow,0.014,0.014
 phi(a01),4,4
 phi(a02),4,4
 phi_y,4,4
 phi_z,4,4
-timepref,0.022,0.022
 wage_p,0.4,0.4
 wage_q,0.35,0.35
 delta,0.1,0.1
@@ -19,7 +13,6 @@ forei(a02),0.3,0.3
 fore_i_y,0.3,0.3
 fore_i_z,0.3,0.3
 fore_c,0.3,0.3
-mpc,1,1
 sigma_df(a01),0.5,0.5
 sigma_df(a02),1,1
 sigma_ff(a01),0.8,0.8
@@ -53,4 +46,3 @@ mrule_12,0,0
 mrule_13,0,0
 mrule_14,0,0
 mrule_15,0,0
-end,,

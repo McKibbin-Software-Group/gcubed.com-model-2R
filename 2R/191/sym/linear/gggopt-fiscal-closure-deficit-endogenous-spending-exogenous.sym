@@ -28,7 +28,7 @@ TRAN = TRANX + transgdp*OUTP ;
 
 // Tariff revenue by good
 
-// TXM = sum(orig,(TIM*MUL#goods_o + TIF*FTA#goods_o)*exp(PIM)*IMP) / exp(PRID) ;
+TXM = sum(orig,(TIM*MUL#goods_o + TIF*FTA#goods_o)*exp(PIM)*IMP) / exp(PRID) ;
 
 //  Total tariff revenue
 

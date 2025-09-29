@@ -1184,7 +1184,7 @@ Variables:
          sec_std,goods_e,regions
 
    TXM
-      tariff revenue by good (exo,gdp)
+      tariff revenue by good (end,gdp)
          goods_o,dest
 
    WAG
@@ -1224,11 +1224,11 @@ Equations Using Each Parameter:
    ashr: 108
    base_jk: 42
    cd_df: 23
-   cd_e: 135
+   cd_e: 136
    cd_eH: 79
    cd_eR: 27
    cd_ff: 25
-   cd_m: 136
+   cd_m: 137
    cd_mH: 80
    cd_mR: 28
    cd_o: 30
@@ -1236,12 +1236,12 @@ Equations Using Each Parameter:
    cd_oR: 31
    delta: 38,39,40,47,48,49
    delta_dom: 12,23,4
-   delta_e: 133,135
+   delta_e: 134,136
    delta_eG: 119,81
    delta_eH: 76,79
    delta_eR: 20,27
    delta_ff: 25,6
-   delta_m: 134,136
+   delta_m: 135,137
    delta_mG: 120,81
    delta_mH: 77,80
    delta_mR: 21,28
@@ -1254,9 +1254,9 @@ Equations Using Each Parameter:
    fore_i_y: 45
    fore_i_z: 46
    forei: 41
-   FTA: 25,6
+   FTA: 124,25,6
    int_elast: 82
-   labgrow: 108,127,38,39,40,95
+   labgrow: 108,128,38,39,40,95
    makeinv: 13,29
    mongdp: 94
    mpc: 69
@@ -1277,7 +1277,7 @@ Equations Using Each Parameter:
    mrule_9: 117
    mrule_ex: 117
    mrule_r: 117
-   MUL: 25,6
+   MUL: 124,25,6
    phi: 41,42,47
    phi_y: 43,45,48
    phi_z: 44,46,49
@@ -1285,11 +1285,11 @@ Equations Using Each Parameter:
    prim_weight: 26
    prix_weight: 65
    sigma_df: 12,23,4
-   sigma_e: 133,135
+   sigma_e: 134,136
    sigma_eH: 76,79
    sigma_eR: 20,27
    sigma_ff: 25,6
-   sigma_m: 134,136
+   sigma_m: 135,137
    sigma_mH: 77,80
    sigma_mR: 21,28
    sigma_o: 14,15,16,30,32
@@ -1315,8 +1315,8 @@ Equations Using Each Variable:
       LHS none
       RHS 25,6
    BOND:
-      LHS 127
-      RHS 127,128,130,131,68,94
+      LHS 128
+      RHS 128,129,131,132,68,94
    CAP:
       LHS 38
       RHS 32,38,41,42,47,60
@@ -1334,7 +1334,7 @@ Equations Using Each Variable:
       RHS none
    CNPL:
       LHS 72
-      RHS 126,22,58,68,95
+      RHS 127,22,58,68,95
    CNPO:
       LHS 74
       RHS 58,77
@@ -1351,20 +1351,20 @@ Equations Using Each Variable:
       LHS 93
       RHS 107,108,96
    DEFI:
-      LHS 130
-      RHS 127,131,96
-   DEFN:
       LHS 131
+      RHS 128,132,96
+   DEFN:
+      LHS 132
       RHS 97
    DEFX:
       LHS none
       RHS none
    EN:
-      LHS 133
+      LHS 134
       RHS 2
    ENT:
       LHS 15
-      RHS 133,56
+      RHS 134,56
    EPRC:
       LHS 111
       RHS 117
@@ -1382,7 +1382,7 @@ Equations Using Each Variable:
       RHS 117
    EXQ:
       LHS 10
-      RHS 125,138,2,3,9
+      RHS 126,139,2,3,9
    EXQT:
       LHS 9
       RHS 99
@@ -1412,13 +1412,13 @@ Equations Using Each Variable:
       RHS none
    GOVL:
       LHS none
-      RHS 122,126,22,68,95
+      RHS 122,127,22,68,95
    GOVS:
       LHS none
       RHS 119,120
    GOVT:
       LHS 122
-      RHS 130
+      RHS 131
    IIN:
       LHS 20,21
       RHS 2,3
@@ -1427,19 +1427,19 @@ Equations Using Each Variable:
       RHS 20,57
    IITL:
       LHS 17
-      RHS 126,22,57,68,95
+      RHS 127,22,57,68,95
    IITO:
       LHS 19
       RHS 21,57
    IMP:
       LHS 6
-      RHS 10,7
+      RHS 10,124,7
    IMPX:
       LHS none
       RHS 6
    IMQ:
       LHS 4
-      RHS 138,6,7,8
+      RHS 139,6,7,8
    IMQT:
       LHS 8
       RHS 99
@@ -1472,13 +1472,13 @@ Equations Using Each Variable:
       RHS 117
    INTN:
       LHS 117
-      RHS 118,131,71,82,83
+      RHS 118,132,71,82,83
    INTR:
       LHS 84
-      RHS 103,128,130,131,47,48,49,68,70,95
+      RHS 103,129,131,132,47,48,49,68,70,95
    INV:
       LHS 41
-      RHS 138,42,56,62
+      RHS 139,42,56,62
    INVP:
       LHS 62
       RHS 63
@@ -1490,7 +1490,7 @@ Equations Using Each Variable:
       RHS 57,63
    INVZ:
       LHS 44
-      RHS 126,58,63
+      RHS 127,58,63
    IRAS:
       LHS 70
       RHS 68,91,93
@@ -1505,7 +1505,7 @@ Equations Using Each Variable:
       RHS 40,44,49
    LAB:
       LHS 14
-      RHS 126,22,56,68,95
+      RHS 127,22,56,68,95
    LABO:
       LHS 22
       RHS 35
@@ -1543,14 +1543,14 @@ Equations Using Each Variable:
       LHS 105
       RHS none
    OI:
-      LHS 134
+      LHS 135
       RHS 3
    OIN:
       LHS 16
-      RHS 134,56
+      RHS 135,56
    OUG:
       LHS 12
-      RHS 13,138,66
+      RHS 13,139,66
    OUP:
       LHS 13
       RHS 14,15,16,32,56
@@ -1568,7 +1568,7 @@ Equations Using Each Variable:
       RHS 12,4
    PBAG:
       LHS none
-      RHS 127
+      RHS 128
    PBAL:
       LHS none
       RHS 91,92,93
@@ -1577,16 +1577,16 @@ Equations Using Each Variable:
       RHS none
    PIM:
       LHS 5
-      RHS 25,6,7
+      RHS 124,25,6,7
    PMQ:
       LHS 7
       RHS 26,8
    PMR:
       LHS 25
-      RHS 138,23,4,6
+      RHS 139,23,4,6
    POI:
-      LHS 136
-      RHS 134,16,30,56
+      LHS 137
+      RHS 135,16,30,56
    PRCE:
       LHS 79
       RHS 58,73,76,78
@@ -1604,7 +1604,7 @@ Equations Using Each Variable:
       RHS 111,112,115,117,34,35,58,69,72,73,74,75,86,88
    PRD:
       LHS 29
-      RHS 12,138,23,64,66
+      RHS 12,139,23,64,66
    PRDL:
       LHS 87
       RHS 85
@@ -1612,17 +1612,17 @@ Equations Using Each Variable:
       LHS none
       RHS none
    PRE:
-      LHS 135
-      RHS 133,15,30,56
+      LHS 136
+      RHS 134,15,30,56
    PRF:
       LHS 56
-      RHS 138,59
+      RHS 139,59
    PRFT:
       LHS 59
       RHS 68
    PRFY:
       LHS 57
-      RHS 138,59
+      RHS 139,59
    PRFZ:
       LHS 58
       RHS 68
@@ -1631,13 +1631,13 @@ Equations Using Each Variable:
       RHS 119,120,121,88
    PRID:
       LHS 64
-      RHS 101,115,117,122,125,126,138,47,48,49,50,51,52,56,57,58,66,68,69,82,83,85,87,88,94,95,96,97,98
+      RHS 101,115,117,122,124,126,127,139,47,48,49,50,51,52,56,57,58,66,68,69,82,83,85,87,88,94,95,96,97,98
    PRIE:
       LHS 27
       RHS 18,20,31,57
    PRII:
       LHS 31
-      RHS 115,126,138,17,18,19,33,47,48,49,50,51,52,56,57,58,88,96,97,98
+      RHS 115,127,139,17,18,19,33,47,48,49,50,51,52,56,57,58,88,96,97,98
    PRIM:
       LHS 26
       RHS 8
@@ -1661,10 +1661,10 @@ Equations Using Each Variable:
       RHS 14,15,16,29,32,56
    PRS:
       LHS 23
-      RHS 11,12,125,132,138,24,4
+      RHS 11,12,126,133,139,24,4
    PRT:
-      LHS 132
-      RHS 133,135
+      LHS 133
+      RHS 134,136
    PRX:
       LHS 11
       RHS 5,65,9
@@ -1673,7 +1673,7 @@ Equations Using Each Variable:
       RHS 35
    PRY:
       LHS 24
-      RHS 119,120,121,134,136,20,21,27,28,76,77,79,80,81
+      RHS 119,120,121,135,137,20,21,27,28,76,77,79,80,81
    PTAR:
       LHS none
       RHS 117
@@ -1712,7 +1712,7 @@ Equations Using Each Variable:
       RHS 117
    RVGS:
       LHS none
-      RHS 137
+      RHS 138
    SAVI:
       LHS 96
       RHS none
@@ -1766,31 +1766,31 @@ Equations Using Each Variable:
       RHS none
    TAX:
       LHS none
-      RHS 132,138,24
+      RHS 133,139,24
    TAXC:
-      LHS 138
-      RHS 129
+      LHS 139
+      RHS 130
    TAXE:
-      LHS 137
-      RHS 129
+      LHS 138
+      RHS 130
    TAXH:
-      LHS 126
-      RHS 129,95
+      LHS 127
+      RHS 130,95
    TAXL:
-      LHS 128
-      RHS 129,68,95
+      LHS 129
+      RHS 130,68,95
    TAXM:
-      LHS 124
-      RHS 129
+      LHS 125
+      RHS 130
    TAXS:
       LHS none
-      RHS 128
-   TAXT:
-      LHS 129
-      RHS 130
-   TAXX:
-      LHS 125
       RHS 129
+   TAXT:
+      LHS 130
+      RHS 131
+   TAXX:
+      LHS 126
+      RHS 130
    TBAL:
       LHS 99
       RHS 100,117,88,89,92
@@ -1799,25 +1799,25 @@ Equations Using Each Variable:
       RHS 93
    TCOR:
       LHS none
-      RHS 138,47,48,68
+      RHS 139,47,48,68
    TEX:
       LHS none
-      RHS 11,125
+      RHS 11,126
    TIF:
       LHS none
-      RHS 25,6
+      RHS 124,25,6
    TIM:
       LHS none
-      RHS 25,6
+      RHS 124,25,6
    TINC:
       LHS none
-      RHS 126,68
+      RHS 127,68
    TITC:
       LHS none
-      RHS 138,47,50,56,60
+      RHS 139,47,50,56,60
    TITCH:
       LHS none
-      RHS 126,49,52,58
+      RHS 127,49,52,58
    TIX:
       LHS none
       RHS 25,6
@@ -1841,25 +1841,25 @@ Equations Using Each Variable:
       RHS 46,55
    TRAN:
       LHS 123
-      RHS 130,68,95
+      RHS 131,68,95
    TRANX:
       LHS none
       RHS 123
    TXGS:
       LHS none
-      RHS 132
+      RHS 133
    TXM:
-      LHS none
-      RHS 124
+      LHS 124
+      RHS 125
    WAG:
       LHS 37
-      RHS 126,14,30,56,68,95
+      RHS 127,14,30,56,68,95
    WAGE:
       LHS 35
-      RHS 117,126,17,31,35,36,37,57,58,68,72,78,95
+      RHS 117,127,17,31,35,36,37,57,58,68,72,78,95
    WAGG:
       LHS 36
-      RHS 122,126,68,95
+      RHS 122,127,68,95
    WELH:
       LHS 95
       RHS 94,95
@@ -2251,7 +2251,7 @@ Domain: regions
 Count: 2 (110 to 111)
 
    lead(WAGE)
-   =WAGE+wage_p*(lead(PRCT)+PRXX-PRCT)+(1-wage_p)*(PRCT-PRCL)
+   =WAGE+wage_p*(lead(PRCT)-PRCT+PRXX)+(1-wage_p)*(PRCT-PRCL)
    +wage_q*(log(LABO)-log(LABX))
 
 
@@ -3098,26 +3098,37 @@ Count: 2 (305 to 306)
 
 Equation 124
 ------------
-Domain: dest
-Count: 2 (307 to 308)
+Domain: dest,goods_o
+Count: 4 (307 to 310)
 
-   TAXM(dest)=sum(goods_o,TXM)
+   TXM
+   =sum(orig,(TIM*MUL#goods_o+TIF*FTA#goods_o)*exp(PIM)
+   *IMP)
+   /exp(PRID)
 
 
 Equation 125
 ------------
+Domain: dest
+Count: 2 (311 to 312)
+
+   TAXM(dest)=sum(goods_o,TXM)
+
+
+Equation 126
+------------
 Domain: regions
-Count: 2 (309 to 310)
+Count: 2 (313 to 314)
 
    TAXX
    =sum(goods_o,TEX(goods_o)*exp(PRS(goods_o))*EXQ)
    /exp(PRID)
 
 
-Equation 126
+Equation 127
 ------------
 Domain: regions
-Count: 2 (311 to 312)
+Count: 2 (315 to 316)
 
    TAXH
    =(TINC
@@ -3126,54 +3137,45 @@ Count: 2 (311 to 312)
    /exp(PRID)
 
 
-Equation 127
+Equation 128
 ------------
 Relative Time: [0,1]
 Domain: regions
-Count: 2 (313 to 314)
+Count: 2 (317 to 318)
 
    lead(BOND)=DEFI+BOND*(1-labgrow)-PBAG
-
-
-Equation 128
-------------
-Domain: regions
-Count: 2 (315 to 316)
-
-   TAXL=INTR*BOND+TAXS
 
 
 Equation 129
 ------------
 Domain: regions
-Count: 2 (317 to 318)
+Count: 2 (319 to 320)
 
-   TAXT=TAXC+TAXH+TAXL+TAXM+TAXX+TAXE
+   TAXL=INTR*BOND+TAXS
 
 
 Equation 130
 ------------
 Domain: regions
-Count: 2 (319 to 320)
+Count: 2 (321 to 322)
 
-   DEFI=GOVT+TRAN-TAXT+INTR*BOND
+   TAXT=TAXC+TAXH+TAXL+TAXM+TAXX+TAXE
 
 
 Equation 131
 ------------
 Domain: regions
-Count: 2 (321 to 322)
+Count: 2 (323 to 324)
 
-   DEFN=DEFI+(INTN-INTR)*BOND
+   DEFI=GOVT+TRAN-TAXT+INTR*BOND
 
 
 Equation 132
 ------------
-Qualifiers: goods_e
-Domain: goods_e,regions,sec_std
-Count: 4 (323 to 326)
+Domain: regions
+Count: 2 (325 to 326)
 
-   PRT=log(exp(PRS)*(1+TAX)+TXGS)
+   DEFN=DEFI+(INTN-INTR)*BOND
 
 
 Equation 133
@@ -3182,25 +3184,34 @@ Qualifiers: goods_e
 Domain: goods_e,regions,sec_std
 Count: 4 (327 to 330)
 
-   EN
-   =delta_e*ENT*exp(PRE-PRT)^sigma_e(sec_std)
+   PRT=log(exp(PRS)*(1+TAX)+TXGS)
 
 
 Equation 134
 ------------
+Qualifiers: goods_e
+Domain: goods_e,regions,sec_std
+Count: 4 (331 to 334)
+
+   EN
+   =delta_e*ENT*exp(PRE-PRT)^sigma_e(sec_std)
+
+
+Equation 135
+------------
 Qualifiers: goods_m
 Domain: goods_m,regions,sec_std
-Count: 4 (331 to 334)
+Count: 4 (335 to 338)
 
    OI
    =delta_m*OIN*exp(POI-PRY#sec_std)^sigma_m(sec_std)
 
 
-Equation 135
+Equation 136
 ------------
 Qualifiers: goods_e
 Domain: regions,sec_std
-Count: 4 (335 to 338)
+Count: 4 (339 to 342)
 
    PRE
    =cd_e(sec_std)*sum(goods_e,delta_e*PRT)
@@ -3210,11 +3221,11 @@ Count: 4 (335 to 338)
    /(1-sigma_e(sec_std)*(1-cd_e(sec_std)))
 
 
-Equation 136
+Equation 137
 ------------
 Qualifiers: goods_m
 Domain: regions,sec_std
-Count: 4 (339 to 342)
+Count: 4 (343 to 346)
 
    POI
    =cd_m(sec_std)*sum(goods_m,delta_m*PRY#sec_std)
@@ -3224,18 +3235,18 @@ Count: 4 (339 to 342)
    /(1-sigma_m(sec_std)*(1-cd_m(sec_std)))
 
 
-Equation 137
+Equation 138
 ------------
 Domain: regions
-Count: 2 (343 to 344)
+Count: 2 (347 to 348)
 
    TAXE=RVGS
 
 
-Equation 138
+Equation 139
 ------------
 Domain: regions
-Count: 2 (345 to 346)
+Count: 2 (349 to 350)
 
    TAXC
    =TCOR*(sum(sec_std,PRF)+PRFY)
@@ -3247,13 +3258,13 @@ Count: 2 (345 to 346)
 
 Length of MSGPROC Vectors:
 
-   z1l has 296 elements
+   z1l has 300 elements
    zel has 6 elements
    j1l has 12 elements
    x1l has 40 elements
-   exo has 150 elements
+   exo has 146 elements
    par has 256 elements
 
-Equation Count: 346
-Endogenous Variables, Used:   346
-Endogenous Variables, Total:  354
+Equation Count: 350
+Endogenous Variables, Used:   350
+Endogenous Variables, Total:  358

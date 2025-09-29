@@ -18,7 +18,7 @@ force_model__to_be_resolved: bool = True
 force_baseline_regeneration: bool = True
 
 # Set to true if you want to see the baseline charts web page when the script finishes.
-show_baseline_charts: bool = True
+show_baseline_charts: bool = False
 
 #############################################################################
 # Baseline customisation typically ends here.

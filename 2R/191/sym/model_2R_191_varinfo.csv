@@ -261,7 +261,7 @@
 "TRAN(regions)",2,end,gdp,"total transfers","end,gdp"
 "TRANX(regions)",2,exo,gdp,"exogenous transfers","exo,gdp"
 "TXGS(sec_std,goods_e,regions)",4,exo,dollar,"unit tax on goods to sectors","dollar,exo"
-"TXM(goods_o,dest)",4,exo,gdp,"tariff revenue by good","exo,gdp"
+"TXM(goods_o,dest)",4,end,gdp,"tariff revenue by good","end,gdp"
 "WAG(sec_std,regions)",4,end,idx,"sector wage","end,idx,logged"
 "WAGE(regions)",2,sta,idx,"wage rate","idx,intertemporal_constant,logged,sta"
 "WAGG(regions)",2,end,idx,"government wage","end,idx,logged"
