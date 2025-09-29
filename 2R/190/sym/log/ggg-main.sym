@@ -811,7 +811,7 @@ PRKZ = PRCT + (ln(delta_oH(k)) + CONP - CAPZ) / sigma_oH + SHYZ*(sigma_oH-1)/sig
 //
 
 lead(WAGE) = WAGE
-           + wage_p*(lead(PRCT) + PRXX-PRCT)
+           + wage_p*(lead(PRCT) - PRCT + PRXX)
            + (1-wage_p)*(PRCT-PRCL)
            + wage_q*(LABO-LABX) ;        
 

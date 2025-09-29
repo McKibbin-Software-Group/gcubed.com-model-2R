@@ -134,7 +134,7 @@
 "INFX(regions)",2,exo,pct,"inflation target","exo,pct"
 "INS(regions,goods_o)",4,exo,gdp,"shocks to aggregate investment demand","exo,gdp"
 "INTF(regions)",2,end,pct,"risk free interest rate, short-run, real","end,pct"
-"INTL(regions)",2,sta,pct,"interest rate, short-run, nominal (lagged)","pct,sta"
+"INTL(regions)",2,sta,pct,"interest rate, short-run, nominal - lagged","lagged,pct,sta"
 "INTN(regions)",2,stl,pct,"interest rate, short (policy), nominal","pct,stl"
 "INTR(regions)",2,end,pct,"risk adjusted interest rate, short-run, real","end,pct"
 "INV(sec_std,regions)",4,end,gdp,"raw investment","end,gdp"

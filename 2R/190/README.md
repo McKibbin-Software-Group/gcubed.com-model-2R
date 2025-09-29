@@ -2,7 +2,7 @@
 
 This document describes model 2R build 190.
 
-Run the model using Python G-Cubed version 4.0.2.15.
+Run the model using Python G-Cubed version 4.0.2.18.
 
 ## Simulation experiments
 

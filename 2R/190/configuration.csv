@@ -1,16 +1,6 @@
 Version,2R,The model version (number of regions followed by a letter indicating model type e.g. 2R)
 Build,190,The model build - must start with a positive integer but can include other letters and digits (no spaces or punctuation though).
 BaseYear,2022,The base year for indices in the model's database.
-CalibrationYear,2022,The year to retrieve the data used for parameter calibration.
-LinearisationYear,2022,Year determining the data used to linearise the model to generate baseline projections.
-CalibrationOfCarbonCoefficientsYear,2022,The year used to calibration carbon emissions coefficients.
-FirstProjectionYear,2022,The first year to create model projections for. There must be data in the database for this year.
 LastProjectionYear,2150,The last year to generate projections for.
 LastPublishableProjectionYear,2100,The last year to include in the published projections.
-StableManifoldTolerance,1.00E-7,Convergence criterion when solving for the stable manifold.
-StableManifoldMaximumIterations,1000,Maximum number of iterations allowed while solving for the stable manifold.
-UnitRootTolerance,1.001,Maximium value of a transition matrix root modulus before it is deemed to be larger than 1. Typically set to a value above but near 1.0.
-ScaleTransitionMatrixToEliminateExplosiveRoots,FALSE,Set to True if you want to enforce an absolute upperbound of 1 on transition matrix roots.
-NeutralRealInterestRate,0.036,The neutral real interest rate as a decimal rather than percentage.
-BaselineDesignFile,baseline_design.csv,The baseline design file. No exogenous adjustments are made to the baseline if this configuration setting is missing.
-EnforceAggregateConsistency,0,Set to 1 to ensure GDP is consistent with its components and emissions totals are consistent with components when publishing results. Otherwise set to 0.
+SectorCount,2,The number of economic sectors in the model excluding the capital producing sectors that are in all models.

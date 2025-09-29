@@ -92,12 +92,12 @@ Sets:
 
    sector_YY
       Base set: self
-      industrial capital sector 
+      industrial capital 
          YY
 
    sector_ZZ
       Base set: self
-      household capital sector 
+      household capital 
          ZZ
 
    sectors
@@ -107,12 +107,12 @@ Sets:
 
    sectors_e
       Base set: self
-      energy sector 
+      energy 
          a01
 
    sectors_n
       Base set: self
-      non-energy sector 
+      non-energy 
          a02
 
    time
@@ -676,7 +676,7 @@ Variables:
          regions
 
    INTL
-      interest rate, short-run, nominal (lagged) (pct,sta)
+      interest rate, short-run, nominal - lagged (lagged,pct,sta)
          regions
 
    INTN

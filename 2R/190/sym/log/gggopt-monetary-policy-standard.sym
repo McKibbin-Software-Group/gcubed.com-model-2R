@@ -4,7 +4,7 @@
 //  Change the setparameters.csv file to alter this monetary rule.
 //
 
-variable INTL(regions)            'interest rate, short-run, nominal (lagged)'   sta,pct ;
+variable INTL(regions)            'interest rate, short-run, nominal - lagged'   sta,pct,lagged ;
 variable PRCOL(regions)           'household price of material - lagged'         sta,idx,logged,lagged ;
 
 variable INFL(regions)            'consumer price inflation'                       end,pct ;

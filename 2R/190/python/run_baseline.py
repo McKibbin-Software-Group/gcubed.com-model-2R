@@ -13,6 +13,10 @@ experiment_directory_name: str = "baseline"
 # This needs to be done if the data, parameters or SYM files change.
 force_model__to_be_resolved: bool = True
 
+# Set to true if you want to force the  baseline to be regenerated.
+# This needs to be done if the baseline assumptions change.
+force_baseline_regeneration: bool = True
+
 # Set to true if you want to see the baseline charts web page when the script finishes.
 show_baseline_charts: bool = True
 
@@ -70,28 +74,37 @@ results_folder: str = experiment_results_folder(
 # Set up logging
 configure_logging(folder=results_folder)
 
-# Check to see if a solved model has been pickled in the results folder.
-solved_model_pickle_file: str = results_folder / "solved_model.pickle"
-if not force_model__to_be_resolved and solved_model_pickle_file.exists():
-    logging.info(f"Loading previously solved model from {solved_model_pickle_file}")
-    with open(solved_model_pickle_file, "rb") as file:
-        solved_model: SolvedModel = pickle.load(file)
-else:
-    model: Model = Model(configuration=model_configuration)
-    solved_model: SolvedModel = SolvedModel(model=model)
-    with open(solved_model_pickle_file, "wb") as file:
-        pickle.dump(solved_model, file)
-    logging.info(
-        f"Saved the solved model for later reuse. Delete {solved_model_pickle_file} if you want to re-solve the model."
-    )
-
 # Generate the baseline projections
-baseline_projections: BaselineProjections = BaselineProjections(
-    solved_model=solved_model,
-)
 baseline_projections_pickle_file: Path = results_folder / "baseline_projections.pickle"
-with open(baseline_projections_pickle_file, "wb") as file:
-    pickle.dump(baseline_projections, file)
+if not force_baseline_regeneration and not force_model__to_be_resolved and baseline_projections_pickle_file.exists():
+    logging.warning(f"!!! Loading previous baseline {baseline_projections_pickle_file}")
+    with open(baseline_projections_pickle_file, "rb") as file:
+        baseline_projections: BaselineProjections = pickle.load(file)
+else:
+
+    # Check to see if a solved model has been pickled in the results folder.
+    solved_model_pickle_file: str = results_folder / "solved_model.pickle"
+    if not force_model__to_be_resolved and solved_model_pickle_file.exists():
+        logging.warning(f"!!! Loading previously solved model from {solved_model_pickle_file}")
+        with open(solved_model_pickle_file, "rb") as file:
+            solved_model: SolvedModel = pickle.load(file)
+    else:
+        model: Model = Model(configuration=model_configuration)
+        solved_model: SolvedModel = SolvedModel(model=model)
+        with open(solved_model_pickle_file, "wb") as file:
+            pickle.dump(solved_model, file)
+        logging.info(
+            f"Saved the solved model for later reuse. Delete {solved_model_pickle_file} if you want to re-solve the model."
+        )
+
+    baseline_projections: BaselineProjections = BaselineProjections(
+        solved_model=solved_model,
+    )
+    with open(baseline_projections_pickle_file, "wb") as file:
+        pickle.dump(baseline_projections, file)
+    logging.info(
+        f"Saved the baseline for later reuse. Delete {baseline_projections_pickle_file} if you want to regenerate the baseline."
+    )
 
 # Save the baseline projections to CSV files
 baseline_projections.charting_projections.to_csv(
