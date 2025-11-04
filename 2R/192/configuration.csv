@@ -1,0 +1,7 @@
+Version,2R,The unique model version identifier.
+Build,192,The model build number.
+BaseYear,2022,The base year for indices in the model's database.
+LastProjectionYear,2150,The last year to generate projections for.
+LastPublishableProjectionYear,2100,The last year to include in the published projections.
+SectorCount,2,The number of economic sectors in the model excluding the capital producing sectors that are in all models.
+SymmetricTwoRegionModel,True,Indicates whether the model is configured as a symmetric two-region model.

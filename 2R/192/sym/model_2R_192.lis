@@ -1,0 +1,3268 @@
+Run Specifications:
+   Sym build 964 (2020/07/06)
+   Target language: python
+   Source file: ggg-model.sym
+   Source file: ggg-sets.sym
+   Source file: linear/ggg-configuration.sym
+   Source file: linear/ggg-main.sym
+   Source file: linear/gggopt-monetary-policy-standard.sym
+   Source file: linear/gggopt-fiscal-closure-deficit-endogenous-spending-exogenous.sym
+   Source file: linear/gggopt-txgs-exogenous.sym
+
+Intertemporal Details:
+
+   Longest lag is 0; longest lead is 1.
+
+Sets:
+
+   abroad
+      Base set: regions
+      used in asset calculations 
+         USA,ROW
+
+   currency
+      Base set: regions
+      currency of assets 
+         USA,ROW
+
+   dest
+      Base set: regions
+      alias for regions 
+         USA,ROW
+
+   domfor
+      Base set: self
+      domestic vs foreign 
+         D,F
+
+   factors
+      Base set: self
+      top tier factors of production 
+         K,L,E,M
+
+   goods
+      Base set: self
+      all goods 
+         g01,g02
+
+   goods_e
+      Base set: goods
+      energy goods 
+         g01
+
+   goods_m
+      Base set: goods
+      material goods 
+         g02
+
+   goods_o
+      Base set: goods
+      goods with standard treatment 
+         g01,g02
+
+   notUSA
+      Base set: self
+      Rest of the World 
+         ROW
+
+   orig
+      Base set: regions
+      alias for regions 
+         USA,ROW
+
+   owner
+      Base set: regions
+      owner of assets ASSE 
+         USA,ROW
+
+   region_USA
+      Base set: self
+      United States 
+         USA
+
+   regions
+      Base set: self
+      countries and regions 
+         USA,ROW
+
+   sec_std
+      Base set: sectors
+      sectors with standard treatment 
+         a01,a02
+
+   sector_YY
+      Base set: self
+      industrial capital 
+         YY
+
+   sector_ZZ
+      Base set: self
+      household capital 
+         ZZ
+
+   sectors
+      Base set: self
+      sectors other than those producing industrial or household capital 
+         a01,a02
+
+   sectors_e
+      Base set: self
+      energy 
+         a01
+
+   sectors_n
+      Base set: self
+      non-energy 
+         a02
+
+   time
+      Base set: self
+      Obsolete time set 
+         t0
+
+   varfac
+      Base set: factors
+      variable factors 
+         L,E,M
+
+
+Parameters:
+
+   adapt
+      rate of closure TOB-TPA gap 
+         regions
+
+   aeye
+      identity matrix 
+         currency,owner
+
+   ainv
+      inverse of I-ashr 
+         owner,abroad
+
+   ashr
+      asset split among currencies 
+         currency,owner
+
+   base_jk
+      base J/K 
+         sec_std,regions
+
+   cd_df
+      1 if Cobb-Douglas, 0 if CES 
+         goods_o,regions
+
+   cd_e
+      1 if cd, 0 if ces 
+         sec_std,regions
+
+   cd_eH
+      1 if cd, 0 if ces 
+         regions
+
+   cd_eR
+      1 if cd, 0 if ces 
+         regions
+
+   cd_ff
+      1 if cd, 0 if ces 
+         goods_o,dest
+
+   cd_m
+      1 if cd, 0 if ces 
+         sec_std,regions
+
+   cd_mH
+      1 if cd, 0 if ces 
+         regions
+
+   cd_mR
+      1 if cd, 0 if ces 
+         regions
+
+   cd_o
+      1 if cd, 0 if ces 
+         sec_std,regions
+
+   cd_oH
+      1 if cd, 0 if ces 
+         regions
+
+   cd_oR
+      1 if cd, 0 if ces 
+         regions
+
+   delta
+      depreciation rate 
+         regions
+
+   delta_dom
+      domestic weight in CES function combining domestic and foreign sources 
+         goods_o,regions
+
+   delta_e
+      input weights, individ goods 
+         regions,sec_std,goods_e
+
+   delta_eG
+      gov budget shares on energy goods 
+         goods_e,regions
+
+   delta_eH
+      input weights, individ goods 
+         goods_e,regions
+
+   delta_eR
+      input weights on individual energy goods 
+         goods_e,regions
+
+   delta_ff
+      foreign source weights in FF 
+         goods_o,dest,orig
+
+   delta_m
+      input weights, individ goods 
+         regions,sec_std,goods_m
+
+   delta_mG
+      gov budget shares on materials goods 
+         goods_m,regions
+
+   delta_mH
+      input weights, individ goods 
+         goods_m,regions
+
+   delta_mR
+      input weights on individual materials goods 
+         goods_m,regions
+
+   delta_o
+      input weights, KLEM tier 
+         factors,sec_std,regions
+
+   delta_oG
+      gov KLEM budget shares 
+         factors,regions
+
+   delta_oH
+      input weights, KLEM tier 
+         factors,regions
+
+   delta_oR
+      input weights, KLEM tier 
+         factors,regions
+
+   eer_weight
+      trade weights, NEER and REER 
+         dest,orig
+
+   fore_c
+      shr of C driven by foresight 
+         regions
+
+   fore_i_y
+      shr of I driven by foresight in capital sector 
+         regions
+
+   fore_i_z
+      shr of I driven by foresight in household capital 
+         regions
+
+   forei
+      shr of I driven by foresight std sector 
+         sec_std,regions
+
+   FTA
+      free trade area tariff flag 
+         dest,orig
+
+   int_elast
+      interest elasticity of money demand 
+         regions
+
+   labgrow
+      growth of effective labor 
+         regions
+
+   makeinv
+      inverse of make table 
+         goods,sectors,regions
+
+   mongdp
+      coefficient on MONE in WELT 
+         regions
+
+   mpc
+      marginal propensity to consume 
+         regions
+
+   mrule_1
+      weight on CPI inflation in monetary rule 
+         regions
+
+   mrule_10
+      weight on nominal GDP in monetary rule 
+         regions
+
+   mrule_11
+      weight on nominal gross output in monetary rule 
+         regions
+
+   mrule_12
+      weight on nominal gross output net of trade in monetary rule 
+         regions
+
+   mrule_13
+      weight on expected CPI inflation in monetary rule 
+         regions
+
+   mrule_14
+      weight on expected real output growth in monetary rule 
+         regions
+
+   mrule_15
+      weight on nominal GNE in monetary rule 
+         regions
+
+   mrule_2
+      weight on PPI inflation in monetary rule 
+         regions
+
+   mrule_3
+      weight on Core inflation in monetary rule 
+         regions
+
+   mrule_4
+      weight on CPI level in monetary rule 
+         regions
+
+   mrule_5
+      weight on PPI level in monetary rule 
+         regions
+
+   mrule_6
+      weight on wage in monetary rule 
+         regions
+
+   mrule_7
+      weight on wage growth in monetary rule 
+         regions
+
+   mrule_8
+      weight on real output growth in monetary rule 
+         regions
+
+   mrule_9
+      weight on nominal gross output growth in monetary rule 
+         regions
+
+   mrule_ex
+      weight on exchange rate in monetary rule 
+         regions
+
+   mrule_r
+      weight on lag interest rate in monetary rule 
+         regions
+
+   MUL
+      multilateral tariff flag 
+         dest,orig
+
+   phi
+      adjustment cost parameter std sector 
+         sec_std,regions
+
+   phi_y
+      adjustment cost parameter capital sector 
+         regions
+
+   phi_z
+      adjustment cost parameter household capital 
+         regions
+
+   prid_weight
+      weights in PRID 
+         goods,regions
+
+   prim_weight
+      weights in PRIM 
+         goods_o,regions
+
+   prix_weight
+      weights in PRIX 
+         goods_o,regions
+
+   sigma_df
+      elasticity of substitution between domestic and foreign sources 
+         goods_o,regions
+
+   sigma_e
+      subs elast, E tier 
+         sec_std,regions
+
+   sigma_eH
+      subs elast, E tier 
+         regions
+
+   sigma_eR
+      subs elast, E tier 
+         regions
+
+   sigma_ff
+      subs elast between F sources 
+         goods_o,dest
+
+   sigma_m
+      subs elast, M tier 
+         sec_std,regions
+
+   sigma_mH
+      subs elast, M tier 
+         regions
+
+   sigma_mR
+      subs elast, M tier 
+         regions
+
+   sigma_o
+      subs elast, KLEM tier 
+         sec_std,regions
+
+   sigma_oH
+      subs elast, KLEM tier 
+         regions
+
+   sigma_oR
+      subs elast, KLEM tier 
+         regions
+
+   timepref
+      time preference rate 
+         regions
+
+   transgdp
+      transfers per unit of GDP 
+         regions
+
+   wage_p
+      exp infl weight in wage equation 
+         regions
+
+   wage_q
+      employment parameter in wage equation 
+         regions
+
+
+Variables:
+
+   ABUY
+      new purchases of foreign assets (end,gdp)
+         owner
+
+   ASSE
+      assets in each currency, including own (sta,usgdp)
+         currency,owner
+
+   ASSU
+      assets held by region, in US$ (end,gdp)
+         regions
+
+   BCT
+      unit border tax adjustment (dollar,exo)
+         goods_o,dest,orig
+
+   BOND
+      bonds (gdp,sta)
+         regions
+
+   CAP
+      capital stock (gdp,sta)
+         sec_std,regions
+
+   CAPY
+      capital stock of raw capital sector (gdp,sta)
+         regions
+
+   CAPZ
+      household capital stock (gdp,sta)
+         regions
+
+   CNPE
+      household demand for energy (end,gdp)
+         regions
+
+   CNPK
+      household capital services (end,gdp)
+         regions
+
+   CNPL
+      household demand for labor (end,gdp)
+         regions
+
+   CNPO
+      household demand for material (end,gdp)
+         regions
+
+   CON
+      household demand for goods (end,gdp)
+         goods_o,regions
+
+   CONP
+      national accounts consumption (end,gdp)
+         regions
+
+   CURN
+      domestic currency current account using nominal interest payments (end,gdp)
+         regions
+
+   CURR
+      USD current account using real interest payments (end,gdp)
+         regions
+
+   DEFI
+      fiscal deficit (real interest rates) (end,gdp)
+         regions
+
+   DEFN
+      fiscal deficit (nominal interest rates) (end,gdp)
+         regions
+
+   DEFX
+      fiscal deficit shocks (real interest rates) (exo,gdp)
+         regions
+
+   EN
+      sector demand for energy goods (end,gdp)
+         sec_std,goods_e,regions
+
+   ENT
+      sector demand for energy (end,gdp)
+         sec_std,regions
+
+   EPRC
+      expected consumer price inflation rate (end,intertemporal_constant,pct)
+         regions
+
+   EXCH
+      exch rate as US$ per unit of region currency (idx,logged,stl)
+         regions
+
+   EXCL
+      exch rate as US$ per unit of region currency - lagged (idx,lagged,logged,sta)
+         regions
+
+   EXCR
+      country risk premium relative to US (exo,pct)
+         regions
+
+   EXCX
+      exchange rate target percentage change (exo,pct)
+         regions
+
+   EXQ
+      exports, EXP.xx (end,gdp)
+         goods_o,regions
+
+   EXQT
+      value of exports at source (end,gdp)
+         regions
+
+   EYGR
+      expected output growth (end,intertemporal_constant,pct)
+         regions
+
+   GCE
+      government purchases of goods and services (end,gdp)
+         goods_o,regions
+
+   GCET
+      national accounts government spending excluding labor (end,gdp)
+         regions
+
+   GDPN
+      GDP, nominal (end,gdp)
+         regions
+
+   GDPR
+      GDP, real (end,gdp)
+         regions
+
+   GNEN
+      GNE, nominal (end,gdp)
+         regions
+
+   GNER
+      GNE, real (end,gdp)
+         regions
+
+   GNPR
+      gross national product (end,gdp)
+         regions
+
+   GOVL
+      labor used by government (exo,gdp)
+         regions
+
+   GOVS
+      government spending excluding labor (exo,gdp)
+         regions
+
+   GOVT
+      national accounts government spending including labor (end,gdp)
+         regions
+
+   IIN
+      raw capital sector demand for goods (end,gdp)
+         goods_o,regions
+
+   IITE
+      raw capital sector demand for energy (end,gdp)
+         regions
+
+   IITL
+      raw capital sector demand for labor (end,gdp)
+         regions
+
+   IITO
+      raw capital sector demand for material (end,gdp)
+         regions
+
+   IMP
+      individual imports, IMP.xy (end,exclude_dest_equals_orig,gdp)
+         goods_o,dest,orig
+
+   IMPX
+      individual imports shift  (exo,gdp)
+         goods_o,dest,orig
+
+   IMQ
+      DF imports by good, IMQ.xx (end,gdp)
+         goods_o,regions
+
+   IMQT
+      value of imports at destination (end,gdp)
+         regions
+
+   INAS
+      nominal USD net interest payments on foreign assets (end,gdp)
+         regions
+
+   INCM
+      after tax household income (end,gdp)
+         regions
+
+   INFCL
+      household materials inflation rate (end,pct)
+         regions
+
+   INFL
+      consumer price inflation (end,pct)
+         regions
+
+   INFP
+      output price inflation (end,pct)
+         regions
+
+   INFX
+      inflation target (exo,pct)
+         regions
+
+   INS
+      shocks to aggregate investment demand (exo,gdp)
+         regions,goods_o
+
+   INTF
+      risk free interest rate, short-run, real (end,pct)
+         regions
+
+   INTL
+      interest rate, short-run, nominal - lagged (lagged,pct,sta)
+         regions
+
+   INTN
+      interest rate, short (policy), nominal (pct,stl)
+         regions
+
+   INTR
+      risk adjusted interest rate, short-run, real (end,pct)
+         regions
+
+   INV
+      raw investment (end,gdp)
+         sec_std,regions
+
+   INVP
+      total investment by standard sectors (end,gdp)
+         regions
+
+   INVT
+      total investment including by households (end,gdp)
+         regions
+
+   INVY
+      raw investment of raw capital sector (end,gdp)
+         regions
+
+   INVZ
+      household investment (end,gdp)
+         regions
+
+   IRAS
+      real USD net interest payments on foreign assets (end,gdp)
+         regions
+
+   JNV
+      installed investment (end,gdp)
+         sec_std,regions
+
+   JNVY
+      installed investment in the raw capital sector (end,gdp)
+         regions
+
+   JNVZ
+      installed household investment (end,gdp)
+         regions
+
+   LAB
+      sector demand for labor (end,gdp)
+         sec_std,regions
+
+   LABO
+      labor demand (end,gdp)
+         regions
+
+   LABX
+      labor supply (exo,gdp)
+         regions
+
+   LAM
+      marginal value of a unit of capital (cos,intertemporal_constant,pct)
+         sec_std,regions
+
+   LAMY
+      marginal value of capital, raw capital sector (cos,pct)
+         regions
+
+   LAMZ
+      marginal value of a unit of household capital (cos,pct)
+         regions
+
+   LGDPN
+      GDP, nominal (exo,nomusdbillion)
+         regions
+
+   LGDPR
+      GDP, real (exo,realusdbillion)
+         regions
+
+   MONE
+      money demand (end,gdp,logged)
+         regions
+
+   NB02
+      interest rate, 2-year, nominal (end,pct)
+         regions
+
+   NB05
+      interest rate, 5-year, nominal (end,pct)
+         regions
+
+   NB10
+      interest rate, 10-year, nominal (end,pct)
+         regions
+
+   NEER
+      trade-weighted exchange rate, FC/domestic (end,idx,logged)
+         regions
+
+   OI
+      sector demand for material goods (end,gdp)
+         sec_std,goods_m,regions
+
+   OIN
+      sector demand for materials (end,gdp)
+         sec_std,regions
+
+   OUG
+      domestic supply of goods (end,gdp)
+         goods,regions
+
+   OUP
+      domestic production (end,gdp)
+         sectors,regions
+
+   OUTL
+      aggregate output (lagged) (gdp,lagged,sta)
+         regions
+
+   OUTP
+      aggregate output (ets,gdp)
+         regions
+
+   OUTX
+      shock to output target (exo,pct)
+         regions
+
+   OUY
+      composite supply (end,gdp)
+         goods,regions
+
+   PBAG
+      USD value of permits sold through government (exo,gdp)
+         regions
+
+   PBAL
+      value of permits sold, USD (exo,gdp)
+         regions
+
+   PGDP
+      GDP implicit price deflator (end,idx,logged)
+         regions
+
+   PIM
+      landed price of imports (end,idx,logged)
+         goods_o,dest,orig
+
+   PMQ
+      import landed price index (end,idx,logged)
+         goods_o,regions
+
+   PMR
+      price of imports incl tariffs (end,idx,logged)
+         goods_o,regions
+
+   POI
+      sector price of materials (end,idx,logged)
+         sec_std,regions
+
+   PRCE
+      household price of energy (end,idx,logged)
+         regions
+
+   PRCL
+      aggregate price of consumer goods lagged (idx,lagged,logged,sta)
+         regions
+
+   PRCO
+      household price of material (end,idx,logged)
+         regions
+
+   PRCOL
+      household price of material - lagged (idx,lagged,logged,sta)
+         regions
+
+   PRCT
+      aggregate price of consumer goods (ets,idx,logged)
+         regions
+
+   PRD
+      post-tax price of goods (end,idx,logged)
+         goods,regions
+
+   PRDL
+      weighted price of domestic output lag (idx,lagged,logged,sta)
+         regions
+
+   PRDX
+      shock to weighted price of domestic output (exo,pct)
+         regions
+
+   PRE
+      sector price of energy (end,idx,logged)
+         sec_std,regions
+
+   PRF
+      short run profits (end,gdp)
+         sec_std,regions
+
+   PRFT
+      total economywide profits (end,gdp)
+         regions
+
+   PRFY
+      profits on raw capital sector (end,gdp)
+         regions
+
+   PRFZ
+      imputed short run profits on household capital (end,gdp)
+         regions
+
+   PRGT
+      aggregate price of government goods (end,idx,logged)
+         regions
+
+   PRID
+      weighted price of domestic output (ets,idx,logged)
+         regions
+
+   PRIE
+      raw capital sector price of energy (end,idx,logged)
+         regions
+
+   PRII
+      price paid by producers for raw capital (end,idx,logged)
+         regions
+
+   PRIM
+      weighted price of imports (end,idx,logged)
+         regions
+
+   PRIX
+      weighted price of exports (end,idx,logged)
+         regions
+
+   PRK
+      implicit rental price (end,idx,logged)
+         sec_std,regions
+
+   PRKY
+      implicit rental price, raw capital sector (end,idx,logged)
+         regions
+
+   PRKZ
+      implicit rental price, household capital (end,idx,logged)
+         regions
+
+   PROI
+      raw capital sector price of material (end,idx,logged)
+         regions
+
+   PRP
+      pre-tax producer price (end,idx,logged)
+         sectors,regions
+
+   PRS
+      producer price of composite (end,idx,logged)
+         goods,regions
+
+   PRT
+      sector-specific input price (end,idx,logged)
+         sec_std,goods_e,regions
+
+   PRX
+      price of exports at source (end,idx,logged)
+         goods_o,regions
+
+   PRXX
+      shock to expected price of consumer goods (exo,pct)
+         regions
+
+   PRY
+      purchase price of composite (end,idx,logged)
+         goods,regions
+
+   PTAR
+      price level target (exo,idx,logged)
+         regions
+
+   RB10
+      interest rate, 10-year, real (end,pct)
+         regions
+
+   REER
+      trade-weighted real exch rate, FC/domestic (end,idx,logged)
+         regions
+
+   REXC
+      real exchange rate as US$ per unit of region currency (cos,idx,intertemporal_constant,logged)
+         regions
+
+   REXN
+      real exchange rate with capital controls (end,idx,logged)
+         regions
+
+   RISE
+      equity risk premium by sector and region (del,exo)
+         sec_std,regions
+
+   RISH
+      risk premium for human wealth (del,exo)
+         regions
+
+   RISR
+      risk premium in the yield curve (del,exo)
+         regions
+
+   RISW
+      Blanchard probability of death (del,exo)
+         regions
+
+   RISY
+      risk premium for raw-capital sector capital (del,exo)
+         regions
+
+   RISZ
+      risk premium for household capital (del,exo)
+         regions
+
+   ROGY
+      potential output growth target (exo,pct)
+         regions
+
+   RVGS
+      revenue from unit taxes (exo,gdp)
+         regions
+
+   SAVI
+      real domestic saving using real interest rates (end,gdp)
+         regions
+
+   SAVN
+      real domestic saving using nominal interest rates (end,gdp)
+         regions
+
+   SAVT
+      domestic non-government saving using nominal interest rates (end,gdp)
+         regions
+
+   SHEF
+      autonomous energy efficiency improvements (exo,pct)
+         sec_std,regions
+
+   SHEFC
+      consumption autonomous energy efficiency improvements (exo,pct)
+         regions
+
+   SHK
+      shock to capital efficiency (exo,pct)
+         sec_std,regions
+
+   SHKC
+      shock to aggregate consumption (exo,gdp)
+         regions
+
+   SHKI
+      shock to inv equation (exo,gdp)
+         regions,sec_std
+
+   SHKM
+      shock to money demand (exo,pct)
+         regions
+
+   SHL
+      shock to labor due to labor-augmenting technical change and/or population growth (exo,pct)
+         regions,sec_std
+
+   SHLY
+      shock to raw capital sector labor due to labor-augmenting technical change and/or population growth (exo,pct)
+         regions
+
+   SHLZ
+      shock to household capital sector labor due to labor-augmenting technical change and/or population growth (exo,pct)
+         regions
+
+   SHY
+      shock to total factor productivity (exo,pct)
+         sectors,regions
+
+   SHYY
+      shock to raw capital sector total factor productivity (exo,pct)
+         regions
+
+   SHYZ
+      shock to household capital sector total factor productivity (exo,pct)
+         regions
+
+   STM
+      stock market value (end,gdp)
+         sec_std,regions
+
+   STMT
+      total stock market value (end,gdp)
+         regions
+
+   TAX
+      sales tax on composite (exo,pct)
+         goods,regions
+
+   TAXC
+      revenue from sales and company taxes (end,gdp)
+         regions
+
+   TAXE
+      revenue from externality taxes (end,gdp)
+         regions
+
+   TAXH
+      revenue from taxes on wages (end,gdp)
+         regions
+
+   TAXL
+      revenue from lump-sum taxes (end,gdp)
+         regions
+
+   TAXM
+      tariff revenue (end,gdp)
+         regions
+
+   TAXS
+      exogenous lump sum tax (exo,gdp)
+         regions
+
+   TAXT
+      total revenue (end,gdp)
+         regions
+
+   TAXX
+      external tax revenue (end,gdp)
+         regions
+
+   TBAL
+      trade surplus, domestic currency (end,gdp)
+         regions
+
+   TBAU
+      trade surplus, USD (end,gdp)
+         regions
+
+   TCOR
+      tax rate on corporate profits (exo,pct)
+         regions
+
+   TEX
+      extern tax on composite (exo,pct)
+         goods,regions
+
+   TIF
+      fta tariff rates (exo,pct)
+         goods_o,dest
+
+   TIM
+      multilateral tariff rates (exo,pct)
+         goods_o,dest,orig
+
+   TINC
+      tax rate on labor income (exo,pct)
+         regions
+
+   TITC
+      investment tax credit rate (exo,pct)
+         sec_std,regions
+
+   TITCH
+      households investment tax credit rate (exo,pct)
+         regions
+
+   TIX
+      multilateral iceberg costs (exo,pct)
+         goods_o,dest
+
+   TOB
+      marginal q, TOB.NC (end,pct)
+         sec_std,regions
+
+   TOBY
+      marginal Q, raw capital sector (end,pct)
+         regions
+
+   TOBZ
+      marginal Q, household capital (end,pct)
+         regions
+
+   TPA
+      partial adjustment q (pct,sta)
+         sec_std,regions
+
+   TPAY
+      partial adjustment Q, raw capital sector (pct,sta)
+         regions
+
+   TPAZ
+      partial adjustment Q, household capital (pct,sta)
+         regions
+
+   TRAN
+      total transfers (end,gdp)
+         regions
+
+   TRANX
+      exogenous transfers (exo,gdp)
+         regions
+
+   TXGS
+      unit tax on goods to sectors (dollar,exo)
+         sec_std,goods_e,regions
+
+   TXM
+      tariff revenue by good (end,gdp)
+         goods_o,dest
+
+   WAG
+      sector wage (end,idx,logged)
+         sec_std,regions
+
+   WAGE
+      wage rate (idx,intertemporal_constant,logged,sta)
+         regions
+
+   WAGG
+      government wage (end,idx,logged)
+         regions
+
+   WELH
+      human wealth (cos,gdp,intertemporal_constant)
+         regions
+
+   WELT
+      total wealth (end,gdp)
+         regions
+
+   YRATN
+      GDP ratio, nominal (exo,pct)
+         regions
+
+
+Unique Elements:
+
+   a01,a02,D,E,F,g01,g02,K,L,M,ROW,t0,USA,YY,ZZ
+
+Equations Using Each Parameter:
+
+   adapt: 53,54,55
+   aeye: 108
+   ainv: 107
+   ashr: 108
+   base_jk: 42
+   cd_df: 23
+   cd_e: 136
+   cd_eH: 79
+   cd_eR: 27
+   cd_ff: 25
+   cd_m: 137
+   cd_mH: 80
+   cd_mR: 28
+   cd_o: 30
+   cd_oH: 78
+   cd_oR: 31
+   delta: 38,39,40,47,48,49
+   delta_dom: 12,23,4
+   delta_e: 134,136
+   delta_eG: 119,81
+   delta_eH: 76,79
+   delta_eR: 20,27
+   delta_ff: 25,6
+   delta_m: 135,137
+   delta_mG: 120,81
+   delta_mH: 77,80
+   delta_mR: 21,28
+   delta_o: 14,15,16,30,32
+   delta_oG: 119,120,81
+   delta_oH: 34,72,73,74,75,78
+   delta_oR: 17,18,19,31,33
+   eer_weight: 105,106
+   fore_c: 69
+   fore_i_y: 45
+   fore_i_z: 46
+   forei: 41
+   FTA: 124,25,6
+   int_elast: 82
+   labgrow: 108,128,38,39,40,95
+   makeinv: 13,29
+   mongdp: 94
+   mpc: 69
+   mrule_1: 117
+   mrule_10: 117
+   mrule_11: 117
+   mrule_12: 117
+   mrule_13: 117
+   mrule_14: 117
+   mrule_15: 117
+   mrule_2: 117
+   mrule_3: 117
+   mrule_4: 117
+   mrule_5: 117
+   mrule_6: 117
+   mrule_7: 117
+   mrule_8: 117
+   mrule_9: 117
+   mrule_ex: 117
+   mrule_r: 117
+   MUL: 124,25,6
+   phi: 41,42,47
+   phi_y: 43,45,48
+   phi_z: 44,46,49
+   prid_weight: 64
+   prim_weight: 26
+   prix_weight: 65
+   sigma_df: 12,23,4
+   sigma_e: 134,136
+   sigma_eH: 76,79
+   sigma_eR: 20,27
+   sigma_ff: 25,6
+   sigma_m: 135,137
+   sigma_mH: 77,80
+   sigma_mR: 21,28
+   sigma_o: 14,15,16,30,32
+   sigma_oH: 34,72,73,74,75,78
+   sigma_oR: 17,18,19,31,33
+   timepref: 69
+   transgdp: 123
+   wage_p: 35
+   wage_q: 35
+
+Equations Using Each Variable:
+
+   ABUY:
+      LHS 107
+      RHS 108
+   ASSE:
+      LHS 108
+      RHS 108,109,70,71
+   ASSU:
+      LHS 109
+      RHS 94
+   BCT:
+      LHS none
+      RHS 25,6
+   BOND:
+      LHS 128
+      RHS 128,129,131,132,68,94
+   CAP:
+      LHS 38
+      RHS 32,38,41,42,47,60
+   CAPY:
+      LHS 39
+      RHS 33,39,43,45,48,94
+   CAPZ:
+      LHS 40
+      RHS 34,40,44,46,49,94
+   CNPE:
+      LHS 73
+      RHS 58,76
+   CNPK:
+      LHS 75
+      RHS none
+   CNPL:
+      LHS 72
+      RHS 127,22,58,68,95
+   CNPO:
+      LHS 74
+      RHS 58,77
+   CON:
+      LHS 76,77
+      RHS 2,3
+   CONP:
+      LHS 69
+      RHS 115,116,34,58,72,73,74,75,88,89
+   CURN:
+      LHS 92
+      RHS 97,98
+   CURR:
+      LHS 93
+      RHS 107,108,96
+   DEFI:
+      LHS 131
+      RHS 128,132,96
+   DEFN:
+      LHS 132
+      RHS 97
+   DEFX:
+      LHS none
+      RHS none
+   EN:
+      LHS 134
+      RHS 2
+   ENT:
+      LHS 15
+      RHS 134,56
+   EPRC:
+      LHS 111
+      RHS 117
+   EXCH:
+      LHS 1,101
+      RHS 102,105,117,5
+   EXCL:
+      LHS 102
+      RHS 117
+   EXCR:
+      LHS none
+      RHS 103
+   EXCX:
+      LHS none
+      RHS 117
+   EXQ:
+      LHS 10
+      RHS 126,139,2,3,9
+   EXQT:
+      LHS 9
+      RHS 99
+   EYGR:
+      LHS 110
+      RHS 117
+   GCE:
+      LHS 119,120
+      RHS 121,2,3
+   GCET:
+      LHS 121
+      RHS 115,116,122,88,89
+   GDPN:
+      LHS 88
+      RHS 117,90
+   GDPR:
+      LHS 89
+      RHS 90,91
+   GNEN:
+      LHS 115
+      RHS 117
+   GNER:
+      LHS 116
+      RHS none
+   GNPR:
+      LHS 91
+      RHS none
+   GOVL:
+      LHS none
+      RHS 122,127,22,68,95
+   GOVS:
+      LHS none
+      RHS 119,120
+   GOVT:
+      LHS 122
+      RHS 131
+   IIN:
+      LHS 20,21
+      RHS 2,3
+   IITE:
+      LHS 18
+      RHS 20,57
+   IITL:
+      LHS 17
+      RHS 127,22,57,68,95
+   IITO:
+      LHS 19
+      RHS 21,57
+   IMP:
+      LHS 6
+      RHS 10,124,7
+   IMPX:
+      LHS none
+      RHS 6
+   IMQ:
+      LHS 4
+      RHS 139,6,7,8
+   IMQT:
+      LHS 8
+      RHS 99
+   INAS:
+      LHS 71
+      RHS 92
+   INCM:
+      LHS 68
+      RHS 69
+   INFCL:
+      LHS 114
+      RHS 117
+   INFL:
+      LHS 112
+      RHS 117
+   INFP:
+      LHS 85
+      RHS 117
+   INFX:
+      LHS none
+      RHS 117
+   INS:
+      LHS none
+      RHS 115,116,2,3,88,89
+   INTF:
+      LHS 83
+      RHS 84
+   INTL:
+      LHS 118
+      RHS 117
+   INTN:
+      LHS 117
+      RHS 118,132,71,82,83
+   INTR:
+      LHS 84
+      RHS 103,129,131,132,47,48,49,68,70,95
+   INV:
+      LHS 41
+      RHS 139,42,56,62
+   INVP:
+      LHS 62
+      RHS 63
+   INVT:
+      LHS 63
+      RHS 115,116,17,18,19,33,57,88,89,96,97,98
+   INVY:
+      LHS 43
+      RHS 57,63
+   INVZ:
+      LHS 44
+      RHS 127,58,63
+   IRAS:
+      LHS 70
+      RHS 68,91,93
+   JNV:
+      LHS 42
+      RHS 38,47
+   JNVY:
+      LHS 45
+      RHS 39,43,48
+   JNVZ:
+      LHS 46
+      RHS 40,44,49
+   LAB:
+      LHS 14
+      RHS 127,22,56,68,95
+   LABO:
+      LHS 22
+      RHS 35
+   LABX:
+      LHS none
+      RHS 35
+   LAM:
+      LHS 47
+      RHS 47,50,60
+   LAMY:
+      LHS 48
+      RHS 48,51,94
+   LAMZ:
+      LHS 49
+      RHS 49,52,94
+   LGDPN:
+      LHS none
+      RHS none
+   LGDPR:
+      LHS none
+      RHS none
+   MONE:
+      LHS 82
+      RHS 94
+   NB02:
+      LHS none
+      RHS none
+   NB05:
+      LHS none
+      RHS none
+   NB10:
+      LHS none
+      RHS none
+   NEER:
+      LHS 105
+      RHS none
+   OI:
+      LHS 135
+      RHS 3
+   OIN:
+      LHS 16
+      RHS 135,56
+   OUG:
+      LHS 12
+      RHS 13,139,66
+   OUP:
+      LHS 13
+      RHS 14,15,16,32,56
+   OUTL:
+      LHS 67
+      RHS 117
+   OUTP:
+      LHS 66
+      RHS 110,117,123,67,82
+   OUTX:
+      LHS none
+      RHS none
+   OUY:
+      LHS 2,3
+      RHS 12,4
+   PBAG:
+      LHS none
+      RHS 128
+   PBAL:
+      LHS none
+      RHS 91,92,93
+   PGDP:
+      LHS 90
+      RHS none
+   PIM:
+      LHS 5
+      RHS 124,25,6,7
+   PMQ:
+      LHS 7
+      RHS 26,8
+   PMR:
+      LHS 25
+      RHS 139,23,4,6
+   POI:
+      LHS 137
+      RHS 135,16,30,56
+   PRCE:
+      LHS 79
+      RHS 58,73,76,78
+   PRCL:
+      LHS 86
+      RHS 112,35
+   PRCO:
+      LHS 80
+      RHS 113,114,58,74,77,78
+   PRCOL:
+      LHS 113
+      RHS 114
+   PRCT:
+      LHS 78
+      RHS 111,112,115,117,34,35,58,69,72,73,74,75,86,88
+   PRD:
+      LHS 29
+      RHS 12,139,23,64,66
+   PRDL:
+      LHS 87
+      RHS 85
+   PRDX:
+      LHS none
+      RHS none
+   PRE:
+      LHS 136
+      RHS 134,15,30,56
+   PRF:
+      LHS 56
+      RHS 139,59
+   PRFT:
+      LHS 59
+      RHS 68
+   PRFY:
+      LHS 57
+      RHS 139,59
+   PRFZ:
+      LHS 58
+      RHS 68
+   PRGT:
+      LHS 81
+      RHS 119,120,121,88
+   PRID:
+      LHS 64
+      RHS 101,115,117,122,124,126,127,139,47,48,49,50,51,52,56,57,58,66,68,69,82,83,85,87,88,94,95,96,97,98
+   PRIE:
+      LHS 27
+      RHS 18,20,31,57
+   PRII:
+      LHS 31
+      RHS 115,127,139,17,18,19,33,47,48,49,50,51,52,56,57,58,88,96,97,98
+   PRIM:
+      LHS 26
+      RHS 8
+   PRIX:
+      LHS 65
+      RHS 9
+   PRK:
+      LHS 32
+      RHS 30,47
+   PRKY:
+      LHS 33
+      RHS 31,48
+   PRKZ:
+      LHS 34
+      RHS 49,75,78
+   PROI:
+      LHS 28
+      RHS 19,21,31,57
+   PRP:
+      LHS 30
+      RHS 14,15,16,29,32,56
+   PRS:
+      LHS 23
+      RHS 11,12,126,133,139,24,4
+   PRT:
+      LHS 133
+      RHS 134,136
+   PRX:
+      LHS 11
+      RHS 5,65,9
+   PRXX:
+      LHS none
+      RHS 35
+   PRY:
+      LHS 24
+      RHS 119,120,121,135,137,20,21,27,28,76,77,79,80,81
+   PTAR:
+      LHS none
+      RHS 117
+   RB10:
+      LHS none
+      RHS none
+   REER:
+      LHS 106
+      RHS none
+   REXC:
+      LHS 103
+      RHS 103,104
+   REXN:
+      LHS 104
+      RHS 100,101,106,108,109,68,70,71,91,92,94,96
+   RISE:
+      LHS none
+      RHS 47
+   RISH:
+      LHS none
+      RHS 95
+   RISR:
+      LHS none
+      RHS 84
+   RISW:
+      LHS none
+      RHS 69,95
+   RISY:
+      LHS none
+      RHS 48
+   RISZ:
+      LHS none
+      RHS 49
+   ROGY:
+      LHS none
+      RHS 117
+   RVGS:
+      LHS none
+      RHS 138
+   SAVI:
+      LHS 96
+      RHS none
+   SAVN:
+      LHS 97
+      RHS none
+   SAVT:
+      LHS 98
+      RHS none
+   SHEF:
+      LHS none
+      RHS 15,30
+   SHEFC:
+      LHS none
+      RHS 73,78
+   SHK:
+      LHS none
+      RHS 30,32
+   SHKC:
+      LHS none
+      RHS 69
+   SHKI:
+      LHS none
+      RHS 41
+   SHKM:
+      LHS none
+      RHS 82
+   SHL:
+      LHS none
+      RHS 14,30
+   SHLY:
+      LHS none
+      RHS 17,31
+   SHLZ:
+      LHS none
+      RHS 72,78
+   SHY:
+      LHS none
+      RHS 14,15,16,30,32
+   SHYY:
+      LHS none
+      RHS 17,18,19,31,33
+   SHYZ:
+      LHS none
+      RHS 34,72,73,74,75,78
+   STM:
+      LHS 60
+      RHS 61,94
+   STMT:
+      LHS 61
+      RHS none
+   TAX:
+      LHS none
+      RHS 133,139,24
+   TAXC:
+      LHS 139
+      RHS 130
+   TAXE:
+      LHS 138
+      RHS 130
+   TAXH:
+      LHS 127
+      RHS 130,95
+   TAXL:
+      LHS 129
+      RHS 130,68,95
+   TAXM:
+      LHS 125
+      RHS 130
+   TAXS:
+      LHS none
+      RHS 129
+   TAXT:
+      LHS 130
+      RHS 131
+   TAXX:
+      LHS 126
+      RHS 130
+   TBAL:
+      LHS 99
+      RHS 100,117,88,89,92
+   TBAU:
+      LHS 100
+      RHS 93
+   TCOR:
+      LHS none
+      RHS 139,47,48,68
+   TEX:
+      LHS none
+      RHS 11,126
+   TIF:
+      LHS none
+      RHS 124,25,6
+   TIM:
+      LHS none
+      RHS 124,25,6
+   TINC:
+      LHS none
+      RHS 127,68
+   TITC:
+      LHS none
+      RHS 139,47,50,56,60
+   TITCH:
+      LHS none
+      RHS 127,49,52,58
+   TIX:
+      LHS none
+      RHS 25,6
+   TOB:
+      LHS 50
+      RHS 41,53
+   TOBY:
+      LHS 51
+      RHS 45,54
+   TOBZ:
+      LHS 52
+      RHS 46,55
+   TPA:
+      LHS 53
+      RHS 41,53
+   TPAY:
+      LHS 54
+      RHS 45,54
+   TPAZ:
+      LHS 55
+      RHS 46,55
+   TRAN:
+      LHS 123
+      RHS 131,68,95
+   TRANX:
+      LHS none
+      RHS 123
+   TXGS:
+      LHS none
+      RHS 133
+   TXM:
+      LHS 124
+      RHS 125
+   WAG:
+      LHS 37
+      RHS 127,14,30,56,68,95
+   WAGE:
+      LHS 35
+      RHS 117,127,17,31,35,36,37,57,58,68,72,78,95
+   WAGG:
+      LHS 36
+      RHS 122,127,68,95
+   WELH:
+      LHS 95
+      RHS 94,95
+   WELT:
+      LHS 94
+      RHS 69
+   YRATN:
+      LHS none
+      RHS none
+
+Unused Variables:
+
+   DEFX
+   LGDPN
+   LGDPR
+   NB02
+   NB05
+   NB10
+   OUTX
+   PRDX
+   RB10
+   YRATN
+
+
+Equation 1
+----------
+Domain: USA
+Count: 1 (1 to 1)
+
+   EXCH(USA)=0
+
+
+Equation 2
+----------
+Qualifiers: goods_e
+Domain: goods_e,regions
+Count: 2 (2 to 3)
+
+   OUY=CON+IIN+INS+GCE+EXQ+sum(sec_std,EN)
+
+
+Equation 3
+----------
+Qualifiers: goods_m
+Domain: goods_m,regions
+Count: 2 (4 to 5)
+
+   OUY=CON+IIN+INS+GCE+EXQ+sum(sec_std,OI)
+
+
+Equation 4
+----------
+Qualifiers: goods_o
+Domain: goods_o,regions
+Count: 4 (6 to 9)
+
+   IMQ=(1-delta_dom)*OUY*exp(PRS-PMR)^sigma_df
+
+
+Equation 5
+----------
+Domain: dest,goods_o,orig
+Count: 8 (10 to 17)
+
+   PIM=EXCH(orig)+PRX(orig)#dest-EXCH(dest)
+
+
+Equation 6
+----------
+Qualifiers: goods_o
+Domain: dest,goods_o,orig
+Count: 8 (18 to 25)
+
+   IMP
+   =delta_ff*IMQ(dest)
+   *(BCT
+   +(1+(TIM+TIX)*MUL#goods_o+TIF*FTA#goods_o)
+   *exp(PIM-PMR(dest)))
+   ^(-sigma_ff(dest))
+   +IMPX
+
+
+Equation 7
+----------
+Domain: dest,goods_o
+Count: 4 (26 to 29)
+
+   PMQ=log(sum(orig,IMP*exp(PIM))/IMQ)
+
+
+Equation 8
+----------
+Domain: regions
+Count: 2 (30 to 31)
+
+   IMQT=sum(goods_o,exp(PMQ)*IMQ)/exp(PRIM)
+
+
+Equation 9
+----------
+Domain: regions
+Count: 2 (32 to 33)
+
+   EXQT=sum(goods_o,exp(PRX)*EXQ)/exp(PRIX)
+
+
+Equation 10
+-----------
+Domain: goods_o,orig
+Count: 4 (34 to 37)
+
+   EXQ(orig)=sum(dest,IMP)
+
+
+Equation 11
+-----------
+Qualifiers: goods_o
+Domain: goods_o,regions
+Count: 4 (38 to 41)
+
+   PRX=log((1+TEX)*exp(PRS))
+
+
+Equation 12
+-----------
+Qualifiers: goods_o
+Domain: goods_o,regions
+Count: 4 (42 to 45)
+
+   OUG=delta_dom*OUY*exp(PRS-PRD)^sigma_df
+
+
+Equation 13
+-----------
+Domain: regions,sectors
+Count: 4 (46 to 49)
+
+   OUP=sum(goods,makeinv*OUG)
+
+
+Equation 14
+-----------
+Qualifiers: sec_std
+Domain: l,regions,sec_std
+Count: 4 (50 to 53)
+
+   LAB
+   =exp(SHL+SHY)^(sigma_o-1)*delta_o(l)*OUP*exp(PRP-WAG)^sigma_o
+
+
+Equation 15
+-----------
+Qualifiers: sec_std
+Domain: e,regions,sec_std
+Count: 4 (54 to 57)
+
+   ENT
+   =exp(SHEF+SHY)^(sigma_o-1)*delta_o(e)*OUP*exp(PRP-PRE)^sigma_o
+
+
+Equation 16
+-----------
+Qualifiers: sec_std
+Domain: m,regions,sec_std
+Count: 4 (58 to 61)
+
+   OIN
+   =exp(SHY)^(sigma_o-1)*delta_o(m)*OUP*exp(PRP-POI)^sigma_o
+
+
+Equation 17
+-----------
+Domain: l,regions
+Count: 2 (62 to 63)
+
+   IITL
+   =exp(SHLY+SHYY)^(sigma_oR-1)*delta_oR(l)*INVT
+   *exp(PRII-WAGE)^sigma_oR
+
+
+Equation 18
+-----------
+Domain: e,regions
+Count: 2 (64 to 65)
+
+   IITE
+   =exp(SHYY)^(sigma_oR-1)*delta_oR(e)*INVT*exp(PRII-PRIE)^sigma_oR
+
+
+Equation 19
+-----------
+Domain: m,regions
+Count: 2 (66 to 67)
+
+   IITO
+   =exp(SHYY)^(sigma_oR-1)*delta_oR(m)*INVT*exp(PRII-PROI)^sigma_oR
+
+
+Equation 20
+-----------
+Qualifiers: goods_e
+Domain: goods_e,regions
+Count: 2 (68 to 69)
+
+   IIN=delta_eR*IITE*exp(PRIE-PRY)^sigma_eR
+
+
+Equation 21
+-----------
+Qualifiers: goods_m
+Domain: goods_m,regions
+Count: 2 (70 to 71)
+
+   IIN=delta_mR*IITO*exp(PROI-PRY)^sigma_mR
+
+
+Equation 22
+-----------
+Domain: regions
+Count: 2 (72 to 73)
+
+   LABO=IITL+CNPL+GOVL+sum(sec_std,LAB)
+
+
+Equation 23
+-----------
+Qualifiers: goods_o
+Domain: goods_o,regions
+Count: 4 (74 to 77)
+
+   PRS
+   =cd_df*(delta_dom*PRD+(1-delta_dom)*PMR)
+   +((1-cd_df)
+   *
+   log(delta_dom*exp(PRD)^(1-sigma_df)+(1-delta_dom)*exp(PMR)^(1-sigma_df)))
+   /(1-sigma_df*(1-cd_df))
+
+
+Equation 24
+-----------
+Domain: goods,regions
+Count: 4 (78 to 81)
+
+   PRY=log(1+TAX)+PRS
+
+
+Equation 25
+-----------
+Qualifiers: goods_o
+Domain: dest,goods_o
+Count: 4 (82 to 85)
+
+   PMR(dest)
+   =0.0
+   +cd_ff
+   *sum(orig,delta_ff
+   *
+   log(BCT
+   +(1+(TIM+TIX)*MUL#goods_o+TIF*FTA#goods_o)
+   *exp(PIM)))
+   +((1-cd_ff)
+   *
+   logsum(orig,delta_ff
+   *(BCT
+   +(1+(TIM+TIX)*MUL#goods_o+TIF*FTA#goods_o)
+   *exp(PIM))
+   ^(1-sigma_ff)))
+   /(1-sigma_ff*(1-cd_ff))
+
+
+Equation 26
+-----------
+Domain: regions
+Count: 2 (86 to 87)
+
+   PRIM=sum(goods_o,prim_weight*PMQ)
+
+
+Equation 27
+-----------
+Domain: regions
+Count: 2 (88 to 89)
+
+   PRIE
+   =cd_eR*sum(goods_e,delta_eR*PRY(goods_e))
+   +((1-cd_eR)
+   *
+   logsum(goods_e,delta_eR*exp(PRY(goods_e))^(1-sigma_eR)))
+   /(1-sigma_eR*(1-cd_eR))
+
+
+Equation 28
+-----------
+Domain: regions
+Count: 2 (90 to 91)
+
+   PROI
+   =cd_mR*sum(goods_m,delta_mR*PRY(goods_m))
+   +((1-cd_mR)
+   *
+   logsum(goods_m,delta_mR*exp(PRY(goods_m))^(1-sigma_mR)))
+   /(1-sigma_mR*(1-cd_mR))
+
+
+Equation 29
+-----------
+Domain: goods,regions
+Count: 4 (92 to 95)
+
+   PRD=log(expsum(sectors,makeinv*PRP))
+
+
+Equation 30
+-----------
+Qualifiers: sec_std
+Domain: e,k,l,m,regions,sec_std
+Count: 4 (96 to 99)
+
+   PRP
+   =cd_o
+   *(delta_o(k)*PRK+delta_o(l)*WAG+delta_o(e)*PRE
+   +delta_o(m)*POI
+   -delta_o(l)*SHL
+   -delta_o(k)*SHK
+   -delta_o(e)*SHEF)
+   +((1-cd_o)
+   *
+   log(delta_o(k)*exp(PRK-SHK)^(1-sigma_o)+delta_o(l)*exp(WAG-SHL)^(1-sigma_o)
+   +delta_o(e)*exp(PRE-SHEF)^(1-sigma_o)
+   +delta_o(m)*exp(POI)^(1-sigma_o)))
+   /(1-sigma_o*(1-cd_o))
+   -SHY
+
+
+Equation 31
+-----------
+Domain: e,k,l,m,regions
+Count: 2 (100 to 101)
+
+   PRII
+   =cd_oR
+   *(delta_oR(k)*PRKY+delta_oR(l)*WAGE+delta_oR(e)*PRIE
+   +delta_oR(m)*PROI
+   -delta_oR(l)*SHLY)
+   +((1-cd_oR)
+   *
+   log(delta_oR(k)*exp(PRKY)^(1-sigma_oR)
+   +delta_oR(l)*exp(WAGE-SHLY)^(1-sigma_oR)
+   +delta_oR(e)*exp(PRIE)^(1-sigma_oR)
+   +delta_oR(m)*exp(PROI)^(1-sigma_oR)))
+   /(1-sigma_oR*(1-cd_oR))
+   -SHYY
+
+
+Equation 32
+-----------
+Qualifiers: sec_std
+Domain: k,regions,sec_std
+Count: 4 (102 to 105)
+
+   PRK
+   =PRP+log((delta_o(k)*OUP)/CAP)/sigma_o+((SHY+SHK)*(sigma_o-1))/sigma_o
+
+
+Equation 33
+-----------
+Domain: k,regions
+Count: 2 (106 to 107)
+
+   PRKY
+   =PRII+log((delta_oR(k)*INVT)/CAPY)/sigma_oR
+   +(SHYY*(sigma_oR-1))/sigma_oR
+
+
+Equation 34
+-----------
+Domain: k,regions
+Count: 2 (108 to 109)
+
+   PRKZ
+   =PRCT+log((delta_oH(k)*CONP)/CAPZ)/sigma_oH
+   +(SHYZ*(sigma_oH-1))/sigma_oH
+
+
+Equation 35
+-----------
+Relative Time: [0,1]
+Domain: regions
+Count: 2 (110 to 111)
+
+   lead(WAGE)
+   =WAGE+wage_p*(lead(PRCT)-PRCT+PRXX)+(1-wage_p)*(PRCT-PRCL)
+   +wage_q*(log(LABO)-log(LABX))
+
+
+Equation 36
+-----------
+Domain: regions
+Count: 2 (112 to 113)
+
+   WAGG=WAGE
+
+
+Equation 37
+-----------
+Domain: regions,sec_std
+Count: 4 (114 to 117)
+
+   WAG=WAGE#sec_std
+
+
+Equation 38
+-----------
+Relative Time: [0,1]
+Domain: regions,sec_std
+Count: 4 (118 to 121)
+
+   lead(CAP)=JNV+(1-delta-labgrow)*CAP
+
+
+Equation 39
+-----------
+Relative Time: [0,1]
+Domain: regions
+Count: 2 (122 to 123)
+
+   lead(CAPY)=JNVY+(1-delta-labgrow)*CAPY
+
+
+Equation 40
+-----------
+Relative Time: [0,1]
+Domain: regions
+Count: 2 (124 to 125)
+
+   lead(CAPZ)=JNVZ+(1-delta-labgrow)*CAPZ
+
+
+Equation 41
+-----------
+Domain: regions,sec_std
+Count: 4 (126 to 129)
+
+   INV
+   =(((1+.5*(TOB-1))*(TOB-1)*CAP)/phi)*forei
+   +(((1+.5*(TPA-1))*(TPA-1)*CAP)/phi)*(1-forei)
+   +SHKI
+
+
+Equation 42
+-----------
+Domain: regions,sec_std
+Count: 4 (130 to 133)
+
+   JNV
+   =(INV+(phi/2)*base_jk^2*CAP)/(1+phi*base_jk)
+
+
+Equation 43
+-----------
+Domain: regions
+Count: 2 (134 to 135)
+
+   INVY=JNVY*(1+((phi_y/2)*JNVY)/CAPY)
+
+
+Equation 44
+-----------
+Domain: regions
+Count: 2 (136 to 137)
+
+   INVZ=JNVZ*(1+((phi_z/2)*JNVZ)/CAPZ)
+
+
+Equation 45
+-----------
+Domain: regions
+Count: 2 (138 to 139)
+
+   JNVY
+   =(CAPY*(fore_i_y*TOBY+(1-fore_i_y)*TPAY-1))
+   /phi_y
+
+
+Equation 46
+-----------
+Domain: regions
+Count: 2 (140 to 141)
+
+   JNVZ
+   =(CAPZ*(fore_i_z*TOBZ+(1-fore_i_z)*TPAZ-1))
+   /phi_z
+
+
+Equation 47
+-----------
+Relative Time: [0,1]
+Domain: regions,sec_std
+Count: 4 (142 to 145)
+
+   lead(LAM)
+   =(1+INTR+RISE+delta)*LAM-(1-TCOR)*exp(PRK-PRID)
+   -(1-TITC)*exp(PRII-PRID)*(phi/2)*(JNV/CAP)^2
+
+
+Equation 48
+-----------
+Relative Time: [0,1]
+Domain: regions
+Count: 2 (146 to 147)
+
+   lead(LAMY)
+   =(1+INTR+RISY+delta)*LAMY-(1-TCOR)*exp(PRKY-PRID)
+   -exp(PRII-PRID)*(phi_y/2)*(JNVY/CAPY)^2
+
+
+Equation 49
+-----------
+Relative Time: [0,1]
+Domain: regions
+Count: 2 (148 to 149)
+
+   lead(LAMZ)
+   =(1+INTR+RISZ+delta)*LAMZ-exp(PRKZ-PRID)
+   -(1-TITCH)*exp(PRII-PRID)*(phi_z/2)*(JNVZ/CAPZ)^2
+
+
+Equation 50
+-----------
+Domain: regions,sec_std
+Count: 4 (150 to 153)
+
+   TOB=(LAM*exp(PRID-PRII))/(1-TITC)
+
+
+Equation 51
+-----------
+Domain: regions
+Count: 2 (154 to 155)
+
+   TOBY=LAMY*exp(PRID-PRII)
+
+
+Equation 52
+-----------
+Domain: regions
+Count: 2 (156 to 157)
+
+   TOBZ=(LAMZ*exp(PRID-PRII))/(1-TITCH)
+
+
+Equation 53
+-----------
+Relative Time: [0,1]
+Domain: regions,sec_std
+Count: 4 (158 to 161)
+
+   lead(TPA)=TPA+adapt*(TOB-TPA)
+
+
+Equation 54
+-----------
+Relative Time: [0,1]
+Domain: regions
+Count: 2 (162 to 163)
+
+   lead(TPAY)=TPAY+adapt*(TOBY-TPAY)
+
+
+Equation 55
+-----------
+Relative Time: [0,1]
+Domain: regions
+Count: 2 (164 to 165)
+
+   lead(TPAZ)=TPAZ+adapt*(TOBZ-TPAZ)
+
+
+Equation 56
+-----------
+Qualifiers: sec_std
+Domain: regions,sec_std
+Count: 4 (166 to 169)
+
+   PRF
+   =(OUP*exp(PRP)-ENT*exp(PRE)-LAB*exp(WAG)-OIN*exp(POI)
+   -(1-TITC)*INV*exp(PRII))
+   /exp(PRID)
+
+
+Equation 57
+-----------
+Domain: regions
+Count: 2 (170 to 171)
+
+   PRFY
+   =(INVT*exp(PRII)-IITE*exp(PRIE)-IITL*exp(WAGE)
+   -IITO*exp(PROI)
+   -INVY*exp(PRII))
+   /exp(PRID)
+
+
+Equation 58
+-----------
+Domain: regions
+Count: 2 (172 to 173)
+
+   PRFZ
+   =(CONP*exp(PRCT)-CNPE*exp(PRCE)-CNPL*exp(WAGE)
+   -CNPO*exp(PRCO)
+   -(1-TITCH)*INVZ*exp(PRII))
+   /exp(PRID)
+
+
+Equation 59
+-----------
+Domain: regions
+Count: 2 (174 to 175)
+
+   PRFT=sum(sec_std,PRF)+PRFY
+
+
+Equation 60
+-----------
+Domain: regions,sec_std
+Count: 4 (176 to 179)
+
+   STM=(LAM*CAP)/(1-TITC)
+
+
+Equation 61
+-----------
+Domain: regions
+Count: 2 (180 to 181)
+
+   STMT=sum(sec_std,STM)
+
+
+Equation 62
+-----------
+Domain: regions
+Count: 2 (182 to 183)
+
+   INVP=sum(sec_std,INV)
+
+
+Equation 63
+-----------
+Domain: regions
+Count: 2 (184 to 185)
+
+   INVT=INVY+INVZ+INVP
+
+
+Equation 64
+-----------
+Domain: regions
+Count: 2 (186 to 187)
+
+   PRID=sum(goods,prid_weight*PRD)
+
+
+Equation 65
+-----------
+Domain: regions
+Count: 2 (188 to 189)
+
+   PRIX=sum(goods_o,prix_weight*PRX)
+
+
+Equation 66
+-----------
+Domain: regions
+Count: 2 (190 to 191)
+
+   OUTP=sum(goods,exp(PRD)*OUG)/exp(PRID)
+
+
+Equation 67
+-----------
+Relative Time: [0,1]
+Domain: regions
+Count: 2 (192 to 193)
+
+   lead(OUTL)=OUTP
+
+
+Equation 68
+-----------
+Domain: regions
+Count: 2 (194 to 195)
+
+   INCM
+   =TRAN-TAXL+INTR*BOND+IRAS/exp(REXN)+PRFZ+(1-TCOR)*PRFT
+   +((1-TINC)
+   *(exp(WAGE)*(IITL+CNPL)+exp(WAGG)*GOVL+sum(sec_std,exp(WAG)*LAB)))
+   /exp(PRID)
+
+
+Equation 69
+-----------
+Domain: regions
+Count: 2 (196 to 197)
+
+   CONP
+   =fore_c*(timepref+RISW)*WELT*exp(PRID-PRCT)
+   +(1-fore_c)*mpc*INCM*exp(PRID-PRCT)
+   +SHKC
+
+
+Equation 70
+-----------
+Domain: owner
+Count: 2 (198 to 199)
+
+   IRAS
+   =sum(currency,INTR(currency)*exp(REXN(currency))*ASSE)
+
+
+Equation 71
+-----------
+Domain: owner
+Count: 2 (200 to 201)
+
+   INAS
+   =sum(currency,INTN(currency)*exp(REXN(currency))*ASSE)
+
+
+Equation 72
+-----------
+Domain: l,regions
+Count: 2 (202 to 203)
+
+   CNPL
+   =exp(SHLZ+SHYZ)^(sigma_oH-1)*delta_oH(l)*CONP
+   *exp(PRCT-WAGE)^sigma_oH
+
+
+Equation 73
+-----------
+Domain: e,regions
+Count: 2 (204 to 205)
+
+   CNPE
+   =exp(SHEFC+SHYZ)^(sigma_oH-1)*delta_oH(e)*CONP
+   *exp(PRCT-PRCE)^sigma_oH
+
+
+Equation 74
+-----------
+Domain: m,regions
+Count: 2 (206 to 207)
+
+   CNPO
+   =exp(SHYZ)^(sigma_oH-1)*delta_oH(m)*CONP*exp(PRCT-PRCO)^sigma_oH
+
+
+Equation 75
+-----------
+Domain: k,regions
+Count: 2 (208 to 209)
+
+   CNPK
+   =exp(SHYZ)^(sigma_oH-1)*delta_oH(k)*CONP*exp(PRCT-PRKZ)^sigma_oH
+
+
+Equation 76
+-----------
+Qualifiers: goods_e
+Domain: goods_e,regions
+Count: 2 (210 to 211)
+
+   CON=delta_eH*CNPE*exp(PRCE-PRY)^sigma_eH
+
+
+Equation 77
+-----------
+Qualifiers: goods_m
+Domain: goods_m,regions
+Count: 2 (212 to 213)
+
+   CON=delta_mH*CNPO*exp(PRCO-PRY)^sigma_mH
+
+
+Equation 78
+-----------
+Domain: e,k,l,m,regions
+Count: 2 (214 to 215)
+
+   PRCT
+   =cd_oH
+   *(delta_oH(k)*PRKZ+delta_oH(l)*WAGE+delta_oH(e)*PRCE
+   +delta_oH(m)*PRCO
+   -delta_oH(l)*SHLZ
+   -delta_oH(e)*SHEFC)
+   +((1-cd_oH)
+   *
+   log(delta_oH(k)*exp(PRKZ)^(1-sigma_oH)
+   +delta_oH(l)*exp(WAGE-SHLZ)^(1-sigma_oH)
+   +delta_oH(e)*exp(PRCE-SHEFC)^(1-sigma_oH)
+   +delta_oH(m)*exp(PRCO)^(1-sigma_oH)))
+   /(1-sigma_oH*(1-cd_oH))
+   -SHYZ
+
+
+Equation 79
+-----------
+Domain: regions
+Count: 2 (216 to 217)
+
+   PRCE
+   =cd_eH*sum(goods_e,delta_eH*PRY(goods_e))
+   +((1-cd_eH)
+   *
+   logsum(goods_e,delta_eH*exp(PRY(goods_e))^(1-sigma_eH)))
+   /(1-sigma_eH*(1-cd_eH))
+
+
+Equation 80
+-----------
+Domain: regions
+Count: 2 (218 to 219)
+
+   PRCO
+   =cd_mH*sum(goods_m,delta_mH*PRY(goods_m))
+   +((1-cd_mH)
+   *
+   logsum(goods_m,delta_mH*exp(PRY(goods_m))^(1-sigma_mH)))
+   /(1-sigma_mH*(1-cd_mH))
+
+
+Equation 81
+-----------
+Domain: e,m,regions
+Count: 2 (220 to 221)
+
+   PRGT
+   =(delta_oG(e)/(delta_oG(e)+delta_oG(m)))
+   *sum(goods_e,delta_eG*PRY(goods_e))
+   +(delta_oG(m)/(delta_oG(e)+delta_oG(m)))
+   *sum(goods_m,delta_mG*PRY(goods_m))
+
+
+Equation 82
+-----------
+Domain: regions
+Count: 2 (222 to 223)
+
+   MONE=PRID+log(OUTP)+int_elast*INTN+SHKM
+
+
+Equation 83
+-----------
+Relative Time: [0,1]
+Domain: regions
+Count: 2 (224 to 225)
+
+   INTF=INTN-lead(PRID)+PRID
+
+
+Equation 84
+-----------
+Domain: regions
+Count: 2 (226 to 227)
+
+   INTR=INTF+RISR
+
+
+Equation 85
+-----------
+Domain: regions
+Count: 2 (228 to 229)
+
+   INFP=PRID-PRDL
+
+
+Equation 86
+-----------
+Relative Time: [0,1]
+Domain: regions
+Count: 2 (230 to 231)
+
+   lead(PRCL)=PRCT
+
+
+Equation 87
+-----------
+Relative Time: [0,1]
+Domain: regions
+Count: 2 (232 to 233)
+
+   lead(PRDL)=PRID
+
+
+Equation 88
+-----------
+Domain: regions
+Count: 2 (234 to 235)
+
+   GDPN
+   =exp(PRCT)*CONP+exp(PRGT)*GCET+exp(PRII)*INVT
+   +exp(PRID)*TBAL
+   +sum(goods_o,exp(PRII)*INS)
+
+
+Equation 89
+-----------
+Domain: regions
+Count: 2 (236 to 237)
+
+   GDPR=CONP+GCET+INVT+TBAL+sum(goods_o,INS)
+
+
+Equation 90
+-----------
+Domain: regions
+Count: 2 (238 to 239)
+
+   PGDP=log(GDPN)-log(GDPR)
+
+
+Equation 91
+-----------
+Domain: regions
+Count: 2 (240 to 241)
+
+   GNPR=GDPR+(PBAL+IRAS)/exp(REXN)
+
+
+Equation 92
+-----------
+Domain: regions
+Count: 2 (242 to 243)
+
+   CURN=TBAL+(PBAL+INAS)/exp(REXN)
+
+
+Equation 93
+-----------
+Domain: regions
+Count: 2 (244 to 245)
+
+   CURR=TBAU+PBAL+IRAS
+
+
+Equation 94
+-----------
+Domain: regions
+Count: 2 (246 to 247)
+
+   WELT
+   =BOND+ASSU/exp(REXN)+(mongdp*exp(MONE))/exp(PRID)
+   +WELH
+   +LAMY*CAPY
+   +LAMZ*CAPZ
+   +sum(sec_std,STM)
+
+
+Equation 95
+-----------
+Relative Time: [0,1]
+Domain: regions
+Count: 2 (248 to 249)
+
+   lead(WELH)
+   =(1+RISW+RISH+INTR-labgrow)*WELH-TRAN+TAXH
+   +TAXL
+   -(exp(WAGE)*(IITL+CNPL)+exp(WAGG)*GOVL+sum(sec_std,exp(WAG)*LAB))
+   /exp(PRID)
+
+
+Equation 96
+-----------
+Domain: regions
+Count: 2 (250 to 251)
+
+   SAVI=INVT*exp(PRII-PRID)+CURR/exp(REXN)+DEFI
+
+
+Equation 97
+-----------
+Domain: regions
+Count: 2 (252 to 253)
+
+   SAVN=INVT*exp(PRII-PRID)+CURN+DEFN
+
+
+Equation 98
+-----------
+Domain: regions
+Count: 2 (254 to 255)
+
+   SAVT=INVT*exp(PRII-PRID)+CURN
+
+
+Equation 99
+-----------
+Domain: regions
+Count: 2 (256 to 257)
+
+   TBAL=EXQT-IMQT
+
+
+Equation 100
+------------
+Domain: regions
+Count: 2 (258 to 259)
+
+   TBAU=TBAL*exp(REXN)
+
+
+Equation 101
+------------
+Domain: notUSA,USA
+Count: 1 (260 to 260)
+
+   EXCH(notUSA)=REXN(notUSA)-PRID(notUSA)+PRID(USA)
+
+
+Equation 102
+------------
+Relative Time: [0,1]
+Domain: regions
+Count: 2 (261 to 262)
+
+   lead(EXCL)=EXCH
+
+
+Equation 103
+------------
+Relative Time: [0,1]
+Domain: regions,USA
+Count: 2 (263 to 264)
+
+   lead(REXC)=REXC-INTR+INTR(USA)+EXCR
+
+
+Equation 104
+------------
+Domain: regions
+Count: 2 (265 to 266)
+
+   REXN=REXC
+
+
+Equation 105
+------------
+Domain: dest
+Count: 2 (267 to 268)
+
+   NEER(dest)
+   =
+   -sum(orig,eer_weight*(EXCH(orig)#dest-EXCH(dest)))
+
+
+Equation 106
+------------
+Domain: dest
+Count: 2 (269 to 270)
+
+   REER(dest)
+   =
+   -sum(orig,eer_weight*(REXN(orig)#dest-REXN(dest)))
+
+
+Equation 107
+------------
+Domain: owner
+Count: 2 (271 to 272)
+
+   ABUY=sum(abroad,ainv*CURR(abroad))
+
+
+Equation 108
+------------
+Relative Time: [0,1]
+Domain: currency,owner
+Count: 4 (273 to 276)
+
+   lead(ASSE)
+   =ASSE*(1-labgrow(owner))
+   +(ashr*ABUY+aeye*(CURR(owner)-ABUY))/exp(REXN(currency))
+
+
+Equation 109
+------------
+Domain: owner
+Count: 2 (277 to 278)
+
+   ASSU=sum(currency,exp(REXN(currency))*ASSE)
+
+
+Equation 110
+------------
+Relative Time: [0,1]
+Domain: regions
+Count: 2 (279 to 280)
+
+   EYGR=log(lead(OUTP))-log(OUTP)
+
+
+Equation 111
+------------
+Relative Time: [0,1]
+Domain: regions
+Count: 2 (281 to 282)
+
+   EPRC=lead(PRCT)-PRCT
+
+
+Equation 112
+------------
+Domain: regions
+Count: 2 (283 to 284)
+
+   INFL=PRCT-PRCL
+
+
+Equation 113
+------------
+Relative Time: [0,1]
+Domain: regions
+Count: 2 (285 to 286)
+
+   lead(PRCOL)=PRCO
+
+
+Equation 114
+------------
+Domain: regions
+Count: 2 (287 to 288)
+
+   INFCL=PRCO-PRCOL
+
+
+Equation 115
+------------
+Domain: regions
+Count: 2 (289 to 290)
+
+   GNEN
+   =exp(PRCT)*CONP+exp(PRID)*GCET+exp(PRII)*INVT
+   +sum(goods_o,exp(PRII)*INS)
+
+
+Equation 116
+------------
+Domain: regions
+Count: 2 (291 to 292)
+
+   GNER=CONP+GCET+INVT+sum(goods_o,INS)
+
+
+Equation 117
+------------
+Domain: regions
+Count: 2 (293 to 294)
+
+   INTN
+   =mrule_r*INTL+mrule_ex*(EXCH-EXCL-EXCX)+mrule_1*(INFL-INFX)
+   +mrule_2*(INFP-INFX)
+   +mrule_3*(INFCL-INFX)
+   +mrule_4*(PRCT-PTAR)
+   +mrule_5*(PRID-PTAR)
+   +mrule_6*(WAGE-PTAR)
+   +mrule_7*0
+   +mrule_8*(log(OUTP)-log(OUTL)-ROGY)
+   +mrule_9*(log(OUTP)-log(OUTL)-ROGY+INFP-INFX)
+   +mrule_10*(log(GDPN)-ROGY)
+   +mrule_11*(log(OUTP)+PRID)
+   +mrule_12*log((OUTP-TBAL)*exp(PRID))
+   +mrule_13*(EPRC-INFX)
+   +mrule_14*(EYGR-ROGY)
+   +mrule_15*(log(GNEN)-ROGY)
+
+
+Equation 118
+------------
+Relative Time: [0,1]
+Domain: regions
+Count: 2 (295 to 296)
+
+   lead(INTL)=INTN
+
+
+Equation 119
+------------
+Qualifiers: goods_e
+Domain: e,goods_e,m,regions
+Count: 2 (297 to 298)
+
+   GCE
+   =(delta_eG*(delta_oG(e)/(delta_oG(e)+delta_oG(m)))
+   *GOVS
+   *exp(PRGT))
+   /exp(PRY)
+
+
+Equation 120
+------------
+Qualifiers: goods_m
+Domain: e,goods_m,m,regions
+Count: 2 (299 to 300)
+
+   GCE
+   =(delta_mG*(delta_oG(m)/(delta_oG(e)+delta_oG(m)))
+   *GOVS
+   *exp(PRGT))
+   /exp(PRY)
+
+
+Equation 121
+------------
+Domain: regions
+Count: 2 (301 to 302)
+
+   GCET
+   =sum(goods_o,GCE*exp(PRY(goods_o)))/exp(PRGT)
+
+
+Equation 122
+------------
+Domain: regions
+Count: 2 (303 to 304)
+
+   GOVT=GCET+GOVL*exp(WAGG-PRID)
+
+
+Equation 123
+------------
+Domain: regions
+Count: 2 (305 to 306)
+
+   TRAN=TRANX+transgdp*OUTP
+
+
+Equation 124
+------------
+Domain: dest,goods_o
+Count: 4 (307 to 310)
+
+   TXM
+   =sum(orig,(TIM*MUL#goods_o+TIF*FTA#goods_o)*exp(PIM)
+   *IMP)
+   /exp(PRID)
+
+
+Equation 125
+------------
+Domain: dest
+Count: 2 (311 to 312)
+
+   TAXM(dest)=sum(goods_o,TXM)
+
+
+Equation 126
+------------
+Domain: regions
+Count: 2 (313 to 314)
+
+   TAXX
+   =sum(goods_o,TEX(goods_o)*exp(PRS(goods_o))*EXQ)
+   /exp(PRID)
+
+
+Equation 127
+------------
+Domain: regions
+Count: 2 (315 to 316)
+
+   TAXH
+   =(TINC
+   *(exp(WAGE)*(IITL+CNPL)+exp(WAGG)*GOVL+sum(sec_std,exp(WAG)*LAB))
+   -TITCH*exp(PRII)*INVZ)
+   /exp(PRID)
+
+
+Equation 128
+------------
+Relative Time: [0,1]
+Domain: regions
+Count: 2 (317 to 318)
+
+   lead(BOND)=DEFI+BOND*(1-labgrow)-PBAG
+
+
+Equation 129
+------------
+Domain: regions
+Count: 2 (319 to 320)
+
+   TAXL=INTR*BOND+TAXS
+
+
+Equation 130
+------------
+Domain: regions
+Count: 2 (321 to 322)
+
+   TAXT=TAXC+TAXH+TAXL+TAXM+TAXX+TAXE
+
+
+Equation 131
+------------
+Domain: regions
+Count: 2 (323 to 324)
+
+   DEFI=GOVT+TRAN-TAXT+INTR*BOND
+
+
+Equation 132
+------------
+Domain: regions
+Count: 2 (325 to 326)
+
+   DEFN=DEFI+(INTN-INTR)*BOND
+
+
+Equation 133
+------------
+Qualifiers: goods_e
+Domain: goods_e,regions,sec_std
+Count: 4 (327 to 330)
+
+   PRT=log(exp(PRS)*(1+TAX)+TXGS)
+
+
+Equation 134
+------------
+Qualifiers: goods_e
+Domain: goods_e,regions,sec_std
+Count: 4 (331 to 334)
+
+   EN=delta_e*ENT*exp(PRE-PRT)^sigma_e
+
+
+Equation 135
+------------
+Qualifiers: goods_m
+Domain: goods_m,regions,sec_std
+Count: 4 (335 to 338)
+
+   OI=delta_m*OIN*exp(POI-PRY#sec_std)^sigma_m
+
+
+Equation 136
+------------
+Qualifiers: goods_e
+Domain: regions,sec_std
+Count: 4 (339 to 342)
+
+   PRE
+   =cd_e*sum(goods_e,delta_e*PRT)
+   +((1-cd_e)
+   *
+   logsum(goods_e,delta_e*exp(PRT)^(1-sigma_e)))
+   /(1-sigma_e*(1-cd_e))
+
+
+Equation 137
+------------
+Qualifiers: goods_m
+Domain: regions,sec_std
+Count: 4 (343 to 346)
+
+   POI
+   =cd_m*sum(goods_m,delta_m*PRY#sec_std)
+   +((1-cd_m)
+   *
+   logsum(goods_m,delta_m*exp(PRY#sec_std)^(1-sigma_m)))
+   /(1-sigma_m*(1-cd_m))
+
+
+Equation 138
+------------
+Domain: regions
+Count: 2 (347 to 348)
+
+   TAXE=RVGS
+
+
+Equation 139
+------------
+Domain: regions
+Count: 2 (349 to 350)
+
+   TAXC
+   =TCOR*(sum(sec_std,PRF)+PRFY)
+   +(sum(goods,TAX*exp(PRD)*OUG)+sum(goods_o,TAX(goods_o)*exp(PMR)*IMQ)
+   -sum(sec_std,TITC*exp(PRII)*INV)
+   -sum(goods_o,TAX(goods_o)*exp(PRS(goods_o))*EXQ))
+   /exp(PRID)
+
+
+Length of MSGPROC Vectors:
+
+   z1l has 300 elements
+   zel has 6 elements
+   j1l has 12 elements
+   x1l has 40 elements
+   exo has 146 elements
+   par has 256 elements
+
+Equation Count: 350
+Endogenous Variables, Used:   350
+Endogenous Variables, Total:  358

@@ -1,0 +1,64 @@
+//
+//  Standard monetary policy module
+//
+//  Change the setparameters.csv file to alter this monetary rule.
+//
+
+variable INTL(regions)            'interest rate, short-run, nominal - lagged'   sta,pct,lagged ;
+variable PRCOL(regions)           'household price of material - lagged'         sta,idx,logged,lagged ;
+
+variable INFL(regions)            'consumer price inflation'                       end,pct ;
+variable INFCL(regions)           'household materials inflation rate'                end,pct ;
+variable GNEN(regions)            'GNE, nominal'                                 end,gdp,logged ;
+variable GNER(regions)            'GNE, real'                                    end,gdp,logged ;
+variable EYGR(regions)            'expected output growth'                       end,pct,intertemporal_constant ;
+variable EPRC(regions)            'expected consumer price inflation rate'                 end,pct,intertemporal_constant ;
+
+variable PTAR(regions)            'price level target'                           exo,idx,logged ;
+variable INFX(regions)            'inflation target'                             exo,pct ;
+variable EXCX(regions)            'exchange rate target percentage change'       exo,pct ;
+
+EYGR = lead(OUTP) - OUTP ;
+
+EPRC = lead(PRCT) - PRCT ;
+
+INFL = PRCT - PRCL ;
+
+lead (PRCOL) = PRCO ;
+
+INFCL = PRCO - PRCOL ;
+
+GNEN = ln( 
+            exp(PRCT+CONP)
+          + exp(PRID+GCET)
+          + exp(PRII+INVT) 
+          + sum(goods_o,exp(PRII)*INS)
+     ) ;
+
+GNER = ln( 
+            exp(CONP)
+          + exp(GCET)
+          + exp(INVT)
+          + sum(goods_o,INS)
+     ) ;
+
+INTN =    mrule_r*INTL
+        + mrule_ex*(EXCH - EXCL - EXCX)                                  //Exchange rate
+        + mrule_1*(INFL - INFX)                                          //CPI inflation
+        + mrule_2*(INFP - INFX)                                          //PPI inflation
+        + mrule_3*(INFCL - INFX)                                         //core inflation
+        + mrule_4*(PRCT - PTAR)                                          //PRC level
+        + mrule_5*(PRID - PTAR)                                          //PPI level
+        + mrule_6*(WAGE - PTAR)                                          //wage level
+        + mrule_7*(0)                                                    //wage growth
+        + mrule_8*((OUTP - OUTL) - ROGY)                                           //real output growth
+        + mrule_9*((OUTP - OUTL) - ROGY + INFP - INFX)                   //nominal gross output growth
+        + mrule_10*(GDPN - ROGY)                                         //nominal GDP
+        + mrule_11*(OUTP + PRID)                                         //nominal gross output
+        + mrule_12*(ln(exp(OUTP) - TBAL) + PRID)                           //nominal gross output net of trade
+        + mrule_13*(EPRC - INFX)                                         //expected CPI inflation
+        + mrule_14*(EYGR - ROGY)                                         //expected real output growth
+        + mrule_15*(GNEN - ROGY)                                         //nominal GNE
+         ;
+
+lead(INTL) = INTN ;

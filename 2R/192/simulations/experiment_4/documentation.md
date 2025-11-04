@@ -1,0 +1,1 @@
+A comparison of a USA Investment Tax Credit (ITC) of 15% that cuts out in 2030 vs one that cuts out in 2040. In both scenarios, the policy is announced in the same year.

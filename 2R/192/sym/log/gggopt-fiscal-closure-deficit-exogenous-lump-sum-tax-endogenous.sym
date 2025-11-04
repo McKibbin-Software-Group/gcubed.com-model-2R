@@ -1,0 +1,75 @@
+//
+//  Fiscal closure 2.
+//  
+//  The government deficit and total government spending are determines exogenously.
+//  The fiscal deficit, DEFI is held fixed by adjusting the lump sum tax 
+//  as necessary.
+//
+
+variable GOVS(regions)        'government spending excluding labor'        exo,gdp,logged ;
+variable GCE(goods_o,regions) 'government purchases of goods and services' end,gdp,logged ;
+
+goods_e: GCE = ln(delta_eG) + ln(delta_oG(e)/(delta_oG(e)+delta_oG(m))) + GOVS + PRGT - PRY ;
+goods_m: GCE = ln(delta_mG) + ln(delta_oG(m)/(delta_oG(e)+delta_oG(m))) + GOVS + PRGT - PRY ;
+
+// government spending excluding labor
+
+GCET = ln( sum(goods_o,exp(GCE + PRY(goods_o))) ) - PRGT ;
+
+// Total government spending
+
+GOVT = ln( exp(GCET) + (exp(WAGG-PRID)*GOVL) ) ;
+
+//  Government transfers to consumers
+
+TRAN = TRANX + transgdp*exp(OUTP) ;
+
+// Tariff revenue by good
+
+TXM = sum(orig,(TIM*MUL#goods_o + TIF*FTA#goods_o)*exp(PIM + IMP)) / exp(PRID) ;
+
+//  Total tariff revenue
+
+TAXM(dest) = sum(goods_o,TXM) ;
+
+//  Total export taxes
+
+TAXX = sum(goods_o, TEX(goods_o)*exp(PRS(goods_o) + EXQ)) / exp(PRID) ;
+
+//
+// Taxes on households
+//
+
+TAXH = ln(
+          TINC*( 
+               exp(WAGE+IITL)
+             + exp(WAGE+CNPL)
+             + exp(WAGG)*GOVL
+             + sum(sec_std,exp(WAG+LAB)) 
+          )
+        - TITCH*exp(PRII+INVZ)
+     ) - PRID ;
+
+// TAXC equation in the TXGS module.
+
+//
+//  Evolution of stock of government bonds
+//
+
+lead(BOND) = DEFI + BOND*(1-labgrow) - PBAG ;
+
+// The lump sum tax  to hold the deficit equal to DEFX - TAXS
+
+TAXL = exp(GOVT) + TRAN - (exp(TAXC) + exp(TAXH) + TAXM + TAXX + TAXE) + INTR*BOND - DEFI + TAXS;
+
+//  Total tax collections
+
+TAXT = ln( exp(TAXC) + exp(TAXH) + TAXL + TAXM + TAXX + TAXE ) ;
+
+//  DEFI: Government deficit at INTR
+
+DEFI = DEFX - TAXS ;
+
+//  DEFN: Government deficit at INTN
+
+DEFN = DEFI + (INTN - INTR)*BOND ;
