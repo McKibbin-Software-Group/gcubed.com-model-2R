@@ -1,7 +1,0 @@
-//  G-Cubed model definition file
-
-#include ggg-sets.sym                           // regions and sectors
-
-//#include log/ggg-configuration.sym              // Experimental log model
-
-#include linear/ggg-configuration.sym           // Linear model
