@@ -126,7 +126,7 @@ all_projections: List[Projections] = [
 # simulation layer and the baseline projections.
 ###############################################################################
 
-derivations: Derivations = Derivations(sym_data=runner_A.model.sym_data)
+derivations: Derivations = Derivations(model=runner_A.model)
 derivations.add(derivation=growth_rates.GDPRGROWTH())
 
 generate_all_simulation_results(

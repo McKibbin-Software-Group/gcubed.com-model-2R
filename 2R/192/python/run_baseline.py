@@ -125,7 +125,7 @@ baseline_projections.database_projections.to_csv(
     results_folder / f"baseline database projections.csv"
 )
 
-derivations: Derivations = Derivations(sym_data=baseline_projections.model.sym_data)
+derivations: Derivations = Derivations(model=baseline_projections.model)
 derivations.add(derivation=growth_rates.GDPRGROWTH())
 derivations.add(derivation=growth_rates.OUTPUTGROWTH())
 derivations.add(derivation=growth_rates.SECTOROUTPUTGROWTH())

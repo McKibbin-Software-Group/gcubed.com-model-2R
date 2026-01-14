@@ -413,7 +413,7 @@ all_projections: List[Projections] = [
 # simulation layer and the baseline projections.
 ###############################################################################
 
-derivations: Derivations = Derivations(sym_data=baseline_runner.model.sym_data)
+derivations: Derivations = Derivations(model=runner.model)
 derivations.add(derivation=growth_rates.GDPRGROWTH())
 derivations.add(derivation=bilateral_trade_balances.BTBAL())
 
