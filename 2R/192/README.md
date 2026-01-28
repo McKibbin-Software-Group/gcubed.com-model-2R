@@ -2,7 +2,7 @@
 
 This document describes model 20U build 192.
 
-Run the model using Python G-Cubed version 4.0.2.21.
+Run the model using Python G-Cubed version 4.0.3.5.
 
 ## Simulation experiments
 
