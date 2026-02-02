@@ -2,7 +2,7 @@
 import gcubed_build_switcher
 import sys
 
-GCUBED_CODE_BUILD_TAG = "gcubed-4-0-3-5"
+GCUBED_CODE_BUILD_TAG = "gcubed-4-0-4-0"
 
 # Take build tag from command line or use default
 use_this_build_tag = sys.argv[1] if len(sys.argv) > 1 else GCUBED_CODE_BUILD_TAG
