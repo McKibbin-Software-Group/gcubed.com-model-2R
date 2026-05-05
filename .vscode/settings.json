@@ -56,6 +56,15 @@
   "python.linting.pylintPath": "/usr/local/py-utils/bin/pylint",
   "python.terminal.executeInFileDir": false,
 
+  "python.analysis.ignore": [
+    "**/venv_gcubed_*/lib/python3.12/site-packages/gcubed/**"
+  ],
+  "python.analysis.exclude": [
+    "**/node_modules",
+    "**/__pycache__",
+    "**/.*"
+  ],
+
   "terminal.integrated.inheritEnv": true,
   "terminal.integrated.cwd": "${workspaceFolder}",
   "telemetry.telemetryLevel": "off",
