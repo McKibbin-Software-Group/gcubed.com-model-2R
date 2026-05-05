@@ -23,7 +23,7 @@ fi
 echo "Syncing .devcontainer and Makefile from $default_branch branch..."
 
 # Direct overwrite from main - no stashing needed
-git checkout "$default_branch" -- .devcontainer Makefile
-git reset .devcontainer Makefile
+git checkout "$default_branch" -- .devcontainer .vscode Makefile
+git reset .devcontainer .vscode Makefile
 
-echo "Sync complete. .devcontainer and Makefile now match $default_branch branch."
+echo "Sync complete: .devcontainer, .vscode and Makefile now match $default_branch branch."
