@@ -12,7 +12,7 @@
       "SYM_REPOSITORY_TAG": "gcubed-cloud-latest",
       "SYM_SOURCE_WORKING_DIRECTORY": "/tmp/sym",
       "SYM_EXECUTABLE_DIRECTORY": "/usr/local/bin/",
-      "PYTHON_VARIANT": "3-3.13-bookworm",
+      "PYTHON_VARIANT": "3.12-bookworm",
       "VENV_SWITCHER_TAG": "latest"
     }
   },
