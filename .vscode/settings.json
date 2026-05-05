@@ -1,4 +1,6 @@
 {
+  "chat.disableAIFeatures": true,
+
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.detectIndentation": true,
   "editor.formatOnPaste": false,
@@ -59,8 +61,11 @@
   "telemetry.telemetryLevel": "off",
 
   "workbench.startupEditor": "none",
-  "workbench.colorTheme": "Default Dark Modern",
+  "workbench.colorTheme": "Dark Modern",
   "workbench.editorAssociations": {
     "*.md": "vscode.markdown.preview.editor"
-  }
+  },
+  "python-envs.pythonProjects": [],
+  "python-envs.defaultEnvManager": "ms-python.python:venv",
+  "python.useEnvironmentsExtension": false
 }

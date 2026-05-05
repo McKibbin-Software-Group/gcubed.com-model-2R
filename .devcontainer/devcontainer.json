@@ -12,7 +12,7 @@
       "SYM_REPOSITORY_TAG": "gcubed-cloud-latest",
       "SYM_SOURCE_WORKING_DIRECTORY": "/tmp/sym",
       "SYM_EXECUTABLE_DIRECTORY": "/usr/local/bin/",
-      "PYTHON_VARIANT": "1-3.12",
+      "PYTHON_VARIANT": "3-3.13-bookworm",
       "VENV_SWITCHER_TAG": "latest"
     }
   },
@@ -40,6 +40,15 @@
     }
   },
   "customizations": {
+    "coder": {
+      "displayApps": {
+        "web_terminal": false,
+        "ssh_helper": false,
+        "port_forwarding_helper": false,
+        "vscode": false,
+        "vscode_insiders": false
+      }
+    },
     "vscode": {
       "extensions": [
         "esbenp.prettier-vscode",
