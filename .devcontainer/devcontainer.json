@@ -1,5 +1,9 @@
 {
   "name": "${localWorkspaceFolderBasename}",
+  "hostRequirements": {
+    "memory": "16gb"
+  },
+
   "build": {
     "context": "..",
     "dockerfile": "Dockerfile",
@@ -8,7 +12,7 @@
       "SYM_REPOSITORY_TAG": "gcubed-cloud-latest",
       "SYM_SOURCE_WORKING_DIRECTORY": "/tmp/sym",
       "SYM_EXECUTABLE_DIRECTORY": "/usr/local/bin/",
-      "PYTHON_VARIANT": "3-3.14-bookworm",
+      "PYTHON_VARIANT": "3.12-bookworm",
       "VENV_SWITCHER_TAG": "latest"
     }
   },
@@ -36,31 +40,23 @@
     }
   },
   "customizations": {
+    "coder": {
+      "displayApps": {
+        "web_terminal": false,
+        "ssh_helper": false,
+        "port_forwarding_helper": false,
+        "vscode": false,
+        "vscode_insiders": false
+      }
+    },
     "vscode": {
-			"settings": {
-				"editor.defaultFormatter": "ms-python.black-formatter",
-				"git.openRepositoryInParentFolders": "always",
-				"terminal.integrated.inheritEnv": true,
-				"python.terminal.executeInFileDir": false,
-				"telemetry.telemetryLevel": "off",
-				"workbench.startupEditor": "none",
-				"workbench.colorTheme": "Default Dark Modern",
-				"workbench.editorAssociations": {
-					"*.md": "vscode.markdown.preview.editor"
-				},
-				"livePreview.openPreviewTarget": "Embedded Preview",
-				"livePreview.autoRefreshPreview": "On All Changes in Editor"				
-			},      
       "extensions": [
-				"ms-vsliveshare.vsliveshare",
-				"ms-python.black-formatter",
-				"mhutchie.git-graph",
-				"mechatroner.rainbow-csv",
-				"seunlanlege.action-buttons",
-				"ms-vscode.live-server",
         "esbenp.prettier-vscode",
+        "mechatroner.rainbow-csv",
+        "mhutchie.git-graph",
+        "ms-python.black-formatter",
         "ms-python.python",
-				"openai.chatgpt",
+        "ms-vsliveshare.vsliveshare",
         // Ignore linter errors for the local vsix file - schema file simply does not include this pattern
         // VS Code extension is installed to this location by the Dockerfile
         "/home/vscode/extensions/gcubed-venv-switcher/gcubed-vscode-venv-switcher.vsix"

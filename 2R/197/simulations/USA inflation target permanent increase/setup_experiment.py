@@ -246,7 +246,9 @@ REQUIRED_CONFIGURATION_SECTIONS: tuple[str, ...] = (
 
 def load_experiment_configuration() -> dict:
     configuration = yaml.safe_load(EXPERIMENT_CONFIGURATION_YAML)
-    assert isinstance(configuration, dict), "The experiment configuration YAML must parse to a mapping."
+    assert isinstance(
+        configuration, dict
+    ), "The experiment configuration YAML must parse to a mapping."
     missing_sections = [
         section
         for section in REQUIRED_CONFIGURATION_SECTIONS
@@ -271,7 +273,9 @@ def selected_members(selector_value, all_members: list[str]) -> list[str]:
         selector_value = [selector_value]
     result = list(selector_value)
     invalid = sorted(set(result) - set(all_members))
-    assert not invalid, f"Unknown selector members {invalid}; valid members are {all_members}"
+    assert (
+        not invalid
+    ), f"Unknown selector members {invalid}; valid members are {all_members}"
     return result
 
 
@@ -297,7 +301,9 @@ def variable_matches_selectors(variable_name: str, selectors: dict, sym_data) ->
     return True
 
 
-def derived_region_variables(variable_prefix: str, selectors: dict, sym_data) -> list[str]:
+def derived_region_variables(
+    variable_prefix: str, selectors: dict, sym_data
+) -> list[str]:
     regions = selected_members(selectors.get("regions"), sym_data.regions_members)
     return [f"{variable_prefix}({region})" for region in regions]
 
@@ -326,9 +332,9 @@ def resolve_variables(series_or_shock: dict, sym_data) -> list[str]:
 
 
 def output_years(start_year: int, last_projection_year: int) -> list[int]:
-    assert start_year <= last_projection_year, (
-        f"Shock start year {start_year} is after the model's last projection year {last_projection_year}."
-    )
+    assert (
+        start_year <= last_projection_year
+    ), f"Shock start year {start_year} is after the model's last projection year {last_projection_year}."
     return list(range(start_year, last_projection_year + 1))
 
 
@@ -342,7 +348,9 @@ def shock_values(value_path: dict, years: list[int]) -> list[float | int]:
         value = value_path["value"]
         return [value if start_year <= year <= end_year else 0 for year in years]
     if path_type == "explicit":
-        values_by_year = {int(year): value for year, value in value_path["values"].items()}
+        values_by_year = {
+            int(year): value for year, value in value_path["values"].items()
+        }
         return [values_by_year.get(year, 0) for year in years]
     raise ValueError(f"Unsupported value_path type: {path_type}")
 
@@ -350,12 +358,14 @@ def shock_values(value_path: dict, years: list[int]) -> list[float | int]:
 def design_rows(layers: list[dict]) -> list[list[object]]:
     rows: list[list[object]] = [["name", "data", "event_year", "description"]]
     for layer in layers:
-        rows.append([
-            layer["name"],
-            layer["data_file_name"],
-            layer["event_year"],
-            layer["description"],
-        ])
+        rows.append(
+            [
+                layer["name"],
+                layer["data_file_name"],
+                layer["event_year"],
+                layer["description"],
+            ]
+        )
     return rows
 
 
@@ -364,7 +374,9 @@ def layer_rows(layer: dict, sym_data, last_projection_year: int) -> list[list[ob
         int(shock["value_path"].get("start_year", layer["event_year"]))
         for shock in layer["shocks"]
     )
-    years = output_years(start_year=start_year, last_projection_year=last_projection_year)
+    years = output_years(
+        start_year=start_year, last_projection_year=last_projection_year
+    )
     rows: list[list[object]] = [["name", *years]]
     for shock in layer["shocks"]:
         values = shock_values(value_path=shock["value_path"], years=years)
@@ -386,7 +398,9 @@ def pack_attributes(chartpack_config: dict) -> str:
 
 def chartpack_rows(chartpack_config: dict, sym_data) -> list[list[str]]:
     rows: list[list[str]] = [["type", "attributes", "variable", "label"]]
-    rows.append(["pack", pack_attributes(chartpack_config), "", chartpack_config["title"]])
+    rows.append(
+        ["pack", pack_attributes(chartpack_config), "", chartpack_config["title"]]
+    )
 
     for chart in chartpack_config["charts"]:
         rows.append(["chart", "", "", ""])
@@ -483,9 +497,9 @@ def main() -> None:
         model_directory_path / experiment_config["model_configuration_file_name"]
     )
 
-    assert model_configuration_file_path.exists(), (
-        f"Model configuration file not found at {model_configuration_file_path}"
-    )
+    assert (
+        model_configuration_file_path.exists()
+    ), f"Model configuration file not found at {model_configuration_file_path}"
 
     if str(model_python_directory_path) not in sys.path:
         sys.path.insert(0, str(model_python_directory_path))
@@ -493,7 +507,9 @@ def main() -> None:
     from gcubed.model import Model
     from gcubed.model_configuration import ModelConfiguration
 
-    model_configuration = ModelConfiguration(configuration_file=model_configuration_file_path)
+    model_configuration = ModelConfiguration(
+        configuration_file=model_configuration_file_path
+    )
     model = Model(configuration=model_configuration)
     sym_data = model.sym_data
     overwrite = bool(experiment_config["overwrite_generated_files"])
@@ -508,7 +524,9 @@ def main() -> None:
             documentation_file_name=experiment_config["documentation_file_name"],
             design_file_name=experiment_config["design_file_name"],
             chartpack_file_name=experiment_config["chartpack_file_name"],
-            layer_file_names=[layer["data_file_name"] for layer in configuration["layers"]],
+            layer_file_names=[
+                layer["data_file_name"] for layer in configuration["layers"]
+            ],
         ),
         overwrite=overwrite,
     )
@@ -540,14 +558,18 @@ def main() -> None:
     write_text(
         experiment_directory_path / experiment_config["run_script_file_name"],
         Template(RUN_SCRIPT_TEMPLATE).substitute(
-            model_configuration_file_name=experiment_config["model_configuration_file_name"],
+            model_configuration_file_name=experiment_config[
+                "model_configuration_file_name"
+            ],
             design_file_name=experiment_config["design_file_name"],
             chartpack_file_name=experiment_config["chartpack_file_name"],
             documentation_file_name=experiment_config["documentation_file_name"],
             report_template_file_name=experiment_config["report_template_file_name"],
             baseline_results_folder_name=baseline_config["results_folder_name"],
             solved_model_file_name=baseline_config["solved_model_file_name"],
-            ask_to_solve_model_if_missing=baseline_config["ask_to_solve_model_if_missing"],
+            ask_to_solve_model_if_missing=baseline_config[
+                "ask_to_solve_model_if_missing"
+            ],
             solve_model_if_missing=baseline_config["solve_model_if_missing"],
             show_final_results=run_config["show_final_results"],
             derivation_names=repr(configuration["chartpack"].get("derivations", [])),

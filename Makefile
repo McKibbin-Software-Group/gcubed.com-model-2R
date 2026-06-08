@@ -1,29 +1,19 @@
 # Custom variable definitions
-VERSION=2R
-BUILD=192
-ROOT_SYM_FILE=ggg-model.sym
-SCRIPT=run_experiment_1.py
+NAME=Geoff Shuetrim
+EMAIL=gshuetrim@gcubed.com
 
-DATE_STAMP := $(shell date +"%Y-%m-%d %H:%M:%S")
-SYM=sym
 PYTHON=python
-MODEL=$(VERSION)_$(BUILD)
 
 # (default target) Run the chosen target by default
 default: run
 
-# Basic example of running a script
-run:
-	$(PYTHON) $(VERSION)/$(BUILD)/python/$(SCRIPT)
-
-baseline:
-	$(PYTHON) $(VERSION)/$(BUILD)/python/run_baseline.py
-
-share:
-	$(PYTHON) $(VERSION)/$(BUILD)/python/share_baseline_projections_with_experiments.py
+config:
+	git config --global user.email "$(EMAIL)"
+	git config --global user.name "$(NAME)"
 
 format:
-	black $(VERSION)/$(BUILD)/python/*.py
+	black */*/python/*.py
+	black */*/simulations/*/*.py
 
 # Git staging of changes, commit, and push to remote repository on Github
 push:

@@ -2,6 +2,7 @@
 
 Generated scripts derive the experiment directory from their own location.
 """
+
 from pathlib import Path
 import csv
 import re
@@ -289,7 +290,9 @@ def load_experiment_configuration() -> dict:
     configuration = yaml.safe_load(EXPERIMENT_CONFIGURATION_YAML)
     assert isinstance(configuration, dict), "Experiment YAML must parse to a mapping."
     missing_sections = [
-        section for section in REQUIRED_CONFIGURATION_SECTIONS if section not in configuration
+        section
+        for section in REQUIRED_CONFIGURATION_SECTIONS
+        if section not in configuration
     ]
     assert not missing_sections, f"Missing YAML sections: {missing_sections}"
     return configuration
@@ -328,7 +331,9 @@ def load_variable_summary(model_directory_path: Path) -> list[dict[str, str]]:
         return list(csv.DictReader(file))
 
 
-def prefix_rows(variable_prefix: str, variable_summary: list[dict[str, str]]) -> list[dict[str, str]]:
+def prefix_rows(
+    variable_prefix: str, variable_summary: list[dict[str, str]]
+) -> list[dict[str, str]]:
     return [row for row in variable_summary if row["prefix"] == variable_prefix]
 
 
@@ -358,9 +363,9 @@ def validate_selectors_for_prefix(rows: list[dict[str, str]], selectors: dict) -
             if dimension in parse_sets_text(row.get("sets", ""))
         }
         available_members.discard(None)
-        assert available_members, (
-            f"Selector dimension {dimension} is not available for prefix {rows[0]['prefix']}."
-        )
+        assert (
+            available_members
+        ), f"Selector dimension {dimension} is not available for prefix {rows[0]['prefix']}."
         selected_members(selector_value, dimension, available_members)
 
 
@@ -411,14 +416,20 @@ def resolve_variables(
             regions = list(selected_regions)
         return [f"{variable_prefix}({region})" for region in regions]
 
-    raise AssertionError(f"The model does not include variables with prefix {variable_prefix}.")
+    raise AssertionError(
+        f"The model does not include variables with prefix {variable_prefix}."
+    )
 
 
 def validate_year(year: int, projection_years: range, context: str) -> None:
-    assert year in projection_years, f"{context} year {year} is outside projection years."
+    assert (
+        year in projection_years
+    ), f"{context} year {year} is outside projection years."
 
 
-def validate_layer_years(layer: dict, projection_years: range, first_projection_year: int) -> None:
+def validate_layer_years(
+    layer: dict, projection_years: range, first_projection_year: int
+) -> None:
     event_year = int(layer["event_year"])
     validate_year(event_year, projection_years, f"Layer {layer['id']} event")
     assert event_year > first_projection_year, (
@@ -429,35 +440,49 @@ def validate_layer_years(layer: dict, projection_years: range, first_projection_
         path = shock["value_path"]
         for key in ("start_year", "end_year"):
             if key in path:
-                validate_year(int(path[key]), projection_years, f"Layer {layer['id']} {key}")
+                validate_year(
+                    int(path[key]), projection_years, f"Layer {layer['id']} {key}"
+                )
         if path["type"] == "explicit":
             for year in path["values"]:
-                validate_year(int(year), projection_years, f"Layer {layer['id']} explicit shock")
+                validate_year(
+                    int(year), projection_years, f"Layer {layer['id']} explicit shock"
+                )
 
 
 def output_years(event_year: int, last_projection_year: int) -> list[int]:
     return list(range(event_year, last_projection_year + 1))
 
 
-def shock_values(value_path: dict, years: list[int], event_year: int) -> list[float | int]:
+def shock_values(
+    value_path: dict, years: list[int], event_year: int
+) -> list[float | int]:
     path_type = value_path["type"]
     if path_type == "permanent_constant":
         start_year = int(value_path.get("start_year", event_year))
         value = value_path["value"]
-        assert start_year >= event_year, "Shock cannot start before its layer event year."
+        assert (
+            start_year >= event_year
+        ), "Shock cannot start before its layer event year."
         return [value if year >= start_year else 0 for year in years]
     if path_type == "temporary_constant":
         start_year = int(value_path["start_year"])
         end_year = int(value_path["end_year"])
         value = value_path["value"]
-        assert start_year >= event_year, "Shock cannot start before its layer event year."
-        assert end_year >= start_year, "Temporary shock end_year must be after start_year."
+        assert (
+            start_year >= event_year
+        ), "Shock cannot start before its layer event year."
+        assert (
+            end_year >= start_year
+        ), "Temporary shock end_year must be after start_year."
         return [value if start_year <= year <= end_year else 0 for year in years]
     if path_type == "explicit":
-        values_by_year = {int(year): value for year, value in value_path["values"].items()}
-        assert all(year >= event_year for year in values_by_year), (
-            "Explicit shock cannot include non-zero years before event year."
-        )
+        values_by_year = {
+            int(year): value for year, value in value_path["values"].items()
+        }
+        assert all(
+            year >= event_year for year in values_by_year
+        ), "Explicit shock cannot include non-zero years before event year."
         return [values_by_year.get(year, 0) for year in years]
     raise ValueError(f"Unsupported value_path type: {path_type}")
 
@@ -475,14 +500,18 @@ def design_rows(design: dict, layers_by_id: dict[str, dict]) -> list[list[object
         layer = layers_by_id[layer_id]
         event_year = int(layer["event_year"])
         if last_event_year is not None:
-            assert event_year >= last_event_year, "Design event years must be weakly increasing."
+            assert (
+                event_year >= last_event_year
+            ), "Design event years must be weakly increasing."
         last_event_year = event_year
-        rows.append([
-            layer["name"],
-            layer["data_file_name"],
-            event_year,
-            layer["description"],
-        ])
+        rows.append(
+            [
+                layer["name"],
+                layer["data_file_name"],
+                event_year,
+                layer["description"],
+            ]
+        )
     return rows
 
 
@@ -493,7 +522,9 @@ def layer_rows(
     last_projection_year: int,
 ) -> list[list[object]]:
     event_year = int(layer["event_year"])
-    years = output_years(event_year=event_year, last_projection_year=last_projection_year)
+    years = output_years(
+        event_year=event_year, last_projection_year=last_projection_year
+    )
     rows: list[list[object]] = [["name", *years]]
     for shock in layer["shocks"]:
         values = shock_values(
@@ -530,7 +561,9 @@ def chartpack_rows(
         rows.append(["chart", chart_attributes, "", ""])
         series_definitions = chart.get("series") or [chart]
         for series_definition in series_definitions:
-            for variable in resolve_variables(series_definition, variable_summary, region_members):
+            for variable in resolve_variables(
+                series_definition, variable_summary, region_members
+            ):
                 rows.append(["series", "", variable, ""])
     return rows
 
@@ -606,6 +639,7 @@ def render_run_script(configuration: dict) -> str:
         derivation_names=repr(configuration["chartpack"].get("derivations", [])),
     )
 
+
 def main() -> None:
     configuration = load_experiment_configuration()
     experiment_config = configuration["experiment"]
@@ -618,20 +652,26 @@ def main() -> None:
         model_directory_path / experiment_config["model_configuration_file_name"]
     )
     report_template_path = (
-        model_directory_path / "templates" / experiment_config["report_template_file_name"]
+        model_directory_path
+        / "templates"
+        / experiment_config["report_template_file_name"]
     )
 
-    assert model_configuration_file_path.exists(), (
-        f"Model configuration file not found at {model_configuration_file_path}"
-    )
-    assert report_template_path.exists(), f"Report template not found at {report_template_path}"
+    assert (
+        model_configuration_file_path.exists()
+    ), f"Model configuration file not found at {model_configuration_file_path}"
+    assert (
+        report_template_path.exists()
+    ), f"Report template not found at {report_template_path}"
 
     if str(model_python_directory_path) not in sys.path:
         sys.path.insert(0, str(model_python_directory_path))
 
     from gcubed.model_configuration import ModelConfiguration
 
-    model_configuration = ModelConfiguration(configuration_file=model_configuration_file_path)
+    model_configuration = ModelConfiguration(
+        configuration_file=model_configuration_file_path
+    )
     variable_summary = load_variable_summary(model_directory_path)
     region_members = []
     for row in variable_summary:
@@ -657,7 +697,9 @@ def main() -> None:
     last_result_year = int(configuration["chartpack"]["last_result_year"])
     validate_year(first_result_year, projection_years, "First result")
     validate_year(last_result_year, projection_years, "Last result")
-    assert first_result_year <= last_result_year, "first_result_year must be <= last_result_year"
+    assert (
+        first_result_year <= last_result_year
+    ), "first_result_year must be <= last_result_year"
 
     layers_by_id = layer_lookup(configuration["layers"])
     overwrite = bool(experiment_config["overwrite_generated_files"])

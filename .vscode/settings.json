@@ -1,4 +1,6 @@
 {
+  "chat.disableAIFeatures": false,
+
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.detectIndentation": true,
   "editor.formatOnPaste": false,
@@ -54,6 +56,15 @@
   "python.linting.pylintPath": "/usr/local/py-utils/bin/pylint",
   "python.terminal.executeInFileDir": false,
 
+  "python.analysis.ignore": [
+    "**/venv_gcubed_*/lib/python3.12/site-packages/gcubed/**"
+  ],
+  "python.analysis.exclude": [
+    "**/node_modules",
+    "**/__pycache__",
+    "**/.*"
+  ],
+
   "terminal.integrated.inheritEnv": true,
   "terminal.integrated.cwd": "${workspaceFolder}",
   "telemetry.telemetryLevel": "off",
@@ -62,5 +73,8 @@
   "workbench.colorTheme": "Dark Modern",
   "workbench.editorAssociations": {
     "*.md": "vscode.markdown.preview.editor"
-  }
+  },
+  "python-envs.pythonProjects": [],
+  "python-envs.defaultEnvManager": "ms-python.python:venv",
+  "python.useEnvironmentsExtension": false
 }

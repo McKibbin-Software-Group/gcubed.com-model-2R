@@ -228,7 +228,9 @@ REQUIRED_CONFIGURATION_SECTIONS: tuple[str, ...] = (
 
 def load_baseline_configuration() -> dict:
     configuration = yaml.safe_load(BASELINE_CONFIGURATION_YAML)
-    assert isinstance(configuration, dict), "The baseline configuration YAML must parse to a mapping."
+    assert isinstance(
+        configuration, dict
+    ), "The baseline configuration YAML must parse to a mapping."
     missing_sections = [
         section
         for section in REQUIRED_CONFIGURATION_SECTIONS
@@ -253,7 +255,9 @@ def selected_members(selector_value, all_members: list[str]) -> list[str]:
         selector_value = [selector_value]
     result = list(selector_value)
     invalid = sorted(set(result) - set(all_members))
-    assert not invalid, f"Unknown selector members {invalid}; valid members are {all_members}"
+    assert (
+        not invalid
+    ), f"Unknown selector members {invalid}; valid members are {all_members}"
     return result
 
 
@@ -279,7 +283,9 @@ def variable_matches_selectors(variable_name: str, selectors: dict, sym_data) ->
     return True
 
 
-def derived_region_variables(variable_prefix: str, selectors: dict, sym_data) -> list[str]:
+def derived_region_variables(
+    variable_prefix: str, selectors: dict, sym_data
+) -> list[str]:
     regions = selected_members(selectors.get("regions"), sym_data.regions_members)
     return [f"{variable_prefix}({region})" for region in regions]
 
@@ -320,7 +326,9 @@ def pack_attributes(chartpack_config: dict) -> str:
 
 def chartpack_rows(chartpack_config: dict, sym_data) -> list[list[str]]:
     rows: list[list[str]] = [["type", "attributes", "variable", "label"]]
-    rows.append(["pack", pack_attributes(chartpack_config), "", chartpack_config["title"]])
+    rows.append(
+        ["pack", pack_attributes(chartpack_config), "", chartpack_config["title"]]
+    )
 
     for chart in chartpack_config["charts"]:
         rows.append(["chart", "", "", ""])
@@ -361,12 +369,12 @@ def main() -> None:
         model_directory_path / baseline_config["model_configuration_file_name"]
     )
 
-    assert baseline_directory_path.name == "baseline", (
-        "setup_baseline.py is expected to live in simulations/baseline."
-    )
-    assert model_configuration_file_path.exists(), (
-        f"Model configuration file not found at {model_configuration_file_path}"
-    )
+    assert (
+        baseline_directory_path.name == "baseline"
+    ), "setup_baseline.py is expected to live in simulations/baseline."
+    assert (
+        model_configuration_file_path.exists()
+    ), f"Model configuration file not found at {model_configuration_file_path}"
 
     if str(model_python_directory_path) not in sys.path:
         sys.path.insert(0, str(model_python_directory_path))
@@ -374,7 +382,9 @@ def main() -> None:
     from gcubed.model import Model
     from gcubed.model_configuration import ModelConfiguration
 
-    model_configuration = ModelConfiguration(configuration_file=model_configuration_file_path)
+    model_configuration = ModelConfiguration(
+        configuration_file=model_configuration_file_path
+    )
     model = Model(configuration=model_configuration)
     sym_data = model.sym_data
 
@@ -398,7 +408,9 @@ def main() -> None:
     write_text(
         baseline_directory_path / files["run_script_file_name"],
         RUN_BASELINE_TEMPLATE.format(
-            model_configuration_file_name=baseline_config["model_configuration_file_name"],
+            model_configuration_file_name=baseline_config[
+                "model_configuration_file_name"
+            ],
             solved_model_file_name=run_config["solved_model_file_name"],
             force_model_to_resolve=run_config["force_model_to_resolve"],
             show_baseline_charts=run_config["show_baseline_charts"],

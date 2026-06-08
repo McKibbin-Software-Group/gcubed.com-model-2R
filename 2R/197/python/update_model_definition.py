@@ -19,7 +19,6 @@ import re
 import shutil
 import subprocess
 
-
 # Get the path to the model directory, relative to this script.
 python_directory_path: Path = Path(__file__).resolve().parent
 model_directory_path: Path = python_directory_path.parent
@@ -89,8 +88,12 @@ def main() -> None:
     model_output_stem: str = f"model_{version}_{build}"
     sym_executable: str = os.environ.get("SYM", sym_executable_name)
 
-    assert sym_directory_path.exists(), f"SYM directory not found at {sym_directory_path}"
-    assert root_sym_file_path.exists(), f"Root SYM file not found at {root_sym_file_path}"
+    assert (
+        sym_directory_path.exists()
+    ), f"SYM directory not found at {sym_directory_path}"
+    assert (
+        root_sym_file_path.exists()
+    ), f"Root SYM file not found at {root_sym_file_path}"
     assert shutil.which(sym_executable) is not None, (
         f"SYM processor executable not found: {sym_executable}. "
         "Set the SYM environment variable or edit sym_executable_name."
