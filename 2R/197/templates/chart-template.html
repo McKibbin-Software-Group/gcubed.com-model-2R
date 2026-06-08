@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>G-Cubed Charts</title>
+
+  <!-- FreeStylin! -->
+  <!-- https://open.spotify.com/track/47xLbuUdmD03ATrke934S1?si=791d3bd4e7684aa4 -->
+  <style>
+
+{% raw %}
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,400;0,500;0,700;1,600&display=swap');
+
+:root {
+  --header-fade-in-time: 4.5s;
+}
+
+
+body,
+html {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  overflow: hidden;
+  font-family: 'Poppins', arial, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: rgb(15, 76, 117);
+}
+
+.container {
+  display: grid;
+  grid-template-areas:
+    "header header"
+    "filter main-content"
+    "footer footer";
+  grid-template-rows: auto 1fr 1rem;
+  grid-template-columns: 11rem 1fr;
+  grid-column-gap: 0.5rem;
+  height: 100vh;
+  max-width: 85rem;
+  margin: 0 auto;
+  padding: 0px;
+  box-sizing: border-box;
+  overflow: hidden;
+
+}
+
+header {
+  height: 84px;
+  grid-area: header;
+  overflow: hidden;
+  display: flex;
+  background-image: linear-gradient(
+    to right,
+    hsl(205, 44%, 40%),
+    hsl(204, 57%, 30%)
+  );
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+}
+
+.logo-container {
+  width: auto;
+  height: 80%;
+  display: flex;
+  opacity: 0;
+  margin-left: 1rem;
+  margin-right: auto;
+  animation: fadeIn var(--header-fade-in-time) forwards;
+}
+
+.logo-container svg {
+  width: 100%;
+  height: auto;
+  aspect-ratio: auto 158.31 / 64;
+}
+
+.header-text {
+  color: whitesmoke;
+  font-size: 2rem;
+  opacity: 0;
+  text-align: center;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: fadeIn var(--header-fade-in-time) forwards;
+  line-height: 0.8;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+.filter {
+  grid-area: filter;
+  padding: 0;
+  top: 0;
+  overflow-y: auto;
+  margin-left: 1rem;
+}
+
+.selection-div {
+  margin-top: 1rem;
+}
+
+.selection-div-checkboxes {
+  font-size: 0.7rem;
+}
+
+.selection-div-checkboxes label {
+  display: block;
+  overflow-wrap: anywhere;
+}
+
+.chart-column {
+  grid-area: main-content;
+  overflow: auto;
+  width: 100%;
+  font-size: 0.8rem;
+}
+
+.text-danger {
+  max-height: 4rem;
+  overflow-y: auto;
+  font-size: 0.8rem;
+  transition: background-color 0.3s ease-in-out;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.text-danger:not(:empty) {
+  background-color: orange;
+  color: black;
+  border: 5px dashed red;
+}
+
+.btn-group {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+  margin-top: 2rem;
+}
+
+.btn {
+  background-color: #0069d9;
+  background-image: linear-gradient(#316fe7, #1a5ee0);
+  color: whitesmoke;
+  padding: 0.5rem 1rem;
+  border: none;
+  cursor: pointer;
+  border-radius: 0.25rem;
+  font-size: 0.8rem;
+  margin: 1rem;
+}
+
+.gCubedChartDiv {
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
+}
+
+.gCubedChartPlotlyDiv {
+  max-width: 100%;
+  width: 100%;
+}
+
+.applicableSectors {
+  font-size: 0.8rem;
+}
+
+.chartDataTable table {
+  border-collapse: separate;
+  border-spacing: 0.9rem 0.15rem;
+  width: max-content;
+}
+
+.chartDataTable th {
+  max-width: 8rem;
+  overflow-wrap: normal;
+  text-align: center;
+  white-space: normal;
+  width: 1%;
+}
+
+.chartDataTable th:first-child,
+.chartDataTable td:first-child {
+  text-align: left;
+}
+
+.chart-data-number-cell {
+  text-align: right;
+  white-space: nowrap;
+}
+
+.chart-data-number {
+  display: inline-grid;
+  grid-template-columns:
+    calc(var(--decimal-left-chars) * 1ch)
+    1ch
+    calc(var(--decimal-right-chars) * 1ch);
+  width: max-content;
+  min-width: max-content;
+  font-family: ui-monospace, SFMono-Regular, Consolas, 'Liberation Mono', monospace;
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum";
+  white-space: nowrap;
+}
+
+.chart-data-number__integer {
+  text-align: right;
+}
+
+.chart-data-number__point,
+.chart-data-number__fraction {
+  text-align: left;
+}
+
+footer {
+  color: whitesmoke;
+  grid-area: footer;
+  background-image: linear-gradient(
+    to right,
+    hsl(205, 44%, 40%),
+    hsl(204, 57%, 30%)
+  );
+  padding: 0;
+  bottom: 0;
+  text-align: center;
+  font-size: 0.5rem;
+  font-weight: 400;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+
+@media print {
+  body,
+  html {
+    height: auto;
+    overflow: visible;
+  }
+
+  .container {
+    height: auto;
+    overflow: visible;
+    display: block;
+  }
+
+  .logo-container {
+    opacity: 1;
+  }
+
+  .filter,
+  .main-content,
+  footer {
+    position: static;
+    height: auto;
+    overflow: visible;
+  }
+
+  .main-content {
+    max-width: none;
+  }
+
+  header,
+  footer {
+    background-color: #0f4c75 !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+}
+
+{% endraw %}
+
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <header>
+      <div class="logo-container">
+        
+{% raw %}
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1395 563.95">
+  <defs>
+    <style>
+      .msg-logo-cls-1 {
+        fill: #fff;
+      }
+    </style>
+  </defs>
+  <g id="Layer_2" data-name="Layer 2">
+    <g id="Layer_1-2" data-name="Layer 1">
+      <rect class="msg-logo-cls-1" y="10.97" width="26" height="500" />
+      <rect class="msg-logo-cls-1" x="375" y="485.97" width="125" height="25" />
+      <rect class="msg-logo-cls-1" x="474" y="10.97" width="26" height="500" />
+      <rect class="msg-logo-cls-1" y="10.97" width="125" height="25" />
+      <rect
+        class="msg-logo-cls-1"
+        x="88.72"
+        y="74.34"
+        width="322"
+        height="25"
+      />
+      <path
+        class="msg-logo-cls-1"
+        d="M411,122.3V447.6H378V187.83L262,447.6H238L122,188.77V447.6H89V122.3h34.89L249.76,404.23,375.64,122.3Z"
+      />
+      <path
+        class="msg-logo-cls-1"
+        d="M697.53,11.93V144.65H684.07v-106l-47.32,106h-9.81L579.62,39.05v105.6H566.16V11.93h14.23l51.36,115,51.36-115Z"
+      />
+      <path
+        class="msg-logo-cls-1"
+        d="M728.5,63.57a46.67,46.67,0,0,1,18.08-18.85,52,52,0,0,1,26.36-6.63q19.42,0,32,9.61t16.26,26.16H806.79a29.55,29.55,0,0,0-11.64-17.79q-8.94-6.43-22.21-6.44a37.82,37.82,0,0,0-19.05,4.81,33.69,33.69,0,0,0-13.37,14.33q-4.9,9.51-4.9,23.37t4.9,23.47A33.59,33.59,0,0,0,753.89,130a37.82,37.82,0,0,0,19.05,4.81q13.26,0,22.21-6.44a29.61,29.61,0,0,0,11.64-18h14.43a44.1,44.1,0,0,1-16.35,26q-12.71,9.81-31.93,9.81a51.88,51.88,0,0,1-26.36-6.64A46.55,46.55,0,0,1,728.5,120.7Q722,108.49,722,92.14T728.5,63.57Z"
+      />
+      <path
+        class="msg-logo-cls-1"
+        d="M917.78,144.65,859.49,82.52v62.13H846V10.19h13.46v62.9l58.29-62.9H934.9L872,77.33l63.47,67.32Z"
+      />
+      <path
+        class="msg-logo-cls-1"
+        d="M955.09,16.93a9.7,9.7,0,0,1-2.88-7.12,9.36,9.36,0,0,1,2.88-7,10,10,0,0,1,13.85,0,9.34,9.34,0,0,1,2.89,7,9.67,9.67,0,0,1-2.89,7.12,9.77,9.77,0,0,1-13.85,0Zm13.66,22.7v105H955.29v-105Z"
+      />
+      <path
+        class="msg-logo-cls-1"
+        d="M1028.67,45q10.86-6.93,25.68-6.92a50.15,50.15,0,0,1,25.77,6.63,46.32,46.32,0,0,1,17.79,18.85q6.45,12.23,6.45,28.38t-6.45,28.46A46.67,46.67,0,0,1,1080,139.46a49.7,49.7,0,0,1-25.68,6.73q-15,0-25.87-6.83a40.66,40.66,0,0,1-15.87-17.79v23.08H999.33V2.31h13.28V62.9A42.58,42.58,0,0,1,1028.67,45Zm56.94,24.33a35.6,35.6,0,0,0-13.95-14.52,40,40,0,0,0-20-5A38.55,38.55,0,0,0,1031.94,55a37.06,37.06,0,0,0-14.14,14.81,46.3,46.3,0,0,0-5.19,22.32,46.26,46.26,0,0,0,5.19,22.31,36.93,36.93,0,0,0,14.14,14.81,38.56,38.56,0,0,0,19.71,5.2,39.34,39.34,0,0,0,20-5.1,35.94,35.94,0,0,0,13.95-14.81q5.09-9.72,5.09-22.6Q1090.7,78.87,1085.61,69.34Z"
+      />
+      <path
+        class="msg-logo-cls-1"
+        d="M1158.5,45q10.88-6.93,25.68-6.92A50.16,50.16,0,0,1,1210,44.72a46.45,46.45,0,0,1,17.79,18.85Q1234.2,75.8,1234.2,92t-6.45,28.46a46.69,46.69,0,0,1-17.89,19.05,49.68,49.68,0,0,1-25.68,6.73q-15,0-25.87-6.83a40.78,40.78,0,0,1-15.87-17.79v23.08h-13.27V2.31h13.27V62.9A42.71,42.71,0,0,1,1158.5,45Zm56.94,24.33a35.58,35.58,0,0,0-13.94-14.52,40,40,0,0,0-20-5A38.61,38.61,0,0,0,1161.77,55a37.1,37.1,0,0,0-14.13,14.81,46.19,46.19,0,0,0-5.2,22.32,46.15,46.15,0,0,0,5.2,22.31,37,37,0,0,0,14.13,14.81,38.62,38.62,0,0,0,19.72,5.2,39.34,39.34,0,0,0,20-5.1,35.92,35.92,0,0,0,13.94-14.81q5.1-9.72,5.1-22.6Q1220.54,78.87,1215.44,69.34Z"
+      />
+      <path
+        class="msg-logo-cls-1"
+        d="M1258.82,16.93a9.67,9.67,0,0,1-2.89-7.12,9.34,9.34,0,0,1,2.89-7,10,10,0,0,1,13.84,0,9.34,9.34,0,0,1,2.89,7,9.67,9.67,0,0,1-2.89,7.12,9.75,9.75,0,0,1-13.84,0Zm13.65,22.7v105H1259v-105Z"
+      />
+      <path
+        class="msg-logo-cls-1"
+        d="M1383.07,49.34Q1395,61,1395,83.1v61.55h-13.27v-60q0-17.13-8.56-26.16t-23.37-9q-15.21,0-24.24,9.61t-9,28.28v57.32h-13.47v-105h13.47V57.51A34.32,34.32,0,0,1,1331,42.8a44.13,44.13,0,0,1,21.35-5.1Q1371.14,37.7,1383.07,49.34Z"
+      />
+      <path
+        class="msg-logo-cls-1"
+        d="M583.56,326.22a38.31,38.31,0,0,1-15.87-12.89,33.84,33.84,0,0,1-6.15-18.47h14.23a27.06,27.06,0,0,0,8.66,17.22q7.7,7.41,22.5,7.4,13.67,0,21.64-7a22.67,22.67,0,0,0,8-17.79q0-8.66-4.43-13.94a27,27,0,0,0-11-7.89,172.41,172.41,0,0,0-18.08-5.68,156.49,156.49,0,0,1-21.35-7.11,34,34,0,0,1-13.47-10.77q-5.58-7.32-5.58-19.82a33,33,0,0,1,5.39-18.56,36.07,36.07,0,0,1,15.19-12.79,52.27,52.27,0,0,1,22.51-4.62q18.66,0,30.1,9.14a34.33,34.33,0,0,1,13.18,23.56H634.44q-1.35-8.26-9-14.71T604.63,205q-12.12,0-20.2,6.45t-8.08,17.6q0,8.46,4.42,13.66a28.19,28.19,0,0,0,11.06,7.88,162.73,162.73,0,0,0,18,5.77A161.93,161.93,0,0,1,631,263.61a34.44,34.44,0,0,1,13.66,10.86q5.57,7.32,5.57,19.62a34.54,34.54,0,0,1-5,17.89,36.41,36.41,0,0,1-14.81,13.66q-9.81,5.19-23.47,5.19A55.86,55.86,0,0,1,583.56,326.22Z"
+      />
+      <path
+        class="msg-logo-cls-1"
+        d="M695.51,324.39a48,48,0,0,1-18.66-18.85Q670,293.33,670,277T677,248.41a48.45,48.45,0,0,1,18.85-18.85,57.34,57.34,0,0,1,53.57,0,47.61,47.61,0,0,1,18.85,18.85Q775,260.62,775.05,277q0,16.17-6.92,28.47a47.9,47.9,0,0,1-19,18.95A55.17,55.17,0,0,1,722.15,331,53.57,53.57,0,0,1,695.51,324.39Zm45.88-9.81a36,36,0,0,0,14.33-14.23q5.47-9.53,5.48-23.38t-5.38-23.37a35.44,35.44,0,0,0-14.24-14.23,41.63,41.63,0,0,0-38.47,0A34.8,34.8,0,0,0,689,253.6q-5.29,9.53-5.29,23.37T689,300.35a35,35,0,0,0,14,14.23,39.78,39.78,0,0,0,19.14,4.71A40.31,40.31,0,0,0,741.39,314.58Z"
+      />
+      <path
+        class="msg-logo-cls-1"
+        d="M841,235.81H816.6v93.68H803.14V235.81H788.52V224.46h14.62v-7.31q0-17.11,8.75-25.2t28.37-8.08v11.55q-13.08,0-18.37,5t-5.29,16.73v7.31H841Z"
+      />
+      <path
+        class="msg-logo-cls-1"
+        d="M879.69,235.81V301q0,9.62,3.66,13.27T896.23,318h12.32v11.54H894.12q-14.24,0-21.16-6.64T866,301V235.81H851.42V224.46H866V198.11h13.66v26.35h28.86v11.35Z"
+      />
+      <path
+        class="msg-logo-cls-1"
+        d="M1069.16,224.46l-32.89,105H1022.8l-29-88.1-29,88.1H951.05l-32.89-105h13.66L958,315.83l29.43-91.37h13.46L1029.92,316l26-91.56Z"
+      />
+      <path
+        class="msg-logo-cls-1"
+        d="M1087.72,248.41a46.1,46.1,0,0,1,17.89-18.85,50.56,50.56,0,0,1,25.87-6.64q15,0,25.87,6.93A40.26,40.26,0,0,1,1173,247.54V224.46h13.46v105H1173V306.21a42.22,42.22,0,0,1-15.87,17.8q-10.87,7-25.87,7a49.68,49.68,0,0,1-25.68-6.74,46.54,46.54,0,0,1-17.89-19q-6.45-12.3-6.45-28.47T1087.72,248.41Zm80.12,6.25a37.13,37.13,0,0,0-14.14-14.81,38.61,38.61,0,0,0-19.72-5.19,39.83,39.83,0,0,0-20,5,35.42,35.42,0,0,0-14,14.52q-5.1,9.52-5.1,22.6,0,12.89,5.1,22.6a35.85,35.85,0,0,0,14,14.82,39.38,39.38,0,0,0,20,5.09,38.61,38.61,0,0,0,19.72-5.19,37.13,37.13,0,0,0,14.14-14.81,50.57,50.57,0,0,0,0-44.63Z"
+      />
+      <path
+        class="msg-logo-cls-1"
+        d="M1244.29,227.92q9.14-5.37,22.41-5.38v14h-3.65q-14.62,0-23.47,7.89t-8.85,26.35v58.67h-13.46v-105h13.46v18.66A33,33,0,0,1,1244.29,227.92Z"
+      />
+      <path
+        class="msg-logo-cls-1"
+        d="M1381.54,282.17H1294.4q.58,11.93,5.77,20.39a34,34,0,0,0,13.66,12.79,40,40,0,0,0,18.47,4.33q13.07,0,22-6.35a29.8,29.8,0,0,0,11.83-17.12h14.23a44.41,44.41,0,0,1-16.44,25.1q-12.6,9.72-31.64,9.72a53,53,0,0,1-26.55-6.64,46.84,46.84,0,0,1-18.37-18.85q-6.63-12.21-6.64-28.57t6.54-28.66a45.47,45.47,0,0,1,18.28-18.85,54,54,0,0,1,26.74-6.54q15,0,26.25,6.54a45.23,45.23,0,0,1,17.31,17.6,50.22,50.22,0,0,1,6.06,24.53Q1381.92,278.51,1381.54,282.17Zm-18-31a31.78,31.78,0,0,0-13.37-12.5,40.69,40.69,0,0,0-18.46-4.24,36.69,36.69,0,0,0-25.58,9.62q-10.59,9.63-11.74,27.12h73.87Q1368.45,259.47,1363.55,251.2Z"
+      />
+      <path
+        class="msg-logo-cls-1"
+        d="M672,419.11a46,46,0,0,0-17.6-20.87q-11.83-7.61-27.79-7.6a52.59,52.59,0,0,0-26.93,6.93,49.37,49.37,0,0,0-18.86,19.71q-6.91,12.8-6.92,29.72t6.92,29.82a49.32,49.32,0,0,0,18.86,19.81,55.83,55.83,0,0,0,52.22.86,46.86,46.86,0,0,0,18.08-17.31q6.83-11.25,7.79-26.26H621.17V443H692v9.81a68.19,68.19,0,0,1-9.62,32,63.19,63.19,0,0,1-23.18,22.6,64.74,64.74,0,0,1-32.6,8.27,66.57,66.57,0,0,1-33.86-8.75,63.2,63.2,0,0,1-24-24.43Q560,466.82,560,447t8.75-35.49a63.2,63.2,0,0,1,24-24.43,66.67,66.67,0,0,1,33.86-8.75q21.54,0,37.7,10.77t23.46,30Z"
+      />
+      <path
+        class="msg-logo-cls-1"
+        d="M743.6,412.76q9.14-5.38,22.41-5.38v14h-3.65q-14.62,0-23.47,7.88T730,455.66v58.66H716.58v-105H730V428A32.92,32.92,0,0,1,743.6,412.76Z"
+      />
+      <path
+        class="msg-logo-cls-1"
+        d="M805.54,509.23a48,48,0,0,1-18.66-18.85q-6.82-12.22-6.83-28.57T787,433.25a48.38,48.38,0,0,1,18.85-18.85,54,54,0,0,1,26.74-6.64,54.54,54.54,0,0,1,26.83,6.64,47.54,47.54,0,0,1,18.85,18.85q6.82,12.21,6.83,28.56,0,16.15-6.93,28.47a47.88,47.88,0,0,1-19,19,55.16,55.16,0,0,1-26.93,6.63A53.56,53.56,0,0,1,805.54,509.23Zm45.88-9.81a36,36,0,0,0,14.33-14.24q5.47-9.51,5.48-23.37t-5.39-23.37a35.3,35.3,0,0,0-14.23-14.23,41.55,41.55,0,0,0-38.47,0A34.74,34.74,0,0,0,799,438.44q-5.29,9.53-5.29,23.37T799,485.18a35,35,0,0,0,14,14.24,39.78,39.78,0,0,0,19.14,4.71A40.31,40.31,0,0,0,851.42,499.42Z"
+      />
+      <path
+        class="msg-logo-cls-1"
+        d="M1000.68,409.3v105H987.22V495.86a32.27,32.27,0,0,1-14.23,15,44.68,44.68,0,0,1-21.55,5.2q-18.86,0-30.77-11.64t-11.93-33.76V409.3H922v59.82q0,17.13,8.56,26.16t23.37,9q15.19,0,24.24-9.62t9-28.27V409.3Z"
+      />
+      <path
+        class="msg-logo-cls-1"
+        d="M1060.6,414.78q10.88-7,25.87-7a50.2,50.2,0,0,1,25.68,6.64A46.11,46.11,0,0,1,1130,433.25q6.45,12.21,6.45,28.37T1130,490.09a46.67,46.67,0,0,1-17.89,19,49.68,49.68,0,0,1-25.68,6.73q-14.81,0-25.77-7a42.29,42.29,0,0,1-16-17.6V564h-13.27V409.3h13.27v23.08A42.57,42.57,0,0,1,1060.6,414.78ZM1117.73,439a35.54,35.54,0,0,0-13.94-14.53,40,40,0,0,0-20-5,38.52,38.52,0,0,0-19.72,5.2,37,37,0,0,0-14.13,14.81,50.46,50.46,0,0,0,0,44.62,37.06,37.06,0,0,0,14.13,14.82,38.61,38.61,0,0,0,19.72,5.19,39.34,39.34,0,0,0,20-5.1,35.8,35.8,0,0,0,13.94-14.81q5.1-9.71,5.1-22.6Q1122.83,448.54,1117.73,439Z"
+      />
+    </g>
+  </g>
+</svg>
+
+{% endraw %}
+
+      </div>
+      <div class="header-text">G-Cubed Charts</div>
+    </header>
+
+
+
+    <div class="filter">
+      <div id="region-filter-container" class="selection-div"><p>Region Selection</p></div>
+      <div id="sector-filter-container" class="selection-div"><p>Sector Selection</p></div>
+      <div id="global-variable-filter-container" class="selection-div"><p>Global Variables</p></div>
+    </div>
+
+    <div class="chart-column">
+      <h1 id="documentTitle"></h1>
+      <h2 id="documentSubtitle"></h2>
+      <h3 id="modelAndBuildLabel"></h3>
+      <div id="timestamp"></div>
+      <div id="documentation"></div>
+      <ul id="file-list" class="file-list"></ul>
+      <div id="chartpack-file-status"></div>
+      <div id="data-file-status"></div>
+      <div id="warnings" class="text-danger"></div>
+      <div class="col-12 text-center">
+        <div class="btn-group" role="group" aria-label="Chart export buttons">
+          <button id="saveSVGChartsButton" class="btn btn-primary">
+            Export SVG charts
+          </button>
+          <button id="saveJPEGChartsButton" class="btn btn-primary ml-2">
+            Export JPEG charts
+          </button>
+          <button id="savePNGChartsButton" class="btn btn-primary ml-2">
+            Export PNG charts
+          </button>
+          <button id="downloadCsvDataButton" class="btn btn-primary ml-2">
+            Download CSV data
+          </button>
+        </div>
+      </div>
+      <div class="col-12 row chart-container" id="chart-container"></div>
+    </div>
+
+    <footer>
+      <p>&copy; 2025 G-Cubed. All rights reserved.</p>
+    </footer>
+  </div>
+
+  
+  <script>
+    // gcubed-charts configuration
+    // TODO: build a better structure once requirements finalised
+    document.gcubed_config = {
+      // page elements
+      'chartContainer': document.getElementById('chart-container'),
+      'chartpackStatusContainer': document.getElementById("chartpack-file-status"),
+      'dataStatusContainer': document.getElementById("data-file-status"),
+      'regionFilterContainer': document.getElementById("region-filter-container"),
+      'sectorFilterContainer': document.getElementById("sector-filter-container"),
+      'globalVariableFilterContainer': document.getElementById("global-variable-filter-container"),
+      'saveSVGChartsButton': document.getElementById('saveSVGChartsButton'),
+      'saveJPEGChartsButton': document.getElementById('saveJPEGChartsButton'),
+      'savePNGChartsButton': document.getElementById('savePNGChartsButton'),
+      'downloadCsvDataButton': document.getElementById('downloadCsvDataButton'),
+      'warningsContainer': document.getElementById('warnings'),
+      'documentationContainer': document.getElementById('documentation'),
+      'timestampContainer': document.getElementById('timestamp'),
+      'documentTitleContainer': document.getElementById('documentTitle'),
+      'documentSubtitleContainer': document.getElementById('documentSubtitle'),
+      'modelAndBuildLabelContainer': document.getElementById('modelAndBuildLabel'),
+
+      // fixed config
+      'showChartAnnotations': { 'selectedRegions': false, 'includedSectors': true, 'sectorsHovertexOnRegions': false},
+
+      // all user input is b64 encoded so that Jinja2 doesn't get confused down the line
+      'b64Encoded': {
+        'modelVersion': `{{ modelVersion }}`,
+        'modelBuild': `{{ modelBuild }}`,
+        'isoTimestampString': `{{ isoTimestampString }}`,
+        'documentationMdContent': `{{ documentationMdContent }}`,
+        'chartPackCSV': `{{ chartPackCSV }}`,
+        'projectionsCSV': `{{ projectionsCSV }}`,
+        'documentTitle': `{{ documentTitle }}`,
+        'documentSubtitle': `{{ documentSubtitle }}`,
+      }
+    }
+  </script>
+  
+
+  <!-- Insert scripts required to build graphs. -->
+  
+    <!-- <script src="https://cdn.plot.ly/plotly-latest.min.js"></script> -->
+    <script src="https://cdn.plot.ly/plotly-3.0.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.7.1/jszip.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    
+  
+
+  <!-- We bundle the local repo for both online & offline if the qualifier is "repo" -->
+  
+    <script>
+      
+{% raw %}
+!function(){"use strict";const e=[239,187,191],t=[255,254],n=[254,255];function a(e){return o(function(e){const t=new Uint8Array(e.length);for(let n=0;n<e.length;n++)t[n]=e.charCodeAt(n);return t}(atob(e)))}async function r(e){return"function"==typeof e.arrayBuffer?o(new Uint8Array(await e.arrayBuffer())):new Promise(((t,n)=>{const a=new FileReader;a.onload=e=>{t(o(new Uint8Array(e.target.result)))},a.onerror=()=>{n(a.error||new Error("Unable to read file."))},a.readAsArrayBuffer(e)}))}function o(a){if(s(a,e))return i(a,"utf-8");if(s(a,t))return i(a,"utf-16le");if(s(a,n))return i(a,"utf-16be");try{return i(a,"utf-8",{fatal:!0})}catch{return i(a,"windows-1252")}}function i(e,t,n={}){const a=globalThis.TextDecoder;if(!a)throw new Error("TextDecoder is required to decode chart data.");return 65279===(r=new a(t,n).decode(e)).charCodeAt(0)?r.slice(1):r;var r}function s(e,t){return t.every(((t,n)=>e[n]===t))}function c(e){return console.time("prepareInputData"),(e=function(e){const t=e.b64Encoded;for(const[n,r]of Object.entries(t))try{e[n]=a(r),delete t[n]}catch(e){return console.error("Error decoding base64 configuration data",e),!1}return e}(e))?(e.documentationMdContent=marked.parse(e.documentationMdContent),console.timeEnd("prepareInputData"),e):(alert("documentationMdContent, chartPackCSV and projectionsCSV must all be base64 encoded in the containing HTML file."),console.timeEnd("prepareInputData"),!1)}function l(e,t,n,a={}){return Promise.all(Array.from(e).map((e=>async function(e,t,n,a){const{readFileAsDecodedText:o=r,logger:i=console}=a;try{const a=await o(e);!function(e){const t=e.indexOf("\n"),n=-1===t?e:e.substring(0,t);return n.includes("type")&&n.includes("attributes")&&n.includes("variable")&&n.includes("label")}(a)?n.updateDataStatus(e,a,t):n.updateChartpackStatus(e,a,t)}catch(t){i.error(`Unable to read '${e.name}'.`,t)}}(e,t,n,a))))}async function u(e,t){const n=new JSZip,{prefix:a,needsBase64:r}={svg:{prefix:"data:image/svg+xml,",needsBase64:!1},jpeg:{prefix:"data:image/jpeg;base64,",needsBase64:!0},png:{prefix:"data:image/png;base64,",needsBase64:!0}}[t];return e.forEach((({fileName:e,data:t})=>{const o=t.startsWith(a)?t.slice(a.length):t;r?n.file(e,o,{base64:!0}):n.file(e,decodeURIComponent(o))})),await n.generateAsync({type:"blob"})}function d(e){const t=(e=String(e)).lastIndexOf("."),n=t>0,a=n?e.slice(0,t):e,r=n?e.slice(t+1):"";let o=a.replace(/\s+/g,"-").replace(/[^a-zA-Z0-9\-_]/g,"").replace(/^[-_]+|[-_]+$/g,"");o||(o="untitled");return o.length>255&&(o=o.slice(0,255)),r?`${o}.${r}`:o}function p(e,t,n){const a=URL.createObjectURL(e),r=document.createElement("a");r.href=a,r.download=d(t),r.style.visibility="hidden",n.chartContainer.appendChild(r),r.click(),n.chartContainer.removeChild(r),setTimeout((()=>{URL.revokeObjectURL(a)}),1e4)}function h(e,t){const n=t.modelVersion?`_${t.modelVersion}`:"",a=t.modelBuild?`_${t.modelBuild}`:"",r=t.isoTimestampString?`_${f(t.isoTimestampString)}`:"";if(n||a||r){const t=e.lastIndexOf(".");if(t>0){return`${e.slice(0,t)}_G-Cubed${n}${a}${r}${e.slice(t)}`}return`${e}_G-Cubed${n}${a}${r}`}return e}function f(e){const t=new Date(e);return`${t.getFullYear()}${String(t.getMonth()+1).padStart(2,"0")}${String(t.getDate()).padStart(2,"0")}-${String(t.getHours()).padStart(2,"0")}${String(t.getMinutes()).padStart(2,"0")}-${t.toLocaleTimeString("en-AU",{timeZoneName:"short"}).split(" ")[2]}`}function m(e,t){0===e.length?t.warningsContainer.textContent="":t.warningsContainer.innerHTML=e.join("<br>")}function g(e,t){!function(e){if("function"!=typeof e?.updateChartpackStatus||"function"!=typeof e?.updateDataStatus)throw new TypeError("preparePage requires chartpack and projections update handlers.")}(t),e.documentTitleContainer.textContent=e.documentTitle,e.documentSubtitleContainer.textContent=e.documentSubtitle,e.modelAndBuildLabelContainer.textContent=`G-Cubed Model: ${e.modelVersion} Build: ${e.modelBuild}`,e.documentationContainer.innerHTML=e.documentationMdContent,e.timestampContainer.textContent=`Generated ${new Date(e.isoTimestampString).toString()}`,function(e){e.saveSVGChartsButton.style.display="block",e.saveJPEGChartsButton.style.display="block",e.savePNGChartsButton.style.display="block",e.downloadCsvDataButton.style.display="block"}(e),function(e,t){document.addEventListener("dragover",(e=>{e.preventDefault()})),document.addEventListener("drop",(n=>{n.preventDefault(),l(n.dataTransfer.files,e,t)})),e.saveSVGChartsButton.addEventListener("click",(async function(){const t=await b(e.chartContainer,"svg",1);p(await u(t,"svg"),h("SVG_charts.zip",e),e)})),e.saveJPEGChartsButton.addEventListener("click",(async function(){const t=await b(e.chartContainer,"jpeg",3);p(await u(t,"jpeg"),h("JPEG_charts.zip",e),e)})),e.savePNGChartsButton.addEventListener("click",(async function(){const t=await b(e.chartContainer,"png",3);p(await u(t,"png"),h("PNG_charts.zip",e),e)})),e.downloadCsvDataButton.addEventListener("click",(function(){const t=`G-Cubed_${e.modelVersion}_${e.modelBuild}_${f(e.isoTimestampString)}.csv`;p(new Blob([e.projectionsCSV],{type:"text/csv;charset=utf-8;"}),t,e)}))}(e,t)}async function b(e,t,n=3){const a=e.querySelectorAll(".gCubedChartPlotlyDiv"),r=[];let o=1;for(const e of a){const a=d("Chart "+o+" - "+e.querySelector(".gtitle").textContent),i=await Plotly.toImage(e,{format:t,scale:n});r.push({fileName:`${a}.${t}`,data:i}),o++}return r}class C{constructor(){this._attributes={},this._warnings=[]}static get typeColumn(){return"type"}static get attributesColumn(){return"attributes"}static get variableColumn(){return"variable"}static get labelColumn(){return"label"}static get requiredColumns(){return[C.typeColumn,C.attributesColumn,C.variableColumn,C.labelColumn]}static get chartpack_attributes(){return[C.minName,C.maxName,C.startName,C.endName]}static get chart_attributes(){return[C.minName,C.maxName,C.startName,C.endName]}static get series_attributes(){return[C.colorName,C.lineName]}static get colorName(){return"color"}static get lineName(){return"line"}static get minName(){return"min"}static get maxName(){return"max"}static get startName(){return"start_year"}static get endName(){return"end_year"}addWarning(e){e&&this._warnings.push(e)}get warnings(){return this._warnings}get label(){return this._label}set label(e){this._label=e}get startYear(){const e=this._attributes[C.startName];return e?parseInt(e,10):null}get endYear(){const e=this._attributes[C.endName];return e?parseInt(e,10):null}populateAttributes(e){if(!e)return;e.split("|").forEach((e=>{const[t,n]=e.split("=");this._attributes[t]=n}))}hasAttribute(e){return Object.prototype.hasOwnProperty.call(this._attributes,e)}attribute(e){return this._attributes[e]}}class S extends Error{constructor(e){super(e),this.name="ValidationError"}}class y extends C{constructor(e){super(),this._variableName=e[C.variableColumn],this.label=e[C.labelColumn],this.populateAttributes(e[C.attributesColumn]);const t=C.series_attributes;if(Object.keys(this._attributes).forEach((e=>{if(!t.includes(e))throw new S(`Attribute, ${e}, is not a valid series attribute.`)})),!this.colorIsValid(this.colorValue))throw new S(`Series color, ${this.colorValue}, is not a valid HTML color.`);if(!this.lineIsValid(this.lineValue))throw new S(`Series line style, ${this.lineValue}, is not valid. Valid line styles are: solid, dot, dash, longdash, dashdot, longdashdot.`)}get variableName(){return this._variableName}get colorValue(){return this._attributes[C.colorName]}colorIsValid(e){if(!e)return!0;let t=(new Option).style;return t.color=e,t.color==e}lineIsValid(e){if(!e)return!0;return["solid","dot","dash","longdash","dashdot","longdashdot"].includes(e)}get lineValue(){return this._attributes[C.lineName]||"solid"}}class v extends C{constructor(e){super(),this.label=e[C.labelColumn],this.populateAttributes(e[C.attributesColumn]);const t=C.chart_attributes;Object.keys(this._attributes).forEach((e=>{if(!t.includes(e))throw new S(`Attribute, ${e}, is not a valid chart attribute.`)})),this._series=[]}get series(){return this._series}addSeries(e){if(!(e instanceof y))throw new S("Object must be a series to be added to a chart");this._series.push(e)}get variablesInChart(){return this._series.map((e=>e.variableName))}get maxValue(){const e=this._attributes[C.maxName];return e?parseFloat(e):null}get minValue(){const e=this._attributes[C.minName];return e?parseFloat(e):null}}class k extends C{constructor(e){super(),this._charts=[];let t=null,n=null,a=!0;e.forEach((e=>{const r=e[C.typeColumn];if(a){if("pack"!=r)throw new S("First row of the chartpack must have type = 'pack'.");a=!1}if("pack"===r)this.setPackDetails(e);else if("chart"===r)t&&this.addChart(t),t=new v(e);else if("series"===r)n=new y(e),t.addSeries(n);else if(""!=r)throw new S(`Invalid type, '${r}', in chartpack. Type must be 'pack', 'chart', or 'series'.`)})),t&&this.addChart(t)}setPackDetails(e){this.label=e[C.labelColumn],this.populateAttributes(e[C.attributesColumn]);const t=C.chartpack_attributes;Object.keys(this._attributes).forEach((e=>{if(!t.includes(e))throw new S(`Attribute, ${e}, is not a valid chartpack attribute.`)}))}addChart(e){if(!(e instanceof v))throw new S("Object must be a chart to be added to a pack");this._charts.push(e)}get charts(){return this._charts}get maxValue(){const e=this._attributes[C.maxName];return e?parseFloat(e):null}get minValue(){const e=this._attributes[C.minName];return e?parseFloat(e):null}}const w=["type","attributes","variable","label"],x=["prefix","set_member_descriptions","description","units","vector","region"],M=/,(?=[a-zA-Z0-9_]+=)/,L=/^[ag]\d+$/i,D=/\(([^)]*)\)/;function E(e,t,n={}){V(e,(e=>{if(O(e.meta.fields,w))try{t({validHeaders:!0,chartpack:new k(e.data)})}catch(e){t({validHeaders:!0,error:e})}else t({validHeaders:!1})}),n)}function A(e,t,n={}){const a=n.regionLookupMap||new Map,r=n.sectorCodeLookupMap||n.sectorLookupMap||new Map,o=n.globalVariableLookupMap||new Map,i={regionLookupMap:a,sectorCodeLookupMap:r,globalVariableLookupMap:o};console.time("parseProjectionsCSV"),V(e,(e=>{const n=e.meta.fields;if(!O(n,x))return console.timeEnd("parseProjectionsCSV"),void t(_({validHeaders:!1},i));if(!function(e){return"prefix"===e[1]}(n))return console.timeEnd("parseProjectionsCSV"),void t(_({validHeaders:!1,error:"Projections CSV must include the variable ID as the first column, immediately before 'prefix'."},i));const s=function(e,t){const n=new Set,a=new Set,r=[];if(e.forEach(((e,o)=>{if(function(e){return Object.values(e).every((e=>!e))}(e))return;const i=e[t];i?(n.has(i)&&a.add(i),n.add(i)):r.push(o+2)})),r.length>0)return`Projection variable IDs are mandatory. Missing ID(s) on row(s): ${r.join(", ")}.`;if(a.size>0)return`Projection variable IDs must be unique. Duplicate ID(s): ${[...a].join(", ")}.`}(e.data,n[0]);if(s)return console.timeEnd("parseProjectionsCSV"),void t(_({validHeaders:!1,error:s},i));const c=function(e,t,n,a,r){const o={},i=t[0];return e.forEach((e=>{const t=e[i];t&&(o[t]=e,function(e,t,n){const a=j(e);if(!a)return;a.forEach(((a,r)=>{if(!L.test(a))return;const o=a[0].toLowerCase();if("a"!==o&&"g"!==o)return void console.error(`buildSectorLookup: Found dimension that looks like a good or sector but isn't: ${a}`);const i=t.set_member_descriptions.trim();if(!i)return void console.error(`buildSectorLookup: No set member descriptions found for variable ${e}`);const s="g"===o?"goods":"sector",c=a.toLowerCase(),l=I(i),u=l[r]?l[r].split("=")[1]:"",d={[s]:u},p=n.get(c);if(p){const e=p[s];e?e!==u&&console.error(`buildSectorLookup: Conflicting sector description for '${s}' with key '${c}'. Existing: '${e}', New: '${u}' found in '${i}', keeping the existing value.`):(p[s]=u,n.set(c,p))}else n.set(c,d)}))}(t,e,a),function(e,t,n){if(!F(e))return;n.set(e,function(e,t){const n=t.description?t.description.trim():"";return n?`${n} (${e})`:e}(e,t))}(t,e,r)),function(e,t){const n=e.region,a=e.set_member_descriptions;if(!n||!a)return;const r=a.match(/regions=([^,]+)/);if(!r)return;const o=r?T(r[1]):null,i=t.get(n);i?i===n?t.set(n,o):i!==o&&console.error(`Region code ${n} has conflicting names: ${i} and ${o}. Will use first found: ${i}`):t.set(n,o||n)}(e,n)})),o}(e.data,n,a,r,o);!function(e){const t=Array.from(e.entries()).sort((([e],[t])=>P(e,t)));e.clear(),t.forEach((([t,n])=>{let a;a=n.sector?n.sector:n.goods?n.goods:"Unknown",e.set(t,T(a))}))}(r),function(e){const t=Array.from(e.entries()).sort((([e,t],[n,a])=>$(t,a)||$(e,n)));e.clear(),t.forEach((([t,n])=>{e.set(t,n)}))}(o),console.timeEnd("parseProjectionsCSV"),t(_({validHeaders:!0,projectionsData:c},i))}),n)}function _(e,{regionLookupMap:t,sectorCodeLookupMap:n,globalVariableLookupMap:a}){return{...e,regionLookupMap:t,sectorCodeLookupMap:n,sectorLookupMap:n,globalVariableLookupMap:a}}function V(e,t,n={}){const{papaParser:a=Papa}=n;a.parse(e,{header:!0,complete:t})}function $(e,t){const n=String(e).toLowerCase(),a=String(t).toLowerCase();return n<a?-1:n>a?1:0}function N(e){const t=j(e);if(t)return t.filter((e=>L.test(e))).map((e=>e.toLowerCase()))}function P(e,t){const n=String(e).toLowerCase(),a=String(t).toLowerCase();return n<a?-1:n>a?1:0}function F(e){const t=j(e);return Array.isArray(t)&&0===t.length}function j(e){if(!e)return;const t=e.match(D);if(!t)return;const n=t[1].trim();return n?n.split(",").map((e=>e.trim())):[]}function O(e,t){return t.every((t=>e.includes(t)))}function I(e){return e&&e.trim()?e.split(M).map((e=>e.trim())):[]}function T(e){return e.split(" ").map((e=>e.charAt(0).toUpperCase()+e.slice(1))).join(" ")}function B(){const e={chartpackData:null,projectionsData:null,regionLookupMap:new Map,sectorCodeLookupMap:new Map,globalVariableLookupMap:new Map,regionFilterSelector:null,sectorFilterSelector:null,globalVariableFilterSelector:null};return Object.defineProperty(e,"sectorLookupMap",{enumerable:!0,get(){return this.sectorCodeLookupMap},set(e){this.sectorCodeLookupMap=e}}),e}function z(e){return Boolean(e.chartpackData&&e.projectionsData)}function H(e){return e.regionFilterSelector.currentSelectedOptions}function G(e){return e.sectorFilterSelector.currentSelectedOptions}function U(e){return e.globalVariableFilterSelector?e.globalVariableFilterSelector.currentSelectedOptions:new Set(e.globalVariableLookupMap.keys())}function R({file:e,fileContent:t,config:n,chartState:a,onDataLoaded:r,loadChartpackCsv:o=E}){q(n),n.chartpackStatusContainer.textContent="",o(t,(function(t){if(t.validHeaders){if(t.error)return m([t.error.message],n),void(n.chartpackStatusContainer.textContent="Error parsing chartpack.");a.chartpackData=t.chartpack,n.chartpackStatusContainer.textContent=`Successfully imported chartpack ${e.name}.`,setTimeout((()=>{n.chartpackStatusContainer.textContent=""}),2e3),r()}else n.chartpackStatusContainer.textContent="Invalid chartpack CSV file format."}))}function Y({file:e,fileContent:t,config:n,chartState:a,onDataLoaded:r,loadProjectionsCsv:o=A}){!function(e){e.regionLookupMap.clear(),e.sectorCodeLookupMap.clear(),e.globalVariableLookupMap.clear()}(a),q(n),n.dataStatusContainer.textContent="",o(t,(function(t){t.validHeaders?0===n.dataStatusContainer.textContent.length&&(a.projectionsData=t.projectionsData,n.dataStatusContainer.textContent=`Successfully imported projections '${e.name}'.`,setTimeout((()=>{n.dataStatusContainer.textContent=""}),1500),r()):n.dataStatusContainer.textContent=t.error||"Invalid column headings in the projections CSV file."}),{regionLookupMap:a.regionLookupMap,sectorCodeLookupMap:a.sectorCodeLookupMap,globalVariableLookupMap:a.globalVariableLookupMap})}function q(e){e.chartContainer.textContent="",m([],e)}function J(e,t,n,{downloadFile:a=p}={}){const r=e.map((e=>e.join(","))).join("\n");a(new Blob([r],{type:"text/csv;charset=utf-8"}),`${h(d(t),n)}.csv`,n)}let Z=0;function W(e,t){return e??t}class X{#e;#t;#n;#a;#r;#o;#i;#s;#c;#l;#u;#d;#p;constructor(...e){const{title:t,parentContainer:n,codeDescriptionMap:a,preselectedOptions:r,callbackFunction:o,delayAfterSelect:i,delayAfterMouseLeave:s}=this.#h(e);this.#f({title:t,parentContainer:n,codeDescriptionMap:a,callbackFunction:o,delayAfterSelect:i,delayAfterMouseLeave:s});const c=W(r,Array.from(a.keys()));this.#e=t,this.#t=n,this.#n=a,this.#a=new Set(c),this.#r=new Set(c),this.#o=o,this.#i=i,this.#s=s,this.#c=null,this.#u=new Map,this.#d=`multi-select-panel-${Z}`,this.#p=0,Z+=1,this.#m()}get currentSelectedOptions(){return new Set(this.#a)}destroy(){this.#c&&(clearTimeout(this.#c),this.#c=null),this.#t.textContent=""}#h(e){if(1===e.length&&"object"==typeof e[0]&&null!==e[0]){const t=e[0],n=t.codeDescriptionMap||t.options,a=W(t.delayAfterChange,t.debounceMs);return{title:t.title,parentContainer:W(t.parentContainer,t.container),codeDescriptionMap:n,preselectedOptions:W(t.preselectedOptions,t.selectedOptions),callbackFunction:t.callbackFunction||t.onChange,delayAfterSelect:W(t.delayAfterSelect,W(a,0)),delayAfterMouseLeave:W(t.delayAfterMouseLeave,0)}}const[t,n,a,r,o,i=0,s=0]=e;return{title:t,parentContainer:n,codeDescriptionMap:a,preselectedOptions:r,callbackFunction:o,delayAfterSelect:i,delayAfterMouseLeave:s}}#f({title:e,parentContainer:t,codeDescriptionMap:n,callbackFunction:a,delayAfterSelect:r,delayAfterMouseLeave:o}){if(!e)throw new TypeError("MultiSelectPanel requires a title.");if(!t||"function"!=typeof t.appendChild)throw new TypeError("MultiSelectPanel requires a parent container element.");if(!(n instanceof Map))throw new TypeError("MultiSelectPanel requires options as a Map of code to description.");if("function"!=typeof a)throw new TypeError("MultiSelectPanel requires an onChange callback function.");this.#g("delayAfterSelect",r),this.#g("delayAfterMouseLeave",o)}#g(e,t){if(!Number.isFinite(t)||t<0)throw new TypeError(`MultiSelectPanel ${e} must be a non-negative number.`)}#m(){this.#t.textContent="";const e=document.createElement("p");e.id=`${this.#d}-title`,e.textContent=this.#e,this.#t.appendChild(e);const t=document.createElement("div");t.className="selection-div-checkboxes",t.setAttribute("role","group"),t.setAttribute("aria-labelledby",e.id),this.#l=this.#b("ALL","All",this.#a.size===this.#n.size),this.#C(),this.#l.addEventListener("change",(()=>this.#S())),t.appendChild(this.#l.parentNode),this.#n.forEach(((e,n)=>{const a=this.#b(n,e,this.#a.has(n));a.addEventListener("change",(()=>this.#y(n))),t.appendChild(a.parentNode),this.#u.set(n,a)})),this.#t.appendChild(t),t.addEventListener("mouseleave",(()=>this.#v(this.#s)))}#b(e,t,n){const a=document.createElement("label"),r=document.createElement("input");return r.id=this.#k(e),r.type="checkbox",r.value=e,r.checked=n,a.htmlFor=r.id,a.appendChild(r),a.appendChild(document.createTextNode(" "+t)),r}#k(e){const t=String(e).replace(/[^a-zA-Z0-9_-]/g,"-")||"option",n=`${this.#d}-${this.#p}-${t}`;return this.#p+=1,n}#y(e){this.#u.get(e).checked?this.#a.add(e):this.#a.delete(e),this.#C(),this.#v(this.#i)}#S(){const e=this.#l.checked;this.#a=e?new Set(this.#n.keys()):new Set,this.#u.forEach((t=>{t.checked=e})),this.#C(),this.#v(this.#i)}#C(){const e=this.#a.size===this.#n.size,t=this.#a.size>0;this.#l.checked=e,this.#l.indeterminate=t&&!e}#v(e){this.#c&&clearTimeout(this.#c),0!==e?this.#c=setTimeout((()=>{this.#w()}),e):this.#w()}#w(){this.#x()&&(this.#r=new Set(this.#a),this.#o(new Set(this.#a)))}#x(){if(this.#a.size!==this.#r.size)return!0;for(let e of this.#a)if(!this.#r.has(e))return!0;return!1}}function K(e){return e.meta.sectorCodes||e.meta.sectorNums||[]}function Q(e,t){const n=document.createElement("div");n.className=`gCubedChartDiv gCubedChartDiv-${t}`,e.appendChild(n);const a=document.createElement("div");a.className=`gCubedChartPlotlyDiv gCubedChartPlotlyDiv-${t}`,n.appendChild(a);const r=document.createElement("div");r.className="applicableSectors",n.appendChild(r);const o=document.createElement("div");return o.className="chartDataTable",n.appendChild(o),{chartDiv:n,plotlyDiv:a,applicableSectorsDiv:r,tableDiv:o}}function ee({shell:e,chart:t,figure:n,config:a,sectorCodeLookupMap:r,sectorLookupMap:o,onDownloadChartData:i}){const s=t.label||n.layout?.title?.text||"";n.config=function(e,t,n,a){return{responsive:!0,useResizeHandler:!0,modeBarButtonsToAdd:[{name:"Download CSV",icon:Plotly.Icons.disk,click:function(t){a(function(e){const t=[["Year"]];return e.forEach((e=>{t[0].push(e.name),e.x.forEach(((n,a)=>{t[a+1]||(t[a+1]=[n]),t[a+1].push(e.y[a])}))})),t}(t.data),e,n)}},{name:"Show/Hide Table",icon:Plotly.Icons.drawrect,click:function(e){re(e,t)}}]}}(s,e.tableDiv,a,i);const c=r||o;Plotly.newPlot(e.plotlyDiv,n.data,n.layout,n.config).then((t=>{!function(e,t){if(e._fullLayout&&e._fullLayout.margin&&e._fullLayout.margin.l){const n=e._fullLayout.margin.l;t.style.marginLeft=`${n}px`}else console.warn("No left margin found in gd._fullLayout.margin.l - applicable sectors will not be aligned")}(t,e.applicableSectorsDiv),t.on("plotly_afterplot",(()=>{e.tableDiv.innerHTML&&re(t,e.tableDiv,!0)})),t.on("plotly_restyle",(function(){ae(t,e.applicableSectorsDiv,a.showChartAnnotations,c)})),ae(t,e.applicableSectorsDiv,a.showChartAnnotations,c)}))}function te(e,t,n,a){e.querySelectorAll(".gCubedChartPlotlyDiv").forEach((e=>{const r=e,o=function(e,t,n,a=null){return e.map((e=>{const r=e.meta.globalVariableId;if(r)return!(a&&!a.has(r))||"legendonly";const o=e.meta.regionCode,i=K(e),s=!o||t.has(o),c=0==i.length||[...n].some((e=>i.includes(e)));return!(!s||!c)||"legendonly"}))}(r.data,t,n,a);Plotly.restyle(r,"visible",o)}))}function ne(){console.log("Triggering resize event"),window.dispatchEvent(new Event("resize"))}function ae(e,t,n,a){const r=function(e,t,n){const a=t.selectedRegions,r=t.includedSectors,o=t.sectorsHovertexOnRegions;if(!a&&!r)return null;const i={annotations:[]},s=new Set,c=new Set;let l;e.forEach((e=>{if("legendonly"!==e.visible){e.meta.globalVariableId||s.add(e.meta.regionCode||"N/A");const t=K(e);(r||o)&&t.length&&t.forEach((e=>c.add(e)))}}));let u=null;if(r||o?(l=Array.from(c).sort(P).map((e=>n.get(e)||e)),r&&(u=`Includes series with sectors: ${l.length>0?l.join(", "):" N/A"}`)):l=[],a){const e=Array.from(s);i.annotations.push({x:1,y:1,xref:"paper",yref:"paper",text:`Selected Regions: ${e.join(", ")}`,showarrow:!1,align:"right",hovertext:a&&o?`Includes series with sectors: ${l.length>0?l.join(", "):" N/A"}`:null})}return{layoutUpdate:i,applicableSectorsText:u}}(e.data,n,a);r&&(null!==r.applicableSectorsText&&(t.textContent=r.applicableSectorsText),Plotly.relayout(e,r.layoutUpdate),ne())}function re(e,t,n=!1){if(t.innerHTML&&(t.textContent="",!n))return;const a=e.data.filter(oe),r=a.map(ie),o=document.createElement("table"),i=document.createElement("tr"),s=document.createElement("th");s.textContent="Year",i.appendChild(s),a.forEach((e=>{const t=document.createElement("th");t.textContent=e.name,i.appendChild(t)})),o.appendChild(i),e.data[0].x.forEach(((e,t)=>{const n=document.createElement("tr"),i=document.createElement("td");i.textContent=e,n.appendChild(i),a.forEach(((e,a)=>{const o=document.createElement("td");!function(e,t,n){const a=se(t);if(!a)return void(e.textContent="");e.className="chart-data-number-cell";const r=document.createElement("span");r.className="chart-data-number",r.style.setProperty("--decimal-left-chars",String(n.leftChars)),r.style.setProperty("--decimal-right-chars",String(n.rightChars));const o=document.createElement("span");o.className="chart-data-number__integer",o.textContent=a.integerPart,r.appendChild(o);const i=document.createElement("span");i.className="chart-data-number__point",i.textContent=a.hasDecimalPoint?".":"",r.appendChild(i);const s=document.createElement("span");s.className="chart-data-number__fraction",s.textContent=a.fractionPart,r.appendChild(s),e.appendChild(r)}(o,e.y[t],r[a]),n.appendChild(o)})),o.appendChild(n)})),t.appendChild(o)}function oe(e){return!0===e.visible||void 0===e.visible}function ie(e){return e.y.reduce(((e,t)=>{const n=se(t);return n?{leftChars:Math.max(e.leftChars,n.integerPart.length),rightChars:Math.max(e.rightChars,n.fractionPart.length)}:e}),{leftChars:0,rightChars:0})}function se(e){if(null==e||""===e)return null;const t=String(e),n=t.indexOf(".");return-1===n?{integerPart:t,hasDecimalPoint:!1,fractionPart:""}:{integerPart:t.slice(0,n),hasDecimalPoint:!0,fractionPart:t.slice(n+1)}}function ce({chartState:e,regionFilterContainer:t,sectorFilterContainer:n,globalVariableFilterContainer:a,chartContainer:r,filterRenderedCharts:o=te}){!function(e,t){e.regionFilterSelector?.destroy(),e.sectorFilterSelector?.destroy(),e.globalVariableFilterSelector?.destroy();const n=t();e.regionFilterSelector=n.regionFilterSelector,e.sectorFilterSelector=n.sectorFilterSelector,e.globalVariableFilterSelector=n.globalVariableFilterSelector||null}(e,(()=>{const i=new X({title:"Region Selection",container:t,options:e.regionLookupMap,onChange:t=>{o(r,t,G(e),U(e))}}),s=new X({title:"Sector Selection",container:n,options:e.sectorCodeLookupMap,onChange:t=>{o(r,H(e),t,U(e))}});let c=null;return e.globalVariableLookupMap.size>0?c=new X({title:"Global Variables",container:a,options:e.globalVariableLookupMap,onChange:t=>{o(r,H(e),G(e),t)}}):a&&(a.textContent=""),{regionFilterSelector:i,sectorFilterSelector:s,globalVariableFilterSelector:c}}))}const le=["#1984c5","#22a7f0","#63bff0","#a7d5ed","#ebdc78","#e1a692","#de6e56","#e14b31","#c23728"],ue=[le,["#ffb400","#d2980d","#a57c1b","#786028","#363445","#48446e","#5e569b","#776bcd","#9080ff"],["#e27c7c","#a86464","#6d4b4b","#503f3f","#333333","#3c4e4b","#466964","#599e94","#6cd4c5"]];function de(e,t){if(t<=0||t>e.length)throw new Error("Invalid value of X");if(1===t)return[e[0]];let n=[];if(t<=Math.ceil(4.5)){const e=Math.floor(9/(t-1));e>1&&(n=Array.from({length:Math.ceil(18/e)},((t,n)=>n*e)).slice(0,t),n[n.length-1]=8)}else{n=Array.from({length:9},((e,t)=>t));const e=9-t,a=e+1,r=Math.floor(9/a);Array.from({length:e},((e,t)=>(t+1)*r)).forEach((e=>n.splice(e,1)))}return n.map((t=>e[t]))}function pe(e,t,n){const a=[],{firstYear:r,lastYear:o}=function(e,t=Object.keys(e)){const n=t.flatMap((t=>{const n=e[t]||{};return Object.keys(n).filter((e=>/^\d{4}$/.test(e))).map(Number)}));return{firstYear:Math.min(...n),lastYear:Math.max(...n)}}(n,e.variablesInChart),i=e.startYear||t.startYear||r,s=e.endYear||t.endYear||o,c=null!=e.minValue?e.minValue:t.minValue,l=null!=e.maxValue?e.maxValue:t.maxValue;let u=!0,d=null,p=!0,h=new Set;const f={};e.series.forEach((e=>{const t=n[e.variableName];if(t){const n=t.units;if(null===d)d=n;else if(d!==n)return void(p=!1);const a=function(e){const t=e.set_member_descriptions||"",n=e.description||"",a=e.prefix||"";return[`variable=${n} (${a})`,...I(t)]}(t);f[e.variableName]=a,h=0==h.size?new Set(a):new Set(a.filter((e=>h.has(e))))}}));const m=e.label||fe([...h]);if(!p)return a.push(`Chart ${m} has inconsistent units and will not be shown.`),{figure:null,warnings:a};const g={data:[],layout:he(m)},b=e.series.map(((e,t)=>({series:e,index:t,sectorCodes:N(e.variableName)||[]}))).sort(me).map((({series:e})=>e));const C=function(e){if(e<=9)return de(le,e);let t=Math.ceil(e/3),n=[];for(let a of ue){n.length+t>e&&(t=e-n.length);const r=de(a,t);n=n.concat(r)}return n}(b.length);return b.forEach((e=>{const t=n[e.variableName];if(t){const n=function(e,t,n){if(e.label)return e.label;const a=n[e.variableName]||[];return fe(a.filter((e=>!t.has(e))))||e.variableName}(e,h,f),a=C.pop(0),r=e.colorValue||a,o=[],c=[];for(let e=i;e<=s;e++){o.push(e);const n=t[e],a=null==n||""===n?null:Number(n);c.push(a),Math.abs(a)>1e-4&&(u=!1)}const l=N(e.variableName);g.data.push({x:o,y:c,type:"scatter",mode:"lines",name:n,line:{color:r,dash:e.lineValue},meta:{regionCode:t.region,sectorCodes:l,sectorNums:l,globalVariableId:F(e.variableName)?e.variableName:null}})}else a.push(`No data for series ${e.label||e.variableName}`)})),g.layout.yaxis.title={text:d,font:{size:12,weight:600,textcase:"word caps"}},function(e,t,n,a){t?e.layout.yaxis.range=[0,1]:null!==n&&null!==a?e.layout.yaxis.range=[n,a]:null!==n?e.layout.yaxis.range=[n,Math.max(...e.data.map((e=>Math.max(...e.y))))]:null!==a?e.layout.yaxis.range=[Math.min(...e.data.map((e=>Math.min(...e.y)))),a]:e.layout.yaxis.autorange=!0}(g,u,c,l),{figure:g,warnings:a}}function he(e){return{autosize:!0,title:{text:e,x:.5,xanchor:"center",yanchor:"top",automargin:!1,yref:"container",font:{size:14,weight:700,textcase:"word caps"}},yaxis:{},legend:{orientation:"h",yanchor:"top",y:-.12,yref:"paper",entrywidth:0,font:{size:10,textcase:"word caps"}},hovermode:"closest",shapes:[{type:"rect",xref:"paper",yref:"paper",x0:0,y0:0,x1:1,y1:1,line:{color:"black",width:1}}]}}function fe(e){return e.map((e=>e.split("=")[1])).join(", ")}function me(e,t){const n=e.sectorCodes.length>0,a=t.sectorCodes.length>0;if(n&&!a)return-1;if(!n&&a)return 1;for(let n=0;n<Math.min(e.sectorCodes.length,t.sectorCodes.length);n++){const a=P(e.sectorCodes[n],t.sectorCodes[n]);if(0!==a)return a}return e.sectorCodes.length!==t.sectorCodes.length?e.sectorCodes.length-t.sectorCodes.length:e.index-t.index}function ge({config:e,chartState:t,hasData:n=z,replaceFilterSelectors:a=ce,appendShell:r=Q,buildFigure:o=pe,renderChartFigure:i=ee,showWarnings:s=m,triggerResize:c=ne,onDownloadChartData:l=J}){if(!n(t))return;e.chartContainer.textContent="",a({chartState:t,regionFilterContainer:e.regionFilterContainer,sectorFilterContainer:e.sectorFilterContainer,globalVariableFilterContainer:e.globalVariableFilterContainer,chartContainer:e.chartContainer});const u=[];t.chartpackData.charts.forEach(((n,a)=>{const s=r(e.chartContainer,a),c=o(n,t.chartpackData,t.projectionsData);u.push(...c.warnings),c.figure&&i({shell:s,chart:n,figure:c.figure,config:e,sectorCodeLookupMap:t.sectorCodeLookupMap,onDownloadChartData:l})})),s(u,e),c()}document.addEventListener("DOMContentLoaded",(function(){console.time("gcubed-charts"),console.timeLog("gcubed-charts","Start retrieving and validating gcubed_config");const e=function(e){const t=[];let n=document[e];"object"!=typeof n&&(t.push(`G-Cubed charts configuration object ${e} is missing or invalid!\n"document.gcubed_config" should be defined in the containing HTML page.\n`),n={});const a=["chartContainer","chartpackStatusContainer","dataStatusContainer","regionFilterContainer","sectorFilterContainer","globalVariableFilterContainer","saveSVGChartsButton","saveJPEGChartsButton","savePNGChartsButton","downloadCsvDataButton","warningsContainer","documentationContainer","timestampContainer","b64Encoded","b64Encoded.modelVersion","b64Encoded.modelBuild","b64Encoded.isoTimestampString","b64Encoded.documentationMdContent","b64Encoded.chartPackCSV","b64Encoded.projectionsCSV","b64Encoded.documentTitle"];for(const e of a)r=n,e.split(".").reduce(((e,t)=>e&&e[t]),r)||t.push(`Missing or invalid value for required field: ${e}`);var r;if(t.length>0){let e=`Configuration validation errors:\n\t* ${t.join("\n\t* ")}\n\nG-Cubed charts will not be generated.`;return console.error(e),alert(e),!1}return n}("gcubed_config");if(!e)return void console.error("Invalid gcubed_config. Exiting...");console.timeLog("gcubed-charts","Start preparing input data");const t=c(e);if(!t)return void console.error("Invalid input data. Exiting...");console.timeLog("gcubed-charts","Start preparing page");const n=function({chartState:e=B(),importChartpackData:t=R,importProjectionsData:n=Y,renderCharts:a=ge,FileConstructor:r=File}={}){function o(n,r,o){t({file:n,fileContent:r,config:o,chartState:e,onDataLoaded:()=>a({config:o,chartState:e})})}function i(t,r,o){n({file:t,fileContent:r,config:o,chartState:e,onDataLoaded:()=>a({config:o,chartState:e})})}return{prepareAndDisplayInternalChartData:function(e){const t=new r([e.chartPackCSV],"chartpack.csv",{type:"text/csv"}),n=new r([e.projectionsCSV],"projections.csv",{type:"text/csv"});o(t,e.chartPackCSV,e),i(n,e.projectionsCSV,e)},updateChartpackStatus:o,updateDataStatus:i}}();g(t,{updateChartpackStatus:n.updateChartpackStatus,updateDataStatus:n.updateDataStatus}),console.timeLog("gcubed-charts","Start preparing and displaying internal chart data"),n.prepareAndDisplayInternalChartData(t),console.timeEnd("gcubed-charts")}))}();
+
+{% endraw %}
+
+    </script>
+  
+
+</body>
+</html>

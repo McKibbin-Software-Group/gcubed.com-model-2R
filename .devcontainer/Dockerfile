@@ -1,4 +1,4 @@
-ARG PYTHON_VARIANT=1-3.12
+ARG PYTHON_VARIANT=1-3.14
 FROM mcr.microsoft.com/devcontainers/python:${PYTHON_VARIANT}
 
 ARG SYM_REPOSITORY
