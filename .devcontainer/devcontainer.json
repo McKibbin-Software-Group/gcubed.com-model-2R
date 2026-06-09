@@ -1,7 +1,7 @@
 {
   "name": "${localWorkspaceFolderBasename}",
   "hostRequirements": {
-    "memory": "16gb"
+    "memory": "8gb"
   },
 
   "build": {
