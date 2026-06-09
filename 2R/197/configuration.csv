@@ -1,0 +1,9 @@
+Version,2R,The model version (number of regions followed by a letter indicating model type e.g. 2R)
+Build,197,The model build - must start with a positive integer but can include other letters and digits (no spaces or punctuation though).
+BaseYear,2023,The base year for indices in the model's database.
+LastProjectionYear,2150,The last year to generate projections for.
+LastPublishableProjectionYear,2100,The last year to include in the published projections.
+SectorCount,2,The number of economic sectors in the model excluding the capital producing sectors that are in all models.
+GTAPCountryMappingColumnLabel,R,The name of the column in the GTAP to G-Cubed country mapping file that identifies regions.
+GTAPCommodityMappingColumnLabel,standard_2,The name of the column in the GTAP to G-Cubed commodity mapping file that identifies sectors.
+SymmetricTwoRegionModel,True,Indicates whether the model is configured as a symmetric two-region model.

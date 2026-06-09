@@ -1,6 +1,5 @@
 {
-  "chat.disableAIFeatures": true,
-
+  "chat.disableAIFeatures": false,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.detectIndentation": true,
   "editor.formatOnPaste": false,

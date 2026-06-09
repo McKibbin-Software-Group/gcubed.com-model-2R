@@ -1,0 +1,10 @@
+,USA,ROW
+unrate_adjustment,0.25,0.20
+unrate_beta_labor_gap,0.010,0.010
+unrate_beta_output_growth,0.005,0.005
+unrate_beta_reallocation,0.001,0.001
+unrate_beta_concentration,0.001,0.001
+unrate_beta_investment_growth,0.002,0.002
+unrate_beta_real_wage_growth,0.000,0.000
+unrate_beta_tech_disp,0.000,0.000
+unrate_tech_tfp_weight,0.000,0.000

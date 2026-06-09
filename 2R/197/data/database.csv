@@ -1,0 +1,491 @@
+order,name,description,vector,type,units,region,2021,2022,2023,2024
+1,ABUY(USA),new purchases of foreign assets,end,z1l,gdp,USA,0,0,0,0
+2,ABUY(ROW),new purchases of foreign assets,end,z1l,gdp,ROW,0,0,0,0
+3,"ASSE(USA,USA)","assets in each currency, including own",sta,x1l,usgdp,USA,0,0,0,0
+4,"ASSE(USA,ROW)","assets in each currency, including own",sta,x1l,usgdp,ROW,0,0,0,0
+5,"ASSE(ROW,USA)","assets in each currency, including own",sta,x1l,usgdp,USA,0,0,0,0
+6,"ASSE(ROW,ROW)","assets in each currency, including own",sta,x1l,usgdp,ROW,0,0,0,0
+7,ASSU(USA),"assets held by region, in US$",end,z1l,gdp,USA,0,0,0,0
+8,ASSU(ROW),"assets held by region, in US$",end,z1l,gdp,ROW,0,0,0,0
+9,"BCT(g01,USA,USA)",unit border tax adjustment,exo,exo,dollar,USA,0,0,0,0
+10,"BCT(g01,USA,ROW)",unit border tax adjustment,exo,exo,dollar,USA,0,0,0,0
+11,"BCT(g01,ROW,USA)",unit border tax adjustment,exo,exo,dollar,ROW,0,0,0,0
+12,"BCT(g01,ROW,ROW)",unit border tax adjustment,exo,exo,dollar,ROW,0,0,0,0
+13,"BCT(g02,USA,USA)",unit border tax adjustment,exo,exo,dollar,USA,0,0,0,0
+14,"BCT(g02,USA,ROW)",unit border tax adjustment,exo,exo,dollar,USA,0,0,0,0
+15,"BCT(g02,ROW,USA)",unit border tax adjustment,exo,exo,dollar,ROW,0,0,0,0
+16,"BCT(g02,ROW,ROW)",unit border tax adjustment,exo,exo,dollar,ROW,0,0,0,0
+17,BOND(USA),bonds,sta,x1l,gdp,USA,89,88,89,94
+18,BOND(ROW),bonds,sta,x1l,gdp,ROW,89,88,89,94
+19,"CAP(a01,USA)",capital stock,sta,x1l,gdp,USA,18.4111801,18.58060872,18.56132226,18.52534544
+20,"CAP(a01,ROW)",capital stock,sta,x1l,gdp,ROW,18.4111801,18.58060872,18.56132226,18.52534544
+21,"CAP(a02,USA)",capital stock,sta,x1l,gdp,USA,225.52652459,225.27972346,225.3285131,225.39844741
+22,"CAP(a02,ROW)",capital stock,sta,x1l,gdp,ROW,225.52652459,225.27972346,225.3285131,225.39844741
+23,CAPY(USA),capital stock of raw capital sector,sta,x1l,gdp,USA,11.36363636,11.36363636,11.36363636,11.36363636
+24,CAPY(ROW),capital stock of raw capital sector,sta,x1l,gdp,ROW,11.36363636,11.36363636,11.36363636,11.36363636
+25,CAPZ(USA),household capital stock,sta,x1l,gdp,USA,82.8640426,82.26370503,81.93045352,82.64402699
+26,CAPZ(ROW),household capital stock,sta,x1l,gdp,ROW,82.8640426,82.26370503,81.93045352,82.64402699
+27,CNPE(USA),household demand for energy,end,z1l,gdp,USA,1.80469465,1.8124315,1.80838056,1.80996757
+28,CNPE(ROW),household demand for energy,end,z1l,gdp,ROW,1.80469465,1.8124315,1.80838056,1.80996757
+29,CNPK(USA),household capital services,end,z1l,gdp,USA,5.76641043,5.79113143,5.77818776,5.78325861
+30,CNPK(ROW),household capital services,end,z1l,gdp,ROW,5.76641043,5.79113143,5.77818776,5.78325861
+31,CNPL(USA),household demand for labor,end,z1l,gdp,USA,2.8790512,2.89139389,2.88493138,2.88746315
+32,CNPL(ROW),household demand for labor,end,z1l,gdp,ROW,2.8790512,2.89139389,2.88493138,2.88746315
+33,CNPO(USA),household demand for material,end,z1l,gdp,USA,55.7763294,56.0154464,55.89024704,55.9392955
+34,CNPO(ROW),household demand for material,end,z1l,gdp,ROW,55.7763294,56.0154464,55.89024704,55.9392955
+35,"CON(g01,USA)",household demand for goods,end,z1l,gdp,USA,1.80469465,1.8124315,1.80838056,1.80996757
+36,"CON(g01,ROW)",household demand for goods,end,z1l,gdp,ROW,1.80469465,1.8124315,1.80838056,1.80996757
+37,"CON(g02,USA)",household demand for goods,end,z1l,gdp,USA,55.7763294,56.0154464,55.89024704,55.9392955
+38,"CON(g02,ROW)",household demand for goods,end,z1l,gdp,ROW,55.7763294,56.0154464,55.89024704,55.9392955
+39,CONP(USA),national accounts consumption,end,z1l,gdp,USA,66.22648568,66.51040323,66.36174674,66.41998484
+40,CONP(ROW),national accounts consumption,end,z1l,gdp,ROW,66.22648568,66.51040323,66.36174674,66.41998484
+41,CURN(USA),domestic currency current account using nominal interest payments,end,z1l,gdp,USA,0,0,0,0
+42,CURN(ROW),domestic currency current account using nominal interest payments,end,z1l,gdp,ROW,0,0,0,0
+43,CURR(USA),USD current account using real interest payments,end,z1l,gdp,USA,0,0,0,0
+44,CURR(ROW),USD current account using real interest payments,end,z1l,gdp,ROW,0,0,0,0
+45,DEFI(USA),fiscal deficit (real interest rates),end,z1l,gdp,USA,5.7939665,-2.35792259,4.61430725,5.60942463
+46,DEFI(ROW),fiscal deficit (real interest rates),end,z1l,gdp,ROW,5.7939665,-2.35792259,4.61430725,5.60942463
+47,DEFN(USA),fiscal deficit (nominal interest rates),end,z1l,gdp,USA,11.90911223,3.68851364,7.84803378,7.91435931
+48,DEFN(ROW),fiscal deficit (nominal interest rates),end,z1l,gdp,ROW,11.90911223,3.68851364,7.84803378,7.91435931
+49,DEFX(USA),fiscal deficit shocks (real interest rates),exo,exo,gdp,USA,5.7939665,-2.35792259,4.61430725,5.60942463
+50,DEFX(ROW),fiscal deficit shocks (real interest rates),exo,exo,gdp,ROW,5.7939665,-2.35792259,4.61430725,5.60942463
+51,"EN(a01,g01,USA)",sector demand for energy goods,end,z1l,gdp,USA,2.1791351,2.19669825,2.20903437,2.19986014
+52,"EN(a01,g01,ROW)",sector demand for energy goods,end,z1l,gdp,ROW,2.1791351,2.19669825,2.20903437,2.19986014
+53,"EN(a02,g01,USA)",sector demand for energy goods,end,z1l,gdp,USA,3.74883685,3.74049393,3.76622357,3.75903232
+54,"EN(a02,g01,ROW)",sector demand for energy goods,end,z1l,gdp,ROW,3.74883685,3.74049393,3.76622357,3.75903232
+55,"ENT(a01,USA)",sector demand for energy,end,z1l,gdp,USA,2.1791351,2.19669825,2.20903437,2.19986014
+56,"ENT(a01,ROW)",sector demand for energy,end,z1l,gdp,ROW,2.1791351,2.19669825,2.20903437,2.19986014
+57,"ENT(a02,USA)",sector demand for energy,end,z1l,gdp,USA,3.74883685,3.74049393,3.76622357,3.75903232
+58,"ENT(a02,ROW)",sector demand for energy,end,z1l,gdp,ROW,3.74883685,3.74049393,3.76622357,3.75903232
+59,EPRC(USA),expected consumer price inflation rate,end,z1l,pct,USA,6.33602101,3.72835299,2.58455568,2.58455568
+60,EPRC(ROW),expected consumer price inflation rate,end,z1l,pct,ROW,6.33602101,3.72835299,2.58455568,2.58455568
+61,EXCH(USA),exchange rate - US$ per unit of region currency,stl,x1l,idx,USA,100,100,100,100
+62,EXCH(ROW),exchange rate - US$ per unit of region currency,stl,x1l,idx,ROW,100,100,100,100
+63,EXCL(USA),exchange rate - US$ per unit of region currency - lagged,sta,x1l,idx,USA,100,100,100,100
+64,EXCL(ROW),exchange rate - US$ per unit of region currency - lagged,sta,x1l,idx,ROW,100,100,100,100
+65,EXCR(USA),country risk premium relative to US,exo,exo,pct,USA,0,0,0,0
+66,EXCR(ROW),country risk premium relative to US,exo,exo,pct,ROW,0,0,0,0
+67,EXCX(USA),exchange rate target percentage change,exo,exo,pct,USA,0,0,0,0
+68,EXCX(ROW),exchange rate target percentage change,exo,exo,pct,ROW,0,0,0,0
+69,"EXQ(g01,USA)","exports, EXP.xx",end,z1l,gdp,USA,0.85099915,0.90507248,0.82586783,0.83391715
+70,"EXQ(g01,ROW)","exports, EXP.xx",end,z1l,gdp,ROW,0.85099915,0.90507248,0.82586783,0.83391715
+71,"EXQ(g02,USA)","exports, EXP.xx",end,z1l,gdp,USA,13.1962343,14.03473618,12.80652918,12.93134795
+72,"EXQ(g02,ROW)","exports, EXP.xx",end,z1l,gdp,ROW,13.1962343,14.03473618,12.80652918,12.93134795
+73,EXQT(USA),value of exports at source,end,z1l,gdp,USA,14.04723345,14.93980866,13.63239702,13.7652651
+74,EXQT(ROW),value of exports at source,end,z1l,gdp,ROW,14.04723345,14.93980866,13.63239702,13.7652651
+75,EYGR(USA),expected output growth,end,z1l,pct,USA,9.35677649,6.23927356,5.30685699,5.30685699
+76,EYGR(ROW),expected output growth,end,z1l,pct,ROW,9.35677649,6.23927356,5.30685699,5.30685699
+77,"GCE(g01,USA)",government purchases of goods and services,end,z1l,gdp,USA,0,0,0,0
+78,"GCE(g01,ROW)",government purchases of goods and services,end,z1l,gdp,ROW,0,0,0,0
+79,"GCE(g02,USA)",government purchases of goods and services,end,z1l,gdp,USA,17.23721487,16.6907277,16.63608927,16.76179335
+80,"GCE(g02,ROW)",government purchases of goods and services,end,z1l,gdp,ROW,17.23721487,16.6907277,16.63608927,16.76179335
+81,GCET(USA),national accounts government spending excluding labor,end,z1l,gdp,USA,17.23721487,16.6907277,16.63608927,16.76179335
+82,GCET(ROW),national accounts government spending excluding labor,end,z1l,gdp,ROW,17.23721487,16.6907277,16.63608927,16.76179335
+83,GDPN(USA),"GDP, nominal",end,z1l,gdp,USA,90.02853516,96.43181517,100,102.48236835
+84,GDPN(ROW),"GDP, nominal",end,z1l,gdp,ROW,90.02853516,96.43181517,100,102.48236835
+85,GDPR(USA),"GDP, real",end,z1l,gdp,USA,100,100,100,100
+86,GDPR(ROW),"GDP, real",end,z1l,gdp,ROW,100,100,100,100
+87,GNEN(USA),"GNE, nominal",end,z1l,gdp,USA,93.80713556,100.28318573,103.73611546,106.27011194
+88,GNEN(ROW),"GNE, nominal",end,z1l,gdp,ROW,93.80713556,100.28318573,103.73611546,106.27011194
+89,GNER(USA),"GNE, real",end,z1l,gdp,USA,103.93718011,103.92931647,103.73611546,103.76860712
+90,GNER(ROW),"GNE, real",end,z1l,gdp,ROW,103.93718011,103.92931647,103.73611546,103.76860712
+91,GNPR(USA),gross national product,end,z1l,gdp,USA,97.07081703,97.68727431,97.35982153,96.73895657
+92,GNPR(ROW),gross national product,end,z1l,gdp,ROW,97.07081703,97.68727431,97.35982153,96.73895657
+93,GOVL(USA),labor used by government,exo,exo,gdp,USA,0,0,0,0
+94,GOVL(ROW),labor used by government,exo,exo,gdp,ROW,0,0,0,0
+95,GOVS(USA),government spending excluding labor,exo,exo,gdp,USA,17.23721487,16.6907277,16.63608927,16.76179335
+96,GOVS(ROW),government spending excluding labor,exo,exo,gdp,ROW,17.23721487,16.6907277,16.63608927,16.76179335
+97,GOVT(USA),national accounts government spending including labor,end,z1l,gdp,USA,17.23721487,16.6907277,16.63608927,16.76179335
+98,GOVT(ROW),national accounts government spending including labor,end,z1l,gdp,ROW,17.23721487,16.6907277,16.63608927,16.76179335
+99,"IIN(g01,USA)",raw capital sector demand for goods,end,z1l,gdp,USA,0,0,0,0
+100,"IIN(g01,ROW)",raw capital sector demand for goods,end,z1l,gdp,ROW,0,0,0,0
+101,"IIN(g02,USA)",raw capital sector demand for goods,end,z1l,gdp,USA,15.8156395,15.99935518,16.02852704,15.90407685
+102,"IIN(g02,ROW)",raw capital sector demand for goods,end,z1l,gdp,ROW,15.8156395,15.99935518,16.02852704,15.90407685
+103,IITE(USA),raw capital sector demand for energy,end,z1l,gdp,USA,0,0,0,0
+104,IITE(ROW),raw capital sector demand for energy,end,z1l,gdp,ROW,0,0,0,0
+105,IITL(USA),raw capital sector demand for labor,end,z1l,gdp,USA,0.79078198,0.79996776,0.80142635,0.79520384
+106,IITL(ROW),raw capital sector demand for labor,end,z1l,gdp,ROW,0.79078198,0.79996776,0.80142635,0.79520384
+107,IITO(USA),raw capital sector demand for material,end,z1l,gdp,USA,15.8156395,15.99935518,16.02852704,15.90407685
+108,IITO(ROW),raw capital sector demand for material,end,z1l,gdp,ROW,15.8156395,15.99935518,16.02852704,15.90407685
+109,"IMP(g01,USA,USA)","individual imports, IMP.xy",end,z1l,gdp,USA,0,0,0,0
+110,"IMP(g01,USA,ROW)","individual imports, IMP.xy",end,z1l,gdp,USA,0.85099915,0.90507248,0.82586783,0.83391715
+111,"IMP(g01,ROW,USA)","individual imports, IMP.xy",end,z1l,gdp,ROW,0.85099915,0.90507248,0.82586783,0.83391715
+112,"IMP(g01,ROW,ROW)","individual imports, IMP.xy",end,z1l,gdp,ROW,0,0,0,0
+113,"IMP(g02,USA,USA)","individual imports, IMP.xy",end,z1l,gdp,USA,0,0,0,0
+114,"IMP(g02,USA,ROW)","individual imports, IMP.xy",end,z1l,gdp,USA,13.1962343,14.03473618,12.80652918,12.93134795
+115,"IMP(g02,ROW,USA)","individual imports, IMP.xy",end,z1l,gdp,ROW,13.1962343,14.03473618,12.80652918,12.93134795
+116,"IMP(g02,ROW,ROW)","individual imports, IMP.xy",end,z1l,gdp,ROW,0,0,0,0
+117,"IMPX(g01,USA,USA)",individual imports shift ,exo,exo,gdp,USA,0,0,0,0
+118,"IMPX(g01,USA,ROW)",individual imports shift ,exo,exo,gdp,USA,0,0,0,0
+119,"IMPX(g01,ROW,USA)",individual imports shift ,exo,exo,gdp,ROW,0,0,0,0
+120,"IMPX(g01,ROW,ROW)",individual imports shift ,exo,exo,gdp,ROW,0,0,0,0
+121,"IMPX(g02,USA,USA)",individual imports shift ,exo,exo,gdp,USA,0,0,0,0
+122,"IMPX(g02,USA,ROW)",individual imports shift ,exo,exo,gdp,USA,0,0,0,0
+123,"IMPX(g02,ROW,USA)",individual imports shift ,exo,exo,gdp,ROW,0,0,0,0
+124,"IMPX(g02,ROW,ROW)",individual imports shift ,exo,exo,gdp,ROW,0,0,0,0
+125,"IMQ(g01,USA)","DF imports by good, IMQ.xx",end,z1l,gdp,USA,0.85099915,0.90507248,0.82586783,0.83391715
+126,"IMQ(g01,ROW)","DF imports by good, IMQ.xx",end,z1l,gdp,ROW,0.85099915,0.90507248,0.82586783,0.83391715
+127,"IMQ(g02,USA)","DF imports by good, IMQ.xx",end,z1l,gdp,USA,13.1962343,14.03473618,12.80652918,12.93134795
+128,"IMQ(g02,ROW)","DF imports by good, IMQ.xx",end,z1l,gdp,ROW,13.1962343,14.03473618,12.80652918,12.93134795
+129,IMQT(USA),value of imports at destination,end,z1l,gdp,USA,14.04723345,14.93980866,13.63239702,13.7652651
+130,IMQT(ROW),value of imports at destination,end,z1l,gdp,ROW,14.04723345,14.93980866,13.63239702,13.7652651
+131,INAS(USA),nominal USD net interest payments on foreign assets,end,z1l,gdp,USA,0,0,0,0
+132,INAS(ROW),nominal USD net interest payments on foreign assets,end,z1l,gdp,ROW,0,0,0,0
+133,INCM(USA),after tax household income,end,z1l,gdp,USA,66.22648568,66.51040323,66.36174674,66.41998484
+134,INCM(ROW),after tax household income,end,z1l,gdp,ROW,66.22648568,66.51040323,66.36174674,66.41998484
+135,INFCL(USA),household materials inflation rate,end,z1l,pct,USA,6.87095026,6.87095026,3.63340059,2.45205817
+136,INFCL(ROW),household materials inflation rate,end,z1l,pct,ROW,6.87095026,6.87095026,3.63340059,2.45205817
+137,INFL(USA),consumer price inflation,end,z1l,pct,USA,6.33602101,6.33602101,3.72835299,2.58455568
+138,INFL(ROW),consumer price inflation,end,z1l,pct,ROW,6.33602101,6.33602101,3.72835299,2.58455568
+139,INFP(USA),output price inflation,end,z1l,pct,USA,6.87095026,6.87095026,3.63340059,2.45205817
+140,INFP(ROW),output price inflation,end,z1l,pct,ROW,6.87095026,6.87095026,3.63340059,2.45205817
+141,INFX(USA),inflation target,exo,exo,pct,USA,2.5,2.5,2.5,2.5
+142,INFX(ROW),inflation target,exo,exo,pct,ROW,2.5,2.5,2.5,2.5
+143,INPN(USA),"policy interest rate, short-run, nominal",stl,x1l,pct,USA,0.11416667,2.2275,5.1775,5.05083333
+144,INPN(ROW),"policy interest rate, short-run, nominal",stl,x1l,pct,ROW,0.11416667,2.2275,5.1775,5.05083333
+145,"INS(USA,g01)",shocks to aggregate investment demand,exo,exo,gdp,USA,0,0,0,0
+146,"INS(USA,g02)",shocks to aggregate investment demand,exo,exo,gdp,USA,0,0,0,0
+147,"INS(ROW,g01)",shocks to aggregate investment demand,exo,exo,gdp,ROW,0,0,0,0
+148,"INS(ROW,g02)",shocks to aggregate investment demand,exo,exo,gdp,ROW,0,0,0,0
+149,INTF(USA),"risk free interest rate, short-run, real",end,z1l,pct,USA,-6.75678359,-1.40590059,2.72544183,2.59877516
+150,INTF(ROW),"risk free interest rate, short-run, real",end,z1l,pct,ROW,-6.75678359,-1.40590059,2.72544183,2.59877516
+151,INTL(USA),"interest rate, short-run, nominal - lagged",sta,x1l,pct,USA,0.11416667,0.11416667,2.2275,5.1775
+152,INTL(ROW),"interest rate, short-run, nominal - lagged",sta,x1l,pct,ROW,0.11416667,0.11416667,2.2275,5.1775
+153,INTN(USA),"interest rate, short (policy), nominal",stl,x1l,pct,USA,0.11416667,2.2275,5.1775,5.05083333
+154,INTN(ROW),"interest rate, short (policy), nominal",stl,x1l,pct,ROW,0.11416667,2.2275,5.1775,5.05083333
+155,INTR(USA),"risk adjusted interest rate, short-run, real",end,z1l,pct,USA,-6.75678359,-1.40590059,2.72544183,2.59877516
+156,INTR(ROW),"risk adjusted interest rate, short-run, real",end,z1l,pct,ROW,-6.75678359,-1.40590059,2.72544183,2.59877516
+157,INTX(USA),shock to interest rate target,exo,exo,pct,USA,0,0,0,0
+158,INTX(ROW),shock to interest rate target,exo,exo,pct,ROW,0,0,0,0
+159,"INV(a01,USA)",raw investment,end,z1l,gdp,USA,1.28121218,1.30802214,1.30904689,1.29636548
+160,"INV(a01,ROW)",raw investment,end,z1l,gdp,ROW,1.28121218,1.30802214,1.30904689,1.29636548
+161,"INV(a02,USA)",raw investment,end,z1l,gdp,USA,15.69412333,15.85905336,15.89141033,15.77291861
+162,"INV(a02,ROW)",raw investment,end,z1l,gdp,ROW,15.69412333,15.85905336,15.89141033,15.77291861
+163,INVP(USA),total investment by standard sectors,end,z1l,gdp,USA,16.97533551,17.1670755,17.20045721,17.06928409
+164,INVP(ROW),total investment by standard sectors,end,z1l,gdp,ROW,16.97533551,17.1670755,17.20045721,17.06928409
+165,INVT(USA),total investment including by households,end,z1l,gdp,USA,20.47347955,20.72818554,20.73827945,20.58682893
+166,INVT(ROW),total investment including by households,end,z1l,gdp,ROW,20.47347955,20.72818554,20.73827945,20.58682893
+167,INVY(USA),raw investment of raw capital sector,end,z1l,gdp,USA,0.42186794,0.43221519,0.43092253,0.42520045
+168,INVY(ROW),raw investment of raw capital sector,end,z1l,gdp,ROW,0.42186794,0.43221519,0.43092253,0.42520045
+169,INVZ(USA),household investment,end,z1l,gdp,USA,3.0762761,3.12889485,3.10689971,3.0923444
+170,INVZ(ROW),household investment,end,z1l,gdp,ROW,3.0762761,3.12889485,3.10689971,3.0923444
+171,IRAS(USA),real USD net interest payments on foreign assets,end,z1l,gdp,USA,0,0,0,0
+172,IRAS(ROW),real USD net interest payments on foreign assets,end,z1l,gdp,ROW,0,0,0,0
+173,"JNV(a01,USA)",installed investment,end,z1l,gdp,USA,1.14215636,1.16438187,1.1650315,1.15486126
+174,"JNV(a01,ROW)",installed investment,end,z1l,gdp,ROW,1.14215636,1.16438187,1.1650315,1.15486126
+175,"JNV(a02,USA)",installed investment,end,z1l,gdp,USA,13.99076824,14.11749367,14.14310966,14.05123239
+176,"JNV(a02,ROW)",installed investment,end,z1l,gdp,ROW,13.99076824,14.11749367,14.14310966,14.05123239
+177,JNVY(USA),installed investment in the raw capital sector,end,z1l,gdp,USA,0.42186794,0.43221519,0.43092253,0.42520045
+178,JNVY(ROW),installed investment in the raw capital sector,end,z1l,gdp,ROW,0.42186794,0.43221519,0.43092253,0.42520045
+179,JNVZ(USA),installed household investment,end,z1l,gdp,USA,3.0762761,3.12889485,3.10689971,3.0923444
+180,JNVZ(ROW),installed household investment,end,z1l,gdp,ROW,3.0762761,3.12889485,3.10689971,3.0923444
+181,"LAB(a01,USA)",sector demand for labor,end,z1l,gdp,USA,0.7518342,0.75789375,0.7621499,0.75898465
+182,"LAB(a01,ROW)",sector demand for labor,end,z1l,gdp,ROW,0.7518342,0.75789375,0.7621499,0.75898465
+183,"LAB(a02,USA)",sector demand for labor,end,z1l,gdp,USA,46.80468423,46.70052178,47.02175955,46.93197584
+184,"LAB(a02,ROW)",sector demand for labor,end,z1l,gdp,ROW,46.80468423,46.70052178,47.02175955,46.93197584
+185,LABO(USA),labor demand,end,z1l,gdp,USA,51.22635161,51.14977718,51.47026718,51.37362748
+186,LABO(ROW),labor demand,end,z1l,gdp,ROW,51.22635161,51.14977718,51.47026718,51.37362748
+187,LABX(USA),labor supply,exo,exo,gdp,USA,51.22635161,51.14977718,51.47026718,51.37362748
+188,LABX(ROW),labor supply,exo,exo,gdp,ROW,51.22635161,51.14977718,51.47026718,51.37362748
+189,"LAM(a01,USA)",marginal value of a unit of capital,cos,j1l,pct,USA,127.83552552,128.15886511,128.2102076,127.99117525
+190,"LAM(a01,ROW)",marginal value of a unit of capital,cos,j1l,pct,ROW,127.83552552,128.15886511,128.2102076,127.99117525
+191,"LAM(a02,USA)",marginal value of a unit of capital,cos,j1l,pct,USA,127.83552552,128.15886511,128.2102076,127.99117525
+192,"LAM(a02,ROW)",marginal value of a unit of capital,cos,j1l,pct,ROW,127.83552552,128.15886511,128.2102076,127.99117525
+193,LAMY(USA),"marginal value of capital, raw capital sector",cos,j1l,pct,USA,114.84975148,115.21397485,115.16847313,114.96705575
+194,LAMY(ROW),"marginal value of capital, raw capital sector",cos,j1l,pct,ROW,114.84975148,115.21397485,115.16847313,114.96705575
+195,LAMZ(USA),marginal value of a unit of household capital,cos,j1l,pct,USA,114.84975148,115.21397485,115.16847313,114.96705575
+196,LAMZ(ROW),marginal value of a unit of household capital,cos,j1l,pct,ROW,114.84975148,115.21397485,115.16847313,114.96705575
+197,LGDPN(USA),"GDP, nominal",exo,exo,nomusdbillion,USA,23725.6455,26054.61425,27811.517,29298.01275
+198,LGDPN(ROW),"GDP, nominal",exo,exo,nomusdbillion,ROW,23725.6455,26054.61425,27811.517,29298.01275
+199,LGDPR(USA),"GDP, real",exo,exo,realusdbillion,USA,26353.47277089,27018.69108683,27811.517,28588.3447287
+200,LGDPR(ROW),"GDP, real",exo,exo,realusdbillion,ROW,26353.47277089,27018.69108683,27811.517,28588.3447287
+201,MONE(USA),money demand,end,z1l,gdp,USA,60,60,60,60
+202,MONE(ROW),money demand,end,z1l,gdp,ROW,60,60,60,60
+203,NB02(USA),"interest rate, 2-year, nominal",end,z1l,pct,USA,0.247,2.29991667,5.0555,4.96658333
+204,NB02(ROW),"interest rate, 2-year, nominal",end,z1l,pct,ROW,0.247,2.29991667,5.0555,4.96658333
+205,NB05(USA),"interest rate, 5-year, nominal",end,z1l,pct,USA,0.77833333,2.58958333,4.5675,4.62958333
+206,NB05(ROW),"interest rate, 5-year, nominal",end,z1l,pct,ROW,0.77833333,2.58958333,4.5675,4.62958333
+207,NB10(USA),"interest rate, 10-year, nominal",end,z1l,pct,USA,1.4425,2.95166667,3.9575,4.20833333
+208,NB10(ROW),"interest rate, 10-year, nominal",end,z1l,pct,ROW,1.4425,2.95166667,3.9575,4.20833333
+209,NEER(USA),"trade-weighted exchange rate, FC/domestic",end,z1l,idx,USA,91.56988636,100.52476793,100,101.11362079
+210,NEER(ROW),"trade-weighted exchange rate, FC/domestic",end,z1l,idx,ROW,91.56988636,100.52476793,100,101.11362079
+211,"OI(a01,g02,USA)",sector demand for material goods,end,z1l,gdp,USA,1.82198934,1.83667401,1.84698832,1.83931768
+212,"OI(a01,g02,ROW)",sector demand for material goods,end,z1l,gdp,ROW,1.82198934,1.83667401,1.84698832,1.83931768
+213,"OI(a02,g02,USA)",sector demand for material goods,end,z1l,gdp,USA,60.95305027,60.81740104,61.23574425,61.11882025
+214,"OI(a02,g02,ROW)",sector demand for material goods,end,z1l,gdp,ROW,60.95305027,60.81740104,61.23574425,61.11882025
+215,"OIN(a01,USA)",sector demand for materials,end,z1l,gdp,USA,1.82198934,1.83667401,1.84698832,1.83931768
+216,"OIN(a01,ROW)",sector demand for materials,end,z1l,gdp,ROW,1.82198934,1.83667401,1.84698832,1.83931768
+217,"OIN(a02,USA)",sector demand for materials,end,z1l,gdp,USA,60.95305027,60.81740104,61.23574425,61.11882025
+218,"OIN(a02,ROW)",sector demand for materials,end,z1l,gdp,ROW,60.95305027,60.81740104,61.23574425,61.11882025
+219,"OUG(g01,USA)",domestic supply of goods,end,z1l,gdp,USA,7.8630452,7.87966222,7.91058896,7.89220668
+220,"OUG(g01,ROW)",domestic supply of goods,end,z1l,gdp,ROW,7.8630452,7.87966222,7.91058896,7.89220668
+221,"OUG(g02,USA)",domestic supply of goods,end,z1l,gdp,USA,150.61294077,150.42914416,150.88142973,150.76369426
+222,"OUG(g02,ROW)",domestic supply of goods,end,z1l,gdp,ROW,150.61294077,150.42914416,150.88142973,150.76369426
+223,"OUP(a01,USA)",domestic production,end,z1l,gdp,USA,7.8630452,7.87966222,7.91058896,7.89220668
+224,"OUP(a01,ROW)",domestic production,end,z1l,gdp,ROW,7.8630452,7.87966222,7.91058896,7.89220668
+225,"OUP(a02,USA)",domestic production,end,z1l,gdp,USA,150.61294077,150.42914416,150.88142973,150.76369426
+226,"OUP(a02,ROW)",domestic production,end,z1l,gdp,ROW,150.61294077,150.42914416,150.88142973,150.76369426
+227,OUTL(USA),aggregate output (lagged),sta,x1l,gdp,USA,158.47598598,158.47598598,158.30880637,158.79201869
+228,OUTL(ROW),aggregate output (lagged),sta,x1l,gdp,ROW,158.47598598,158.47598598,158.30880637,158.79201869
+229,OUTP(USA),aggregate output,ets,zel,gdp,USA,158.47598598,158.30880637,158.79201869,158.65590094
+230,OUTP(ROW),aggregate output,ets,zel,gdp,ROW,158.47598598,158.30880637,158.79201869,158.65590094
+231,"OUY(g01,USA)",composite supply,end,z1l,gdp,USA,8.71404435,8.7847347,8.73645679,8.72612383
+232,"OUY(g01,ROW)",composite supply,end,z1l,gdp,ROW,8.71404435,8.7847347,8.73645679,8.72612383
+233,"OUY(g02,USA)",composite supply,end,z1l,gdp,USA,163.80917508,164.46388033,163.68795891,163.69504221
+234,"OUY(g02,ROW)",composite supply,end,z1l,gdp,ROW,163.80917508,164.46388033,163.68795891,163.69504221
+235,PERR(USA),price inflation expectation errors,exo,exo,pct,USA,0,0,0,0
+236,PERR(ROW),price inflation expectation errors,exo,exo,pct,ROW,0,0,0,0
+237,PGDP(USA),GDP implicit price deflator,end,z1l,idx,USA,90.02853516,96.43181517,100,102.48236835
+238,PGDP(ROW),GDP implicit price deflator,end,z1l,idx,ROW,90.02853516,96.43181517,100,102.48236835
+239,"PIM(g01,USA,USA)",landed price of imports,end,z1l,idx,USA,100,100,100,100
+240,"PIM(g01,USA,ROW)",landed price of imports,end,z1l,idx,USA,100,100,100,100
+241,"PIM(g01,ROW,USA)",landed price of imports,end,z1l,idx,ROW,100,100,100,100
+242,"PIM(g01,ROW,ROW)",landed price of imports,end,z1l,idx,ROW,100,100,100,100
+243,"PIM(g02,USA,USA)",landed price of imports,end,z1l,idx,USA,100,100,100,100
+244,"PIM(g02,USA,ROW)",landed price of imports,end,z1l,idx,USA,100,100,100,100
+245,"PIM(g02,ROW,USA)",landed price of imports,end,z1l,idx,ROW,100,100,100,100
+246,"PIM(g02,ROW,ROW)",landed price of imports,end,z1l,idx,ROW,100,100,100,100
+247,"PMQ(g01,USA)",import landed price index,end,z1l,idx,USA,100,100,100,100
+248,"PMQ(g01,ROW)",import landed price index,end,z1l,idx,ROW,100,100,100,100
+249,"PMQ(g02,USA)",import landed price index,end,z1l,idx,USA,100,100,100,100
+250,"PMQ(g02,ROW)",import landed price index,end,z1l,idx,ROW,100,100,100,100
+251,"PMR(g01,USA)",price of imports incl tariffs,end,z1l,idx,USA,100,100,100,100
+252,"PMR(g01,ROW)",price of imports incl tariffs,end,z1l,idx,ROW,100,100,100,100
+253,"PMR(g02,USA)",price of imports incl tariffs,end,z1l,idx,USA,100,100,100,100
+254,"PMR(g02,ROW)",price of imports incl tariffs,end,z1l,idx,ROW,100,100,100,100
+255,"POI(a01,USA)",sector price of materials,end,z1l,idx,USA,100,100,100,100
+256,"POI(a01,ROW)",sector price of materials,end,z1l,idx,ROW,100,100,100,100
+257,"POI(a02,USA)",sector price of materials,end,z1l,idx,USA,100,100,100,100
+258,"POI(a02,ROW)",sector price of materials,end,z1l,idx,ROW,100,100,100,100
+259,PRCE(USA),household price of energy,end,z1l,idx,USA,100,100,100,100
+260,PRCE(ROW),household price of energy,end,z1l,idx,ROW,100,100,100,100
+261,PRCL(USA),aggregate price of consumer goods lagged,sta,x1l,idx,USA,90.42551255,90.42551255,96.34029431,100
+262,PRCL(ROW),aggregate price of consumer goods lagged,sta,x1l,idx,ROW,90.42551255,90.42551255,96.34029431,100
+263,PRCO(USA),household price of material,end,z1l,idx,USA,90.02853516,96.43181517,100,102.48236835
+264,PRCO(ROW),household price of material,end,z1l,idx,ROW,90.02853516,96.43181517,100,102.48236835
+265,PRCOL(USA),household price of material - lagged,sta,x1l,idx,USA,90.02853516,90.02853516,96.43181517,100
+266,PRCOL(ROW),household price of material - lagged,sta,x1l,idx,ROW,90.02853516,90.02853516,96.43181517,100
+267,PRCT(USA),aggregate price of consumer goods,ets,zel,idx,USA,90.42551255,96.34029431,100,102.61824494
+268,PRCT(ROW),aggregate price of consumer goods,ets,zel,idx,ROW,90.42551255,96.34029431,100,102.61824494
+269,"PRD(g01,USA)",post-tax price of goods,end,z1l,idx,USA,100,100,100,100
+270,"PRD(g01,ROW)",post-tax price of goods,end,z1l,idx,ROW,100,100,100,100
+271,"PRD(g02,USA)",post-tax price of goods,end,z1l,idx,USA,100,100,100,100
+272,"PRD(g02,ROW)",post-tax price of goods,end,z1l,idx,ROW,100,100,100,100
+273,PRDL(USA),weighted price of domestic output lag,sta,x1l,idx,USA,90.02853516,90.02853516,96.43181517,100
+274,PRDL(ROW),weighted price of domestic output lag,sta,x1l,idx,ROW,90.02853516,90.02853516,96.43181517,100
+275,PRDX(USA),shock to weighted price of domestic output,exo,exo,pct,USA,0,0,0,0
+276,PRDX(ROW),shock to weighted price of domestic output,exo,exo,pct,ROW,0,0,0,0
+277,"PRE(a01,USA)",sector price of energy,end,z1l,idx,USA,100,100,100,100
+278,"PRE(a01,ROW)",sector price of energy,end,z1l,idx,ROW,100,100,100,100
+279,"PRE(a02,USA)",sector price of energy,end,z1l,idx,USA,100,100,100,100
+280,"PRE(a02,ROW)",sector price of energy,end,z1l,idx,ROW,100,100,100,100
+281,"PRF(a01,USA)",short run profits,end,z1l,gdp,USA,0.70848311,0.66743659,0.65786121,0.6695999
+282,"PRF(a01,ROW)",short run profits,end,z1l,gdp,ROW,0.70848311,0.66743659,0.65786121,0.6695999
+283,"PRF(a02,USA)",short run profits,end,z1l,gdp,USA,9.68808785,9.81791536,9.30298181,9.45557733
+284,"PRF(a02,ROW)",short run profits,end,z1l,gdp,ROW,9.68808785,9.81791536,9.30298181,9.45557733
+285,PRFT(USA),total economywide profits,end,z1l,gdp,USA,10.39657096,10.48535195,9.96084302,10.12517722
+286,PRFT(ROW),total economywide profits,end,z1l,gdp,ROW,10.39657096,10.48535195,9.96084302,10.12517722
+287,PRFY(USA),profits on raw capital sector,end,z1l,gdp,USA,0,0,0,0
+288,PRFY(ROW),profits on raw capital sector,end,z1l,gdp,ROW,0,0,0,0
+289,PRFZ(USA),imputed short run profits on household capital,end,z1l,gdp,USA,0,0,0,0
+290,PRFZ(ROW),imputed short run profits on household capital,end,z1l,gdp,ROW,0,0,0,0
+291,PRGT(USA),aggregate price of government goods,end,z1l,idx,USA,90.02853516,96.43181517,100,102.48236835
+292,PRGT(ROW),aggregate price of government goods,end,z1l,idx,ROW,90.02853516,96.43181517,100,102.48236835
+293,PRID(USA),weighted price of domestic output,ets,zel,idx,USA,90.02853516,96.43181517,100,102.48236835
+294,PRID(ROW),weighted price of domestic output,ets,zel,idx,ROW,90.02853516,96.43181517,100,102.48236835
+295,PRIE(USA),raw capital sector price of energy,end,z1l,idx,USA,100,100,100,100
+296,PRIE(ROW),raw capital sector price of energy,end,z1l,idx,ROW,100,100,100,100
+297,PRII(USA),price paid by producers for raw capital,end,z1l,idx,USA,89.88742897,97.02583847,100,101.6825198
+298,PRII(ROW),price paid by producers for raw capital,end,z1l,idx,ROW,89.88742897,97.02583847,100,101.6825198
+299,PRIM(USA),weighted price of imports,end,z1l,idx,USA,95.2164773,102.07500171,100,100.76645476
+300,PRIM(ROW),weighted price of imports,end,z1l,idx,ROW,95.2164773,102.07500171,100,100.76645476
+301,PRIX(USA),weighted price of exports,end,z1l,idx,USA,92.45236304,101.55519143,100,100.94373843
+302,PRIX(ROW),weighted price of exports,end,z1l,idx,ROW,92.45236304,101.55519143,100,100.94373843
+303,"PRK(a01,USA)",implicit rental price,end,z1l,idx,USA,100,100,100,100
+304,"PRK(a01,ROW)",implicit rental price,end,z1l,idx,ROW,100,100,100,100
+305,"PRK(a02,USA)",implicit rental price,end,z1l,idx,USA,100,100,100,100
+306,"PRK(a02,ROW)",implicit rental price,end,z1l,idx,ROW,100,100,100,100
+307,PRKY(USA),"implicit rental price, raw capital sector",end,z1l,idx,USA,100,100,100,100
+308,PRKY(ROW),"implicit rental price, raw capital sector",end,z1l,idx,ROW,100,100,100,100
+309,PRKZ(USA),"implicit rental price, household capital",end,z1l,idx,USA,100,100,100,100
+310,PRKZ(ROW),"implicit rental price, household capital",end,z1l,idx,ROW,100,100,100,100
+311,PROI(USA),raw capital sector price of material,end,z1l,idx,USA,100,100,100,100
+312,PROI(ROW),raw capital sector price of material,end,z1l,idx,ROW,100,100,100,100
+313,"PRP(a01,USA)",pre-tax producer price,end,z1l,idx,USA,100,100,100,100
+314,"PRP(a01,ROW)",pre-tax producer price,end,z1l,idx,ROW,100,100,100,100
+315,"PRP(a02,USA)",pre-tax producer price,end,z1l,idx,USA,100,100,100,100
+316,"PRP(a02,ROW)",pre-tax producer price,end,z1l,idx,ROW,100,100,100,100
+317,"PRS(g01,USA)",producer price of composite,end,z1l,idx,USA,100,100,100,100
+318,"PRS(g01,ROW)",producer price of composite,end,z1l,idx,ROW,100,100,100,100
+319,"PRS(g02,USA)",producer price of composite,end,z1l,idx,USA,100,100,100,100
+320,"PRS(g02,ROW)",producer price of composite,end,z1l,idx,ROW,100,100,100,100
+321,"PRX(g01,USA)",price of exports at source,end,z1l,idx,USA,100,100,100,100
+322,"PRX(g01,ROW)",price of exports at source,end,z1l,idx,ROW,100,100,100,100
+323,"PRX(g02,USA)",price of exports at source,end,z1l,idx,USA,100,100,100,100
+324,"PRX(g02,ROW)",price of exports at source,end,z1l,idx,ROW,100,100,100,100
+325,PRXX(USA),shock to expected price of consumer goods,exo,exo,pct,USA,0,0,0,0
+326,PRXX(ROW),shock to expected price of consumer goods,exo,exo,pct,ROW,0,0,0,0
+327,"PRY(g01,USA)",purchase price of composite,end,z1l,idx,USA,100,100,100,100
+328,"PRY(g01,ROW)",purchase price of composite,end,z1l,idx,ROW,100,100,100,100
+329,"PRY(g02,USA)",purchase price of composite,end,z1l,idx,USA,100,100,100,100
+330,"PRY(g02,ROW)",purchase price of composite,end,z1l,idx,ROW,100,100,100,100
+331,PTAR(USA),price level target,exo,exo,idx,USA,100,100,100,100
+332,PTAR(ROW),price level target,exo,exo,idx,ROW,100,100,100,100
+333,RB10(USA),"interest rate, 10-year, real",end,z1l,pct,USA,-5.42845026,-0.68173393,1.50544183,1.75627516
+334,RB10(ROW),"interest rate, 10-year, real",end,z1l,pct,ROW,-5.42845026,-0.68173393,1.50544183,1.75627516
+335,REER(USA),"effective real exchange rate, FC/domestic",end,z1l,idx,USA,91.18111231,100.66698623,100,100.09113995
+336,REER(ROW),"effective real exchange rate, FC/domestic",end,z1l,idx,ROW,91.18111231,100.66698623,100,100.09113995
+337,REXC(USA),real exchange rate - US$ per unit of region currency,cos,j1l,idx,USA,100,100,100,100
+338,REXC(ROW),real exchange rate - US$ per unit of region currency,cos,j1l,idx,ROW,100,100,100,100
+339,REXN(USA),real exchange rate with capital controls,end,z1l,idx,USA,100,100,100,100
+340,REXN(ROW),real exchange rate with capital controls,end,z1l,idx,ROW,100,100,100,100
+341,"RISE(a01,USA)",equity risk premium by sector and region,exo,exo,del,USA,0,0,0,0
+342,"RISE(a01,ROW)",equity risk premium by sector and region,exo,exo,del,ROW,0,0,0,0
+343,"RISE(a02,USA)",equity risk premium by sector and region,exo,exo,del,USA,0,0,0,0
+344,"RISE(a02,ROW)",equity risk premium by sector and region,exo,exo,del,ROW,0,0,0,0
+345,RISH(USA),risk premium for human wealth,exo,exo,del,USA,0,0,0,0
+346,RISH(ROW),risk premium for human wealth,exo,exo,del,ROW,0,0,0,0
+347,RISR(USA),risk premium in the yield curve,exo,exo,del,USA,0,0,0,0
+348,RISR(ROW),risk premium in the yield curve,exo,exo,del,ROW,0,0,0,0
+349,RISW(USA),Blanchard probability of death,exo,exo,del,USA,3,3,3,3
+350,RISW(ROW),Blanchard probability of death,exo,exo,del,ROW,3,3,3,3
+351,RISY(USA),risk premium for raw-capital sector capital,exo,exo,del,USA,0,0,0,0
+352,RISY(ROW),risk premium for raw-capital sector capital,exo,exo,del,ROW,0,0,0,0
+353,RISZ(USA),risk premium for household capital,exo,exo,del,USA,0,0,0,0
+354,RISZ(ROW),risk premium for household capital,exo,exo,del,ROW,0,0,0,0
+355,ROGY(USA),potential output growth target,exo,exo,pct,USA,1.4,1.4,1.4,1.4
+356,ROGY(ROW),potential output growth target,exo,exo,pct,ROW,1.4,1.4,1.4,1.4
+357,SAVI(USA),real domestic saving using real interest rates,end,z1l,gdp,USA,22.61634898,14.68620988,22.01582877,21.98991177
+358,SAVI(ROW),real domestic saving using real interest rates,end,z1l,gdp,ROW,22.61634898,14.68620988,22.01582877,21.98991177
+359,SAVN(USA),real domestic saving using nominal interest rates,end,z1l,gdp,USA,28.73149472,20.73264611,25.2495553,24.29484645
+360,SAVN(ROW),real domestic saving using nominal interest rates,end,z1l,gdp,ROW,28.73149472,20.73264611,25.2495553,24.29484645
+361,SAVT(USA),domestic non-government saving using nominal interest rates,end,z1l,gdp,USA,16.82238248,17.04413247,17.40152152,16.38048714
+362,SAVT(ROW),domestic non-government saving using nominal interest rates,end,z1l,gdp,ROW,16.82238248,17.04413247,17.40152152,16.38048714
+363,"SHEF(a01,USA)",autonomous energy efficiency improvements,exo,exo,pct,USA,0,0,0,0
+364,"SHEF(a01,ROW)",autonomous energy efficiency improvements,exo,exo,pct,ROW,0,0,0,0
+365,"SHEF(a02,USA)",autonomous energy efficiency improvements,exo,exo,pct,USA,0,0,0,0
+366,"SHEF(a02,ROW)",autonomous energy efficiency improvements,exo,exo,pct,ROW,0,0,0,0
+367,SHEFC(USA),consumption autonomous energy efficiency improvements,exo,exo,pct,USA,0,0,0,0
+368,SHEFC(ROW),consumption autonomous energy efficiency improvements,exo,exo,pct,ROW,0,0,0,0
+369,"SHK(a01,USA)",shock to capital efficiency,exo,exo,pct,USA,0,0,0,0
+370,"SHK(a01,ROW)",shock to capital efficiency,exo,exo,pct,ROW,0,0,0,0
+371,"SHK(a02,USA)",shock to capital efficiency,exo,exo,pct,USA,0,0,0,0
+372,"SHK(a02,ROW)",shock to capital efficiency,exo,exo,pct,ROW,0,0,0,0
+373,SHKC(USA),shock to aggregate consumption,exo,exo,gdp,USA,0,0,0,0
+374,SHKC(ROW),shock to aggregate consumption,exo,exo,gdp,ROW,0,0,0,0
+375,"SHKI(USA,a01)",shock to inv equation,exo,exo,gdp,USA,0,0,0,0
+376,"SHKI(USA,a02)",shock to inv equation,exo,exo,gdp,USA,0,0,0,0
+377,"SHKI(ROW,a01)",shock to inv equation,exo,exo,gdp,ROW,0,0,0,0
+378,"SHKI(ROW,a02)",shock to inv equation,exo,exo,gdp,ROW,0,0,0,0
+379,SHKM(USA),shock to money demand,exo,exo,pct,USA,0,0,0,0
+380,SHKM(ROW),shock to money demand,exo,exo,pct,ROW,0,0,0,0
+381,"SHL(USA,a01)",shock to labor due to labor-augmenting technical change and/or population growth,exo,exo,pct,USA,0,0,0,0
+382,"SHL(USA,a02)",shock to labor due to labor-augmenting technical change and/or population growth,exo,exo,pct,USA,0,0,0,0
+383,"SHL(ROW,a01)",shock to labor due to labor-augmenting technical change and/or population growth,exo,exo,pct,ROW,0,0,0,0
+384,"SHL(ROW,a02)",shock to labor due to labor-augmenting technical change and/or population growth,exo,exo,pct,ROW,0,0,0,0
+385,SHLY(USA),shock to raw capital sector labor due to labor-augmenting technical change and/or population growth,exo,exo,pct,USA,0,0,0,0
+386,SHLY(ROW),shock to raw capital sector labor due to labor-augmenting technical change and/or population growth,exo,exo,pct,ROW,0,0,0,0
+387,SHLZ(USA),shock to household capital sector labor due to labor-augmenting technical change and/or population growth,exo,exo,pct,USA,0,0,0,0
+388,SHLZ(ROW),shock to household capital sector labor due to labor-augmenting technical change and/or population growth,exo,exo,pct,ROW,0,0,0,0
+389,"SHY(a01,USA)",shock to total factor productivity,exo,exo,pct,USA,0,0,0,0
+390,"SHY(a01,ROW)",shock to total factor productivity,exo,exo,pct,ROW,0,0,0,0
+391,"SHY(a02,USA)",shock to total factor productivity,exo,exo,pct,USA,0,0,0,0
+392,"SHY(a02,ROW)",shock to total factor productivity,exo,exo,pct,ROW,0,0,0,0
+393,SHYY(USA),shock to raw capital sector total factor productivity,exo,exo,pct,USA,0,0,0,0
+394,SHYY(ROW),shock to raw capital sector total factor productivity,exo,exo,pct,ROW,0,0,0,0
+395,SHYZ(USA),shock to household capital sector total factor productivity,exo,exo,pct,USA,0,0,0,0
+396,SHYZ(ROW),shock to household capital sector total factor productivity,exo,exo,pct,ROW,0,0,0,0
+397,"STM(a01,USA)",stock market value,end,z1l,gdp,USA,14.40224071,14.49810647,14.47725779,14.47392401
+398,"STM(a01,ROW)",stock market value,end,z1l,gdp,ROW,14.40224071,14.49810647,14.47725779,14.47392401
+399,"STM(a02,USA)",stock market value,end,z1l,gdp,USA,176.41928851,175.78161548,175.74927716,176.10467829
+400,"STM(a02,ROW)",stock market value,end,z1l,gdp,ROW,176.41928851,175.78161548,175.74927716,176.10467829
+401,STMT(USA),total stock market value,end,z1l,gdp,USA,190.82152922,190.27972195,190.22653495,190.57860229
+402,STMT(ROW),total stock market value,end,z1l,gdp,ROW,190.82152922,190.27972195,190.22653495,190.57860229
+403,"TAX(g01,USA)",sales tax on composite,exo,exo,pct,USA,2.61039967,2.68600226,2.43062311,2.43034315
+404,"TAX(g01,ROW)",sales tax on composite,exo,exo,pct,ROW,2.61039967,2.68600226,2.43062311,2.43034315
+405,"TAX(g02,USA)",sales tax on composite,exo,exo,pct,USA,2.61039967,2.68600226,2.43062311,2.43034315
+406,"TAX(g02,ROW)",sales tax on composite,exo,exo,pct,ROW,2.61039967,2.68600226,2.43062311,2.43034315
+407,TAXC(USA),revenue from sales and company taxes,end,z1l,gdp,USA,4.92534258,5.24124983,4.8053085,4.86771537
+408,TAXC(ROW),revenue from sales and company taxes,end,z1l,gdp,ROW,4.92534258,5.24124983,4.8053085,4.86771537
+409,TAXH(USA),revenue from taxes on wages,end,z1l,gdp,USA,6.28209903,7.15816069,5.64486549,5.65690322
+410,TAXH(ROW),revenue from taxes on wages,end,z1l,gdp,ROW,6.28209903,7.15816069,5.64486549,5.65690322
+411,TAXL(USA),revenue from lump-sum taxes,end,z1l,gdp,USA,0,0,0,0
+412,TAXL(ROW),revenue from lump-sum taxes,end,z1l,gdp,ROW,0,0,0,0
+413,TAXM(USA),tariff revenue,end,z1l,gdp,USA,0.16587719,0.1764172,0.16097859,0.16254756
+414,TAXM(ROW),tariff revenue,end,z1l,gdp,ROW,0.16587719,0.1764172,0.16097859,0.16254756
+415,TAXS(USA),exogenous lump sum tax,exo,exo,gdp,USA,0,0,0,0
+416,TAXS(ROW),exogenous lump sum tax,exo,exo,gdp,ROW,0,0,0,0
+417,TAXT(USA),total revenue,end,z1l,gdp,USA,11.3733188,12.57582772,10.61115257,10.68716615
+418,TAXT(ROW),total revenue,end,z1l,gdp,ROW,11.3733188,12.57582772,10.61115257,10.68716615
+419,TAXX(USA),external tax revenue,end,z1l,gdp,USA,0,0,0,0
+420,TAXX(ROW),external tax revenue,end,z1l,gdp,ROW,0,0,0,0
+421,TBAL(USA),"trade surplus, domestic currency",end,z1l,gdp,USA,0,0,0,0
+422,TBAL(ROW),"trade surplus, domestic currency",end,z1l,gdp,ROW,0,0,0,0
+423,TBAU(USA),"trade surplus, USD",end,z1l,gdp,USA,0,0,0,0
+424,TBAU(ROW),"trade surplus, USD",end,z1l,gdp,ROW,0,0,0,0
+425,TCOR(USA),tax rate on corporate profits,exo,exo,pct,USA,3,3,3,3
+426,TCOR(ROW),tax rate on corporate profits,exo,exo,pct,ROW,3,3,3,3
+427,"TEX(g01,USA)",extern tax on composite,exo,exo,pct,USA,0,0,0,0
+428,"TEX(g01,ROW)",extern tax on composite,exo,exo,pct,ROW,0,0,0,0
+429,"TEX(g02,USA)",extern tax on composite,exo,exo,pct,USA,0,0,0,0
+430,"TEX(g02,ROW)",extern tax on composite,exo,exo,pct,ROW,0,0,0,0
+431,"TIM(g01,USA,USA)",multilateral tariff rates,exo,exo,pct,USA,0,0,0,0
+432,"TIM(g01,USA,ROW)",multilateral tariff rates,exo,exo,pct,USA,0.34136627,0.34136627,0.34136627,0.34136627
+433,"TIM(g01,ROW,USA)",multilateral tariff rates,exo,exo,pct,ROW,0.34136627,0.34136627,0.34136627,0.34136627
+434,"TIM(g01,ROW,ROW)",multilateral tariff rates,exo,exo,pct,ROW,0,0,0,0
+435,"TIM(g02,USA,USA)",multilateral tariff rates,exo,exo,pct,USA,0,0,0,0
+436,"TIM(g02,USA,ROW)",multilateral tariff rates,exo,exo,pct,USA,1.23498997,1.23498997,1.23498997,1.23498997
+437,"TIM(g02,ROW,USA)",multilateral tariff rates,exo,exo,pct,ROW,1.23498997,1.23498997,1.23498997,1.23498997
+438,"TIM(g02,ROW,ROW)",multilateral tariff rates,exo,exo,pct,ROW,0,0,0,0
+439,TINC(USA),tax rate on labor income,exo,exo,pct,USA,11.85776653,13.8538191,11.03374383,11.01300187
+440,TINC(ROW),tax rate on labor income,exo,exo,pct,ROW,11.85776653,13.8538191,11.03374383,11.01300187
+441,"TITC(a01,USA)",investment tax credit rate,exo,exo,pct,USA,0,0,0,0
+442,"TITC(a01,ROW)",investment tax credit rate,exo,exo,pct,ROW,0,0,0,0
+443,"TITC(a02,USA)",investment tax credit rate,exo,exo,pct,USA,0,0,0,0
+444,"TITC(a02,ROW)",investment tax credit rate,exo,exo,pct,ROW,0,0,0,0
+445,TITCH(USA),households investment tax credit rate,exo,exo,pct,USA,0,0,0,0
+446,TITCH(ROW),households investment tax credit rate,exo,exo,pct,ROW,0,0,0,0
+447,"TIX(g01,USA)",multilateral iceberg costs,exo,exo,pct,USA,0,0,0,0
+448,"TIX(g01,ROW)",multilateral iceberg costs,exo,exo,pct,ROW,0,0,0,0
+449,"TIX(g02,USA)",multilateral iceberg costs,exo,exo,pct,USA,0,0,0,0
+450,"TIX(g02,ROW)",multilateral iceberg costs,exo,exo,pct,ROW,0,0,0,0
+451,"TOB(a01,USA)","marginal q, TOB.NC",end,z1l,pct,USA,127.83552552,128.15886511,128.2102076,127.99117525
+452,"TOB(a01,ROW)","marginal q, TOB.NC",end,z1l,pct,ROW,127.83552552,128.15886511,128.2102076,127.99117525
+453,"TOB(a02,USA)","marginal q, TOB.NC",end,z1l,pct,USA,127.83552552,128.15886511,128.2102076,127.99117525
+454,"TOB(a02,ROW)","marginal q, TOB.NC",end,z1l,pct,ROW,127.83552552,128.15886511,128.2102076,127.99117525
+455,TOBY(USA),"marginal Q, raw capital sector",end,z1l,pct,USA,114.84975148,115.21397485,115.16847313,114.96705575
+456,TOBY(ROW),"marginal Q, raw capital sector",end,z1l,pct,ROW,114.84975148,115.21397485,115.16847313,114.96705575
+457,TOBZ(USA),"marginal Q, household capital",end,z1l,pct,USA,114.84975148,115.21397485,115.16847313,114.96705575
+458,TOBZ(ROW),"marginal Q, household capital",end,z1l,pct,ROW,114.84975148,115.21397485,115.16847313,114.96705575
+459,"TPA(a01,USA)",partial adjustment q,sta,x1l,pct,USA,127.83552552,128.15886511,128.2102076,127.99117525
+460,"TPA(a01,ROW)",partial adjustment q,sta,x1l,pct,ROW,127.83552552,128.15886511,128.2102076,127.99117525
+461,"TPA(a02,USA)",partial adjustment q,sta,x1l,pct,USA,127.83552552,128.15886511,128.2102076,127.99117525
+462,"TPA(a02,ROW)",partial adjustment q,sta,x1l,pct,ROW,127.83552552,128.15886511,128.2102076,127.99117525
+463,TPAY(USA),"partial adjustment Q, raw capital sector",sta,x1l,pct,USA,114.84975148,115.21397485,115.16847313,114.96705575
+464,TPAY(ROW),"partial adjustment Q, raw capital sector",sta,x1l,pct,ROW,114.84975148,115.21397485,115.16847313,114.96705575
+465,TPAZ(USA),"partial adjustment Q, household capital",sta,x1l,pct,USA,114.84975148,115.21397485,115.16847313,114.96705575
+466,TPAZ(ROW),"partial adjustment Q, household capital",sta,x1l,pct,ROW,114.84975148,115.21397485,115.16847313,114.96705575
+467,TRAN(USA),total transfers,end,z1l,gdp,USA,9.50855916,9.49852838,9.52752112,9.51935406
+468,TRAN(ROW),total transfers,end,z1l,gdp,ROW,9.50855916,9.49852838,9.52752112,9.51935406
+469,TRANX(USA),exogenous transfers,exo,exo,gdp,USA,0,0,0,0
+470,TRANX(ROW),exogenous transfers,exo,exo,gdp,ROW,0,0,0,0
+471,"TXM(g01,USA)",tariff revenue by good,end,z1l,gdp,USA,0.00290502,0.00308961,0.00281923,0.00284671
+472,"TXM(g01,ROW)",tariff revenue by good,end,z1l,gdp,ROW,0.00290502,0.00308961,0.00281923,0.00284671
+473,"TXM(g02,USA)",tariff revenue by good,end,z1l,gdp,USA,0.16297217,0.17332758,0.15815935,0.15970085
+474,"TXM(g02,ROW)",tariff revenue by good,end,z1l,gdp,ROW,0.16297217,0.17332758,0.15815935,0.15970085
+475,"WAG(a01,USA)",sector wage,end,z1l,idx,USA,100,100,100,100
+476,"WAG(a01,ROW)",sector wage,end,z1l,idx,ROW,100,100,100,100
+477,"WAG(a02,USA)",sector wage,end,z1l,idx,USA,100,100,100,100
+478,"WAG(a02,ROW)",sector wage,end,z1l,idx,ROW,100,100,100,100
+479,WAGE(USA),wage rate,sta,x1l,idx,USA,88.34145355,94.6152627,100,105.76837204
+480,WAGE(ROW),wage rate,sta,x1l,idx,ROW,88.34145355,94.6152627,100,105.76837204
+481,WAGG(USA),government wage,end,z1l,idx,USA,88.34145355,94.6152627,100,105.76837204
+482,WAGG(ROW),government wage,end,z1l,idx,ROW,88.34145355,94.6152627,100,105.76837204
+483,WELH(USA),human wealth,cos,j1l,gdp,USA,898.01293087,855.9819683,875.29142194,879.01492336
+484,WELH(ROW),human wealth,cos,j1l,gdp,ROW,898.01293087,855.9819683,875.29142194,879.01492336
+485,WELT(USA),total wealth,end,z1l,gdp,USA,1250.6959454,1223.64665138,1234.47375602,1227.01664928
+486,WELT(ROW),total wealth,end,z1l,gdp,ROW,1250.6959454,1223.64665138,1234.47375602,1227.01664928
+487,WERR(USA),wage inflation expectation errors,exo,exo,pct,USA,0,0,0,0
+488,WERR(ROW),wage inflation expectation errors,exo,exo,pct,ROW,0,0,0,0
+489,YRATN(USA),"GDP ratio, nominal",exo,exo,pct,USA,100,100,100,100
+490,YRATN(ROW),"GDP ratio, nominal",exo,exo,pct,ROW,100,100,100,100

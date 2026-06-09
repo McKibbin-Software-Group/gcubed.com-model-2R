@@ -1,1 +1,0 @@
-The final projections, after applying the simulation layer, should be identical to the baseline projections.
