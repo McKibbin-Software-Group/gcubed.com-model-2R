@@ -1,9 +1,3 @@
-# Custom variable definitions
-NAME=YOUR NAME GOES HERE
-EMAIL=THE EMAIL YOU USE WITH GITHUB GOES HERE
-
-PYTHON=python
-
 # (default target) Run the chosen target by default
 default: push
 
