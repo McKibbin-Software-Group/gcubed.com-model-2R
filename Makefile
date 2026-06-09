@@ -1,6 +1,6 @@
 # Custom variable definitions
-NAME=Geoff Shuetrim
-EMAIL=gshuetrim@gcubed.com
+NAME=YOUR NAME GOES HERE
+EMAIL=THE EMAIL YOU USE WITH GITHUB GOES HERE
 
 PYTHON=python
 
