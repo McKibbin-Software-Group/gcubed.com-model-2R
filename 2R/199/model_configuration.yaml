@@ -1,0 +1,38 @@
+schema_version: 1
+
+model:
+  version: "2R"
+  build: "199"
+  sector_count: 2
+  features:
+    symmetric_two_region_model: true
+
+years:
+  base: 2023
+  last_projection: 2150
+  last_publishable_projection: 2100
+
+mapping_columns:
+  gtap:
+    country: "R"
+    commodity: "standard_2"
+
+projections:
+  preserve_baseline_exogenous_projections_file: false
+
+baseline_tuning:
+  real_interest_rates_in_base_year:
+    propagation:
+      other_domestic_nominal_price_indices: true
+      wages: true
+    defaults:
+      adjustment_method: range
+      floor_real_interest_rate: -10.0
+      ceiling_real_interest_rate: 10.0
+
+  monetary_policy_adjustments:
+    projections_file_name: baseline_INTX_projections.csv
+    defaults:
+      start_year: 2023
+      end_year: 2030
+      annual_decay_percent: 50.0

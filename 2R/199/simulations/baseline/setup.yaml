@@ -1,0 +1,88 @@
+schema_version: 1
+kind: baseline
+model:
+  configuration_file_name: model_configuration.yaml
+chartpack:
+  title: Baseline
+  first_result_year: null
+  last_result_year: null
+  charts:
+  - variable_prefix: INFL
+    selectors:
+    - dimension: regions
+      members: all
+  - variable_prefix: GDPRGROWTH
+    selectors:
+    - dimension: regions
+      members: all
+  - variable_prefix: GDPR
+    selectors:
+    - dimension: regions
+      members: all
+  - variable_prefix: CONP
+    selectors:
+    - dimension: regions
+      members: all
+  - variable_prefix: INVT
+    selectors:
+    - dimension: regions
+      members: all
+  - variable_prefix: INTN
+    selectors:
+    - dimension: regions
+      members: all
+  - variable_prefix: NB10
+    selectors:
+    - dimension: regions
+      members: all
+  - variable_prefix: INTR
+    selectors:
+    - dimension: regions
+      members: all
+  - variable_prefix: EXCH
+    selectors:
+    - dimension: regions
+      members: all
+  - variable_prefix: NEER
+    selectors:
+    - dimension: regions
+      members: all
+  - variable_prefix: TBAL
+    selectors:
+    - dimension: regions
+      members: all
+  - variable_prefix: DEFI
+    selectors:
+    - dimension: regions
+      members: all
+  - variable_prefix: BOND
+    selectors:
+    - dimension: regions
+      members: all
+  - variable_prefix: OUP
+    selectors:
+    - dimension: regions
+      members: all
+    - dimension: sectors
+      members: all
+  - variable_prefix: LAB
+    selectors:
+    - dimension: regions
+      members: all
+    - dimension: sec_std
+      members: all
+  - variable_prefix: PRP
+    selectors:
+    - dimension: regions
+      members: all
+    - dimension: sectors
+      members: all
+  - variable_prefix: TOB
+    selectors:
+    - dimension: regions
+      members: all
+    - dimension: sec_std
+      members: all
+  file_name: chartpack.yaml
+  derivations:
+  - GDPRGROWTH

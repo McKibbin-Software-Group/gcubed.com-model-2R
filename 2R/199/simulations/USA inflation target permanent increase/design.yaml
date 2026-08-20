@@ -1,0 +1,7 @@
+schema_version: 1
+layers:
+- name: USA inflation target increase
+  data_file: adjustments.csv
+  event_year: 2024
+  description: The USA inflation target (INFX) is permanently increased by 1 percentage
+    point.

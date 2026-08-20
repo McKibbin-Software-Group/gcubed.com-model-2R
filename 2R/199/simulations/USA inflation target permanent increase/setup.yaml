@@ -1,0 +1,66 @@
+schema_version: 1
+kind: experiment
+model:
+  configuration_file_name: model_configuration.yaml
+layers:
+- name: USA inflation target increase
+  data_file_name: adjustments.csv
+  event_year: 2024
+  description: The USA inflation target (INFX) is permanently increased by 1 percentage point.
+  shocks:
+  - variable_prefix: INFX
+    selectors:
+    - dimension: regions
+      members:
+      - USA
+    value_path:
+      type: permanent_constant
+      start_year: 2024
+      value: 1
+  id: adjustments_csv
+artefacts:
+  design_file_name: design.yaml
+design:
+  name: An increase in the USA inflation target
+  layer_ids:
+  - adjustments_csv
+chartpack:
+  title: Inflation target increase
+  first_result_year: null
+  last_result_year: 2040
+  derivations:
+  - GDPRGROWTH
+  charts:
+  - variable_prefix: INFX
+    selectors:
+    - dimension: regions
+      members: all
+  - variable_prefix: INFL
+    selectors:
+    - dimension: regions
+      members: all
+  - variable_prefix: GDPRGROWTH
+    selectors:
+    - dimension: regions
+      members: all
+  - variable_prefix: GDPR
+    selectors:
+    - dimension: regions
+      members: all
+  - variable_prefix: INTN
+    selectors:
+    - dimension: regions
+      members: all
+  - variable_prefix: INTR
+    selectors:
+    - dimension: regions
+      members: all
+  - variable_prefix: EXCH
+    selectors:
+    - dimension: regions
+      members: all
+  - variable_prefix: NEER
+    selectors:
+    - dimension: regions
+      members: all
+  file_name: chartpack.yaml

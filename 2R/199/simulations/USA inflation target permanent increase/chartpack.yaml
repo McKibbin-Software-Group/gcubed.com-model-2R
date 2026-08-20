@@ -1,0 +1,46 @@
+- chartpack:
+    format: gcubed-chartpack
+    version: 1
+    title: Inflation target increase
+    defaults:
+      end_year: 2040
+- chart:
+    series:
+    - variable_prefix: INFX
+      selectors:
+        regions: all
+- chart:
+    series:
+    - variable_prefix: INFL
+      selectors:
+        regions: all
+- chart:
+    series:
+    - variable_prefix: GDPRGROWTH
+      selectors:
+        regions: all
+- chart:
+    series:
+    - variable_prefix: GDPR
+      selectors:
+        regions: all
+- chart:
+    series:
+    - variable_prefix: INTN
+      selectors:
+        regions: all
+- chart:
+    series:
+    - variable_prefix: INTR
+      selectors:
+        regions: all
+- chart:
+    series:
+    - variable_prefix: EXCH
+      selectors:
+        regions: all
+- chart:
+    series:
+    - variable_prefix: NEER
+      selectors:
+        regions: all

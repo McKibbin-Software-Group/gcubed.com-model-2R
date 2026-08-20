@@ -1,0 +1,93 @@
+- chartpack:
+    format: gcubed-chartpack
+    version: 1
+    title: Baseline
+- chart:
+    series:
+    - variable_prefix: INFL
+      selectors:
+        regions: all
+- chart:
+    series:
+    - variable_prefix: GDPRGROWTH
+      selectors:
+        regions: all
+- chart:
+    series:
+    - variable_prefix: GDPR
+      selectors:
+        regions: all
+- chart:
+    series:
+    - variable_prefix: CONP
+      selectors:
+        regions: all
+- chart:
+    series:
+    - variable_prefix: INVT
+      selectors:
+        regions: all
+- chart:
+    series:
+    - variable_prefix: INTN
+      selectors:
+        regions: all
+- chart:
+    series:
+    - variable_prefix: NB10
+      selectors:
+        regions: all
+- chart:
+    series:
+    - variable_prefix: INTR
+      selectors:
+        regions: all
+- chart:
+    series:
+    - variable_prefix: EXCH
+      selectors:
+        regions: all
+- chart:
+    series:
+    - variable_prefix: NEER
+      selectors:
+        regions: all
+- chart:
+    series:
+    - variable_prefix: TBAL
+      selectors:
+        regions: all
+- chart:
+    series:
+    - variable_prefix: DEFI
+      selectors:
+        regions: all
+- chart:
+    series:
+    - variable_prefix: BOND
+      selectors:
+        regions: all
+- chart:
+    series:
+    - variable_prefix: OUP
+      selectors:
+        regions: all
+        sectors: all
+- chart:
+    series:
+    - variable_prefix: LAB
+      selectors:
+        regions: all
+        sec_std: all
+- chart:
+    series:
+    - variable_prefix: PRP
+      selectors:
+        regions: all
+        sectors: all
+- chart:
+    series:
+    - variable_prefix: TOB
+      selectors:
+        regions: all
+        sec_std: all

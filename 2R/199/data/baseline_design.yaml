@@ -1,0 +1,11 @@
+schema_version: 1
+layers:
+- name: growth and efficiency adjustments
+  data_file: baseline_exogenous_projections.csv
+  event_year: 2023
+  description: Growth and efficiency adjustments
+- name: INTX baseline transition
+  data_file: baseline_INTX_projections.csv
+  event_year: 2023
+  description: Model-specific INTX adjustments that move selected starting monetary-policy
+    constants to zero.
